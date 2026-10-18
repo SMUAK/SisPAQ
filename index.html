@@ -102,7 +102,6 @@
     #tingkatan #formCard .btn-row{grid-column:1/-1!important;margin-top:6px!important}
     @media(max-width:900px){#tingkatan .class-form-toolbar{display:block!important}#tingkatan #formTitle{white-space:normal!important;margin-bottom:10px!important}#tingkatan #classButtons{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}#tingkatan #formCard{width:100%!important;max-width:100%!important;margin:12px 0 0!important;padding:16px!important;display:none!important;grid-template-columns:1fr!important;gap:8px!important}#tingkatan #formCard.active{display:grid!important}#tingkatan #formCard .btn-row{grid-column:1!important}}
     
-    /* GAYA SEKSYEN TETAPAN & FONT MONOSPACE (SEPERTI GAMBAR 1 & GAMBAR 2) */
     .setting-partition{margin-top:16px;background:#f8fafc;border:1px solid #a7f3d0;border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(15,23,42,.06)}
     .setting-partition h3{display:flex;align-items:center;gap:8px;margin:0 0 8px;color:#172033;font-size:1.1rem;font-weight:800}
     .setting-partition p{color:#64748b;font-size:.88rem;margin-bottom:12px;line-height:1.4}
@@ -111,7 +110,6 @@
     .teacher-setting-grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:10px 16px}
     .teacher-setting-grid label{margin-top:6px;font-size:0.92rem;font-weight:800}
     
-    /* FONT TULISAN MONOSPACE UNTUK SEMUA INPUT PADA TETAPAN (GAMBAR 1) */
     #tetapan input, #tetapan select, #tetapan textarea {
       font-family: Consolas, 'Courier New', Monaco, monospace !important;
       font-size: 15px !important;
@@ -138,7 +136,7 @@
   <style>:root{--sispaq-maroon:#550000;--sispaq-maroon-light:#7a123d}.brand{background:linear-gradient(135deg,#550000,#7a123d)!important;color:#fff!important;border-color:#550000!important}.brand .brand-red,.brand h2,.brand div{color:#fff!important}.auth-screen{background:linear-gradient(180deg,#550000 0,#550000 210px,#eef3f8 210px,#eef3f8 100%)!important;padding:54px 16px 42px!important}.auth-brand{color:#fff!important;margin-bottom:86px!important}.auth-school-name{font-size:1.05rem!important;font-weight:800!important;line-height:1.25!important;margin-bottom:12px!important}.auth-brand h1{color:#fff!important;font-size:2rem!important;font-weight:900!important}.auth-brand .brand-red{color:#fff!important}.auth-card{max-width:398px;margin:0 auto;background:#fff!important;border-radius:20px!important;padding:26px!important;box-shadow:0 18px 42px rgba(85,0,0,.22)!important}.auth-input-wrap input{border-color:#550000!important;background:#fff!important}.auth-input-wrap input:focus{border-color:#550000!important;box-shadow:0 0 0 3px rgba(85,0,0,.13)!important}.btn-main{background:#550000!important;color:#fff!important}.btn-main:hover{background:#7a123d!important}.auth-link{color:#550000!important}.email-eye-btn{color:#550000!important}.topbar-school-name{font-size:1.18rem;font-weight:900;line-height:1.2}.topbar-school-address{font-size:.94rem;font-weight:600;line-height:1.3}.topbar-system-name{font-size:.79rem;line-height:1.3}@media(max-width:900px){.brand{text-align:center!important}.auth-screen{background:linear-gradient(180deg,#550000 0,#550000 210px,#eef3f8 210px,#eef3f8 100%)!important;padding:48px 16px 36px!important}.auth-card{width:100%;max-width:398px!important}.auth-brand{margin-bottom:88px!important}.auth-school-name{font-size:1rem!important}.topbar-school-name{font-size:1.08rem}.topbar-school-address{font-size:.88rem}.topbar-system-name{font-size:0.76rem}}</style>
 </head>
 <body>
-  <section id="authScreen" class="auth-screen"><div class="auth-wrap"><div class="auth-brand"><div class="auth-school-name">SMU(A) Khairiah Banggol Setol</div><h1><span class="brand-red">Sis</span>PAQ</h1><div>Sistem Prestasi Al-Quran</div></div><div class="auth-card"><div id="loginBox"><div class="auth-title">Selamat Datang!<br>Sila Log Masuk Untuk Meneruskan.</div><div class="auth-input-wrap"><input id="loginEmail" type="email" inputmode="email" autocomplete="username" class="email-mask" placeholder="Alamat E-mel Pentadbir / Guru"><button type="button" class="email-eye-btn" onclick="return toggleInputVisibility('loginEmail',this,'email',event)" title="Lihat / sembunyi e-mel" aria-label="Lihat / sembunyi e-mel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg></button></div><div class="auth-input-wrap"><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Kata Laluan"><button type="button" class="email-eye-btn" onclick="return toggleInputVisibility('loginPassword',this,'password',event)" title="Lihat / sembunyi kata laluan" aria-label="Lihat / sembunyi kata laluan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg></button></div><button class="btn-main" onclick="loginUser(this)">LOG MASUK</button><div class="auth-center"><span class="auth-link" onclick="resetPassword()">Lupa Kata Laluan?</span><br><span class="auth-link" onclick="showSignupBox()">Daftar Akaun Guru Baharu</span></div></div><div id="signupBox" style="display:none"><div class="auth-title">Pendaftaran Akaun Guru</div><input id="signupName" placeholder="Nama Guru" autocomplete="off"><div class="auth-input-wrap"><input id="signupEmail" type="email" inputmode="email" autocomplete="off" class="email-mask" placeholder="Alamat E-mel"><button type="button" class="email-eye-btn" onclick="return toggleInputVisibility('signupEmail',this,'email',event)" title="Lihat / sembunyi e-mel" aria-label="Lihat / sembunyi e-mel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg></button></div><div class="auth-input-wrap"><input id="signupPassword" type="password" autocomplete="new-password" placeholder="Kata Laluan baharu"><button type="button" class="email-eye-btn" onclick="return toggleInputVisibility('signupPassword',this,'password',event)" title="Lihat / sembunyi kata laluan" aria-label="Lihat / sembunyi kata laluan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg></button></div><button class="btn-main" onclick="signupUser(this)">DAFTAR AKAUN</button><div class="auth-center"><span class="auth-link" onclick="showLoginBox()">Kembali ke Log Masuk</span></div></div></div></div></section>
+  <section id="authScreen" class="auth-screen"><div class="auth-wrap"><div class="auth-brand"><div class="auth-school-name">SMU(A) Khairiah Banggol Setol</div><h1><span class="brand-red">Sis</span>PAQ</h1><div>Sistem Prestasi Al-Quran</div></div><div class="auth-card"><div id="loginBox"><div class="auth-title">Selamat Datang!<br>Sila Log Masuk Untuk Meneruskan.</div><div class="auth-input-wrap"><input id="loginEmail" type="password" inputmode="email" autocomplete="username" placeholder="Alamat E-mel Pentadbir / Guru"><button type="button" class="email-eye-btn" onclick="return toggleInputVisibility('loginEmail',this,'email',event)" title="Lihat / sembunyi e-mel" aria-label="Lihat / sembunyi e-mel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg></button></div><div class="auth-input-wrap"><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Kata Laluan"><button type="button" class="email-eye-btn" onclick="return toggleInputVisibility('loginPassword',this,'password',event)" title="Lihat / sembunyi kata laluan" aria-label="Lihat / sembunyi kata laluan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg></button></div><button class="btn-main" onclick="loginUser(this)">LOG MASUK</button><div class="auth-center"><span class="auth-link" onclick="resetPassword()">Lupa Kata Laluan?</span><br><span class="auth-link" onclick="showSignupBox()">Daftar Akaun Guru Baharu</span></div></div><div id="signupBox" style="display:none"><div class="auth-title">Pendaftaran Akaun Guru</div><input id="signupName" placeholder="Nama Guru" autocomplete="off"><div class="auth-input-wrap"><input id="signupEmail" type="password" inputmode="email" autocomplete="off" placeholder="Alamat E-mel"><button type="button" class="email-eye-btn" onclick="return toggleInputVisibility('signupEmail',this,'email',event)" title="Lihat / sembunyi e-mel" aria-label="Lihat / sembunyi e-mel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg></button></div><div class="auth-input-wrap"><input id="signupPassword" type="password" autocomplete="new-password" placeholder="Kata Laluan baharu"><button type="button" class="email-eye-btn" onclick="return toggleInputVisibility('signupPassword',this,'password',event)" title="Lihat / sembunyi kata laluan" aria-label="Lihat / sembunyi kata laluan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg></button></div><button class="btn-main" onclick="signupUser(this)">DAFTAR AKAUN</button><div class="auth-center"><span class="auth-link" onclick="showLoginBox()">Kembali ke Log Masuk</span></div></div></div></div></section>
   <div id="appShell" class="app-shell"><div class="wrapper">
     <aside class="sidebar">
       <div class="brand">
@@ -279,7 +277,7 @@
               </div>
             </div>
 
-            <!-- 3. Tetapan Tandatangan Cetakan (GAMBAR 2) -->
+            <!-- 3. Tetapan Tandatangan Cetakan -->
             <div id="partitionGuruAlQuran" class="setting-partition">
               <h3><span class="partition-no">3</span>Tetapan Tandatangan Cetakan</h3>
               <p>Nama di sini akan digunakan secara automatik pada paparan cetak senarai mengikut tingkatan. Jika tambah tingkatan baharu di Kawalan Tingkatan, medan guru akan muncul di sini secara automatik.</p>
@@ -297,7 +295,7 @@
               </div>
             </div>
 
-            <!-- 4. Pengurusan Pengesahan (Tambahan Medan Pengesahan) -->
+            <!-- 4. Pengurusan Pengesahan -->
             <div id="partitionPengesahan" class="setting-partition">
               <h3><span class="partition-no">4</span>Pengurusan Pengesahan</h3>
               <label>Jawatan Pegawai Penyemak</label>
@@ -446,23 +444,20 @@
     window.toggleInputVisibility=function(inputId,btn,visibleType,event){
       if(event){event.preventDefault();event.stopPropagation();}
       const input=byId(inputId);if(!input)return false;
-      const isEmail=visibleType==='email';
-      let opened=false;
-      if(isEmail){
-        opened=!input.classList.contains('email-visible');
-        input.classList.remove(opened?'email-mask':'email-visible');
-        input.classList.add(opened?'email-visible':'email-mask');
-        input.type='email';
-        input.style.webkitTextSecurity=opened?'none':'disc';
-        input.style.textSecurity=opened?'none':'disc';
-      }else{
-        opened=input.type==='password';
-        input.type=opened?'text':'password';
+      
+      let isCurrentlyHidden = (input.type === 'password');
+      if (isCurrentlyHidden) {
+        input.type = 'text';
+      } else {
+        input.type = 'password';
       }
+      
       if(btn){
-        btn.innerHTML = opened ? `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18"></path><path d="M10.6 6.2A10.7 10.7 0 0 1 12 6c6 0 9.5 6 9.5 6a17 17 0 0 1-3 3.6"></path><path d="M6.2 6.3C3.8 8 2.5 12 2.5 12s3.5 6 9.5 6c1.2 0 2.3-.2 3.3-.6"></path><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"></path></svg>` : `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg>`;
-        btn.setAttribute('aria-label',opened?'Sembunyikan':'Lihat');
-        btn.title=opened?'Sembunyikan':'Lihat';
+        btn.innerHTML = isCurrentlyHidden ? 
+          `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18"></path><path d="M10.6 6.2A10.7 10.7 0 0 1 12 6c6 0 9.5 6 9.5 6a17 17 0 0 1-3 3.6"></path><path d="M6.2 6.3C3.8 8 2.5 12 2.5 12s3.5 6 9.5 6c1.2 0 2.3-.2 3.3-.6"></path><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"></path></svg>` : 
+          `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg>`;
+        btn.setAttribute('aria-label', isCurrentlyHidden ? 'Sembunyikan' : 'Lihat');
+        btn.title = isCurrentlyHidden ? 'Sembunyikan' : 'Lihat';
       }
       requestAnimationFrame(()=>{
         try{ input.focus({preventScroll:true}); const n=input.value.length; if(input.setSelectionRange)input.setSelectionRange(n,n); }catch(e){}
