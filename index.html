@@ -141,7 +141,7 @@
   <style>.email-eye-btn{width:42px!important;height:42px!important;border-radius:0!important;background:transparent!important;color:#666!important;box-shadow:none!important}.email-eye-btn:hover{background:transparent!important;color:#444!important;transform:translateY(-50%)!important}.email-eye-btn svg{width:30px;height:30px;display:block;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}</style>
   <style>:root{--sispaq-maroon:#550000;--sispaq-maroon-light:#7a123d}.brand{background:linear-gradient(135deg,#550000,#7a123d)!important;color:#fff!important;border-color:#550000!important}.brand .brand-red,.brand h2,.brand div{color:#fff!important}.auth-screen{background:linear-gradient(180deg,#550000 0,#550000 210px,#eef3f8 210px,#eef3f8 100%)!important;padding:54px 16px 42px!important}.auth-brand{color:#fff!important;margin-bottom:86px!important}.auth-school-name{font-size:1.05rem!important;font-weight:800!important;line-height:1.25!important;margin-bottom:12px!important}.auth-brand h1{color:#fff!important;font-size:2rem!important;font-weight:900!important}.auth-brand .brand-red{color:#fff!important}.auth-card{max-width:398px;margin:0 auto;background:#fff!important;border-radius:20px!important;padding:26px!important;box-shadow:0 18px 42px rgba(85,0,0,.22)!important}.auth-input-wrap input{border-color:#550000!important;background:#fff!important}.auth-input-wrap input:focus{border-color:#550000!important;box-shadow:0 0 0 3px rgba(85,0,0,.13)!important}.btn-main{background:#550000!important;color:#fff!important}.btn-main:hover{background:#7a123d!important}.auth-link{color:#550000!important}.email-eye-btn{color:#550000!important}.topbar-school-name{font-size:1.18rem;font-weight:900;line-height:1.2}.topbar-school-address{font-size:.94rem;font-weight:600;line-height:1.3}.topbar-system-name{font-size:.79rem;line-height:1.3}@media(max-width:900px){.brand{text-align:center!important}.auth-screen{background:linear-gradient(180deg,#550000 0,#550000 210px,#eef3f8 210px,#eef3f8 100%)!important;padding:48px 16px 36px!important}.auth-card{width:100%;max-width:398px!important}.auth-brand{margin-bottom:88px!important}.auth-school-name{font-size:1rem!important}.topbar-school-name{font-size:1.08rem}.topbar-school-address{font-size:.88rem}.topbar-system-name{font-size:0.76rem}}</style>
   
-  <!-- GAYA BUTANG BUJUR (PILL-SHAPED) DAN SUSUNAN MOD TELEFON TANPA IKON -->
+  <!-- KETIGA: GAYA BUTANG BUJUR (PILL-SHAPED) DAN SUSUNAN MOD TELEFON TANPA IKON -->
   <style>
     .btn-pill {
       border-radius: 999px !important;
@@ -263,6 +263,7 @@
             <label>Carian Pintar</label>
             <input id="smartSearchInput" placeholder="Cari nama, juzu, muka surat, surah, peratus, ulasan atau guru" oninput="renderGeneral()">
             
+            <!-- KETIGA: REKA BENTUK BUTANG BUJUR DALAM SATU BARIS TANPA IKON -->
             <div class="action-btns-container">
               <button class="print btn-pill btn-print-action" onclick="cetakPrestasiBaru()">Cetak Prestasi</button>
               <button class="btn-pill btn-excel-action" onclick="downloadCsv()">Muat Turun Excel</button>
@@ -297,6 +298,7 @@
           <div class="card">
             <h3>Tetapan SisPAQ</h3>
             
+            <!-- 1. Maklumat Rasmi Institusi -->
             <div class="setting-partition">
               <h3><span class="partition-no">1</span>Maklumat Rasmi Institusi</h3>
               <label>Nama Institusi / Sekolah</label>
@@ -311,6 +313,7 @@
                 <button onclick="saveSettings()">Simpan Maklumat Institusi</button>
               </div>
             </div>
+            <!-- 2. Kawalan Tingkatan -->
             <div id="partitionPengurusanTingkatan" class="setting-partition">
               <h3><span class="partition-no">2</span>Kawalan Tingkatan</h3>
               <p>Tambah dan hapus tingkatan hanya boleh dibuat oleh admin melalui paparan ini.</p>
@@ -325,12 +328,14 @@
                 <button type="button" class="danger" onclick="deleteClassFromSetting()">Hapus Tingkatan</button>
               </div>
             </div>
+            <!-- 3. Tetapan Tandatangan Cetakan -->
             <div id="partitionGuruAlQuran" class="setting-partition">
               <h3><span class="partition-no">3</span>Tetapan Tandatangan Cetakan</h3>
               <p>Nama di sini akan digunakan secara automatik pada paparan cetak senarai mengikut tingkatan. Jika tambah tingkatan baharu di Kawalan Tingkatan, medan guru akan muncul di sini secara automatik.</p>
               <label style="margin-bottom:6px">Guru Al-Quran Tingkatan</label>
               <div id="teacherSettingGrid" class="teacher-setting-grid"></div>
               
+              <!-- PERTAMA: TUKAR KEPADA "Nama Penyemak" -->
               <label style="margin-top:14px">Nama Penyemak</label>
               <input id="settingNamaPegawaiPenyemak" placeholder="Nama Penyemak">
               
@@ -341,14 +346,17 @@
                 <button type="button" onclick="saveGuruAndPengesahanCombined()">Simpan Tetapan Tandatangan</button>
               </div>
             </div>
+            <!-- 4. Pengurusan Pengesahan -->
             <div id="partitionPengesahan" class="setting-partition">
               <h3><span class="partition-no">4</span>Pengurusan Pengesahan</h3>
+              <!-- PERTAMA: TUKAR KEPADA "Jawatan Penyemak" -->
               <label>Jawatan Penyemak</label>
               <input id="settingJawatanPegawaiPenyemak" value="PK Pentadbiran">
               <div class="setting-action">
                 <button type="button" onclick="savePengesahanOnly()">Simpan Pengesahan</button>
               </div>
             </div>
+            <!-- 5. Sandaran JSON -->
             <div id="partitionSandaranJson" class="setting-partition">
               <h3><span class="partition-no">5</span>Sandaran JSON</h3>
               <p>Eksport atau import fail sandaran pangkalan data dalam format JSON.</p>
@@ -358,19 +366,14 @@
                 <input id="importJsonFile" type="file" accept=".json,application/json" style="display:none">
               </div>
             </div>
+            <!-- 6. Kelulusan Akaun Guru -->
             <div class="setting-partition admin-only">
               <h3><span class="partition-no">6</span>Kelulusan Akaun Guru</h3>
               <p>Tekan Luluskan untuk mengaktifkan akaun guru. Gunakan Hapus Akaun jika guru tidak lagi menggunakan sistem.</p>
               <div class="btn-row"><button onclick="renderApprovalPanel()">Muat Semula Senarai Akaun</button></div>
               <div id="approvalList" class="teacher-setting-grid" style="margin-top:14px"></div>
             </div>
-            <div class="setting-partition admin-only">
-              <h3><span class="partition-no">7</span>Pengurusan Akhir Tahun / Naik Taraf Pelajar</h3>
-              <p>Fungsi ini digunakan pada akhir sesi persekolahan untuk memadamkan data Tingkatan 5 (tamat persekolahan) serta menaikkan kelas berantai bagi pelajar Tingkatan 1 ke Tingkatan 2, Tingkatan 2 ke Tingkatan 3, Tingkatan 3 ke Tingkatan 4, dan Tingkatan 4 ke Tingkatan 5. Data Tingkatan 1 baharu secara automatik akan menjadi kosong untuk pendaftaran pelajar baharu.</p>
-              <div class="setting-action">
-                <button type="button" class="danger" onclick="naikTarafPelajarPukal()">Proses Naik Taraf Akhir Tahun</button>
-              </div>
-            </div>
+            <!-- KETIGA: BAHAGIAN 7 DIHAPUSKAN TERUS -->
             <div class="sispaq-info-final">
               <div class="sispaq-copyright">SisPAQ © asri/smuak 2026</div>
             </div>
@@ -458,8 +461,7 @@
       query,
       orderBy,
       serverTimestamp,
-      getDoc, getDocs,
-      writeBatch
+      getDoc, getDocs
     } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
     
     const firebaseConfig = {
@@ -692,76 +694,6 @@
         }
       }
     };
-
-    // PROSES NAIK TARAF BERANTAI T1 HINGGA T5 DENGAN PENGESAHAN "SAYA SETUJU"
-    window.naikTarafPelajarPukal = async function() {
-      const kataKunci = await systemPrompt(
-        'AMARAN: Proses ini akan memadam data Tingkatan 5 dan menaikkan Tingkatan 1 ke 2, Tingkatan 2 ke 3, Tingkatan 3 ke 4, serta Tingkatan 4 ke 5 secara berantai.\n\nSila taip "SAYA SETUJU" (huruf besar) untuk teruskan:',
-        'Pengesahan Naik Taraf Pelajar Akhir Tahun'
-      );
-
-      if (kataKunci !== "SAYA SETUJU") {
-        await systemAlert('Proses dibatalkan. Pengesahan tidak tepat.', 'Dibatalkan');
-        return;
-      }
-
-      try {
-        const batch = writeBatch(db);
-        const snapshot = await getDocs(collection(db, 'prestasiHafazan'));
-        
-        let countT5Padam = 0;
-        let countT4keT5 = 0;
-        let countT3keT4 = 0;
-        let countT2keT3 = 0;
-        let countT1keT2 = 0;
-
-        snapshot.docs.forEach((d) => {
-          const data = d.data();
-          const tingkatanNama = String(data.tingkatan || '').trim();
-
-          if (tingkatanNama.includes('Tingkatan 5')) {
-            batch.delete(d.ref);
-            countT5Padam++;
-          }
-          else if (tingkatanNama.includes('Tingkatan 4')) {
-            const tingkatanBaharu = tingkatanNama.replace('Tingkatan 4', 'Tingkatan 5');
-            batch.update(d.ref, { tingkatan: tingkatanBaharu, updatedAt: serverTimestamp() });
-            countT4keT5++;
-          }
-          else if (tingkatanNama.includes('Tingkatan 3')) {
-            const tingkatanBaharu = tingkatanNama.replace('Tingkatan 3', 'Tingkatan 4');
-            batch.update(d.ref, { tingkatan: tingkatanBaharu, updatedAt: serverTimestamp() });
-            countT3keT4++;
-          }
-          else if (tingkatanNama.includes('Tingkatan 2')) {
-            const tingkatanBaharu = tingkatanNama.replace('Tingkatan 2', 'Tingkatan 3');
-            batch.update(d.ref, { tingkatan: tingkatanBaharu, updatedAt: serverTimestamp() });
-            countT2keT3++;
-          }
-          else if (tingkatanNama.includes('Tingkatan 1')) {
-            const tingkatanBaharu = tingkatanNama.replace('Tingkatan 1', 'Tingkatan 2');
-            batch.update(d.ref, { tingkatan: tingkatanBaharu, updatedAt: serverTimestamp() });
-            countT1keT2++;
-          }
-        });
-
-        await batch.commit();
-        await systemAlert(
-          `Proses Naik Taraf Akhir Tahun Selesai!\n\n` +
-          `- Rekod Tingkatan 5 Dipadam: ${countT5Padam}\n` +
-          `- Tingkatan 4 -> Tingkatan 5: ${countT4keT5}\n` +
-          `- Tingkatan 3 -> Tingkatan 4: ${countT3keT4}\n` +
-          `- Tingkatan 2 -> Tingkatan 3: ${countT2keT3}\n` +
-          `- Tingkatan 1 -> Tingkatan 2: ${countT1keT2}\n\n` +
-          `Tingkatan 1 Baharu kini kosong bagi sesi pendaftaran seterusnya.`,
-          'Berjaya'
-        );
-      } catch (e) {
-        console.error("Ralat semasa naik taraf pelajar:", e);
-        await systemAlert('Gagal melakukan proses naik taraf: ' + (e.message || e));
-      }
-    };
-
     onAuthStateChanged(auth, async user => {
       if(isSigningUp) return;
       if(!user) {
@@ -1061,19 +993,14 @@
       if(!info) info=await infoKelas(k);
       return {bulan:String(info&&info.bulan||months[now.getMonth()]),tahun:String(info&&info.tahun||now.getFullYear())};
     }
-    
-    // PEMBAIKAN: Fungsi tapisTempoh diselaraskan supaya jika tiada rekod sepadan bulan/tahun, 
-    // ia akan memaparkan semua rekod kelas tersebut secara automatik (mengelakkan senarai kosong semasa cetak).
     function tapisTempoh(data,k,period){
       const kelas=(data||[]).filter(r=>r.tingkatan===k);
       const bulan=String(period&&period.bulan||'');
       const tahun=String(period&&period.tahun||'');
       const tepat=kelas.filter(r=>String(r.bulan||'')===bulan&&String(r.tahun||'')===tahun);
       if(tepat.length)return tepat;
-      if(kelas.length)return kelas; // Fallback: sentiasa papar data kelas jika wujud
-      return [];
+      return kelas.filter(r=>!String(r.bulan||'').trim()&&!String(r.tahun||'').trim());
     }
-
     window.simpanBorangTambahRekod = async function() {
       try {
         const id = byId("editId").value;
@@ -1360,7 +1287,7 @@
       stage.style.minHeight = (visualHeight + 16) + 'px';
       stage.style.overflow = 'hidden';
     } addEventListener('resize',resizePreviewPaper);
-    window.previewRecord=async function(id){activePreviewId=id;const x=rows.find(z=>z.id===id);if(!x)return;const d=await infoKelas(x.tingkatan),i=institution(),period=(x.bulan&&x.tahun)?{bulan:String(x.bulan),tahun:String(x.tahun)}:await tempohAktif(x.tingkatan),cr=tapisTempoh(rows,x.tingkatan,period),rank=cr.slice().sort((u,v)=>Number(v.peratus)-Number(u.peratus)).findIndex(z=>z.id===id)+1,f=[['Nama Pelajar',x.nama,''],['Kategori Sukatan',x.kategori === "15" ? "15 Juzu'" : "30 Juzu'"],['Kedudukan dalam Kelas',rank+'/'+cr.length,''],['Juzu’',getJuzu(x.ms, x.kategori) || x.juzu,''],['Muka Surat',x.ms,''],['Surah',surahArab(x.surah||getSurah(x.ms)),'arabic'],['Peratus (%)',Math.round(Number(x.peratus)||0),''],['Ulasan',normalisasiUlasan(x.ulasan),''],['Nama Guru',x.guru,'']];byId('previewContent').innerHTML='<div class="individual-sheet"><div class="individual-header"><div class="individual-school-name">'+escapeText((i.nama||'').toUpperCase())+'</div><div class="individual-school-address">'+escapeText(i.alamat||'')+'</div><div class="individual-school-contact">No Telefon: '+escapeText(i.telefon||'-')+' , Email: '+escapeText(i.email||'-')+'</div></div>'+individualMetaHtml(x.tingkatan,d)+'<div class="individual-report-title">REKOD PENCAPAIAN PELAJAR</div><table class="individual-achievement-table"><colgroup><col style="width:30%"><col style="width:70%"></colgroup><thead><tr><th>Perkara</th><th>Butiran Pelajar</th></tr></thead><tbody>'+f.map(v=>'<tr><td>'+escapeText(v[0])+'</td><td class="'+v[2]+'">'+escapeText(v[1]==null?'':v[1])+'</td></tr>').join('')+'</tbody></table><div class="individual-report-spacer"></div>'+individualSignHtml(x.tingkatan).'</div>';byId('previewModal').classList.add('active');setTimeout(resizePreviewPaper,80);setTimeout(resizePreviewPaper,250);setTimeout(()=>byId('previewTitle').scrollIntoView({behavior:'smooth',block:'center'}),30);};
+    window.previewRecord=async function(id){activePreviewId=id;const x=rows.find(z=>z.id===id);if(!x)return;const d=await infoKelas(x.tingkatan),i=institution(),period=(x.bulan&&x.tahun)?{bulan:String(x.bulan),tahun:String(x.tahun)}:await tempohAktif(x.tingkatan),cr=tapisTempoh(rows,x.tingkatan,period),rank=cr.slice().sort((u,v)=>Number(v.peratus)-Number(u.peratus)).findIndex(z=>z.id===id)+1,f=[['Nama Pelajar',x.nama,''],['Kategori Sukatan',x.kategori === "15" ? "15 Juzu'" : "30 Juzu'"],['Kedudukan dalam Kelas',rank+'/'+cr.length,''],['Juzu’',getJuzu(x.ms, x.kategori) || x.juzu,''],['Muka Surat',x.ms,''],['Surah',surahArab(x.surah||getSurah(x.ms)),'arabic'],['Peratus (%)',Math.round(Number(x.peratus)||0),''],['Ulasan',normalisasiUlasan(x.ulasan),''],['Nama Guru',x.guru,'']];byId('previewContent').innerHTML='<div class="individual-sheet"><div class="individual-header"><div class="individual-school-name">'+escapeText((i.nama||'').toUpperCase())+'</div><div class="individual-school-address">'+escapeText(i.alamat||'')+'</div><div class="individual-school-contact">No Telefon: '+escapeText(i.telefon||'-')+' , Email: '+escapeText(i.email||'-')+'</div></div>'+individualMetaHtml(x.tingkatan,d)+'<div class="individual-report-title">REKOD PENCAPAIAN PELAJAR</div><table class="individual-achievement-table"><colgroup><col style="width:30%"><col style="width:70%"></colgroup><thead><tr><th>Perkara</th><th>Butiran Pelajar</th></tr></thead><tbody>'+f.map(v=>'<tr><td>'+escapeText(v[0])+'</td><td class="'+v[2]+'">'+escapeText(v[1]==null?'':v[1])+'</td></tr>').join('')+'</tbody></table><div class="individual-report-spacer"></div>'+individualSignHtml(x.tingkatan)+'</div>';byId('previewModal').classList.add('active');setTimeout(resizePreviewPaper,80);setTimeout(resizePreviewPaper,250);setTimeout(()=>byId('previewTitle').scrollIntoView({behavior:'smooth',block:'center'}),30);};
     window.cetakPratonton=function(){const content=byId('previewContent');if(!content)return;const individualCss="@page{size:A4 portrait;margin:10mm 12mm}html,body{margin:0!important;padding:0!important;width:auto!important;overflow:visible!important;print-color-adjust:exact!important;-webkit-print-color-adjust:exact!important}.individual-print-page{width:186mm!important;max-width:186mm!important;margin:0 auto!important;box-sizing:border-box!important;overflow:hidden!important}.individual-sheet{width:100%!important;max-width:100%!important;min-width:0!important;overflow:hidden!important;transform:none!important;zoom:1!important}.individual-meta-table,.individual-achievement-table,.individual-sign-table{table-layout:fixed!important;width:100%!important;max-width:100%!important;min-width:0!important;border-collapse:collapse!important;box-sizing:border-box!important}.individual-meta-table td{border:1px solid #111;padding:6px 5px!important;font-size:12px!important;text-align:left;max-width:none!important;overflow:visible!important;padding-left:8px!important;}.individual-meta-table td.arabic{text-align:center!important}.individual-meta-table .label{background:#e0e0e0;font-weight:bold}.individual-meta-table .value{background:#fff}.individual-meta-table .meta-center{text-align:center!important}.arabic{font-family:'Traditional Arabic','Amiri',serif;direction:rtl;font-size:12px!important}.individual-report-title{text-align:center;font-weight:bold;text-transform:uppercase;font-size:12px!important;margin:14px 0 8px}.individual-achievement-table td,.individual-achievement-table th{border:1px solid #111;font-size:12px!important;padding:8px 10px!important;text-align:left;max-width:none!important;overflow:visible!important}.individual-achievement-table th,.individual-achievement-table td:first-child{background:#e0e0e0;font-weight:bold;padding-left:10px}.individual-achievement-table th:nth-child(2),.individual-achievement-table td:nth-child(2){background:#fff;padding-left:10px}.individual-achievement-table td.arabic{font-family:'Traditional Arabic','Amiri',serif;direction:rtl;font-size:18px!important;line-height:1.25}.individual-header{text-align:center;margin-bottom:8px}.individual-school-name{font-weight:bold;text-transform:uppercase;font-size:12px}.individual-school-address{font-weight:bold;font-size:14px}.individual-school-contact{font-size:12px!important}.individual-sign-table{margin-top:38mm!important}.individual-sign-table td{border:0!important;width:33.33%;vertical-align:top;text-align:left;font-size:12px!important;max-width:none!important;overflow:visible!important}.individual-sign-space{height:18mm;position:relative}.individual-sign-line{display:block;position:absolute;left:0;bottom:2mm;width:58%;border-bottom:1px dotted #111}.individual-report-spacer{display:none}.individual-meta-table col:nth-child(1){width:17%!important}.individual-meta-table col:nth-child(2){width:21%!important}.individual-meta-table col:nth-child(3){width:17%!important}.individual-meta-table col:nth-child(4){width:21%!important}.individual-meta-table col:nth-child(5){width:11%!important}.individual-meta-table col:nth-child(6){width:13%!important}.individual-meta-table td:nth-child(6){white-space:nowrap!important;overflow:visible!important;word-break:normal!important;overflow-wrap:normal!important;font-size:11px!important}";printDoc('<div class="individual-print-page">'+content.innerHTML+'</div>',individualCss)};
     window.renderGeneral=function(){let data=[];if(currentGeneralClass==='SEMUA'){const keys=classes.slice();rows.forEach(r=>{if(r.tingkatan&&keys.indexOf(r.tingkatan)<0)keys.push(r.tingkatan)});keys.forEach(k=>{const info=(window.borangInfoCache||{})[k];data=data.concat(info?tapisTempoh(rows,k,{bulan:String(info.bulan||''),tahun:String(info.tahun||'')}):rows.filter(r=>r.tingkatan===k))});}else{const info=(window.borangInfoCache||{})[currentGeneralClass];data=info?tapisTempoh(rows,currentGeneralClass,{bulan:String(info.bulan||''),tahun:String(info.tahun||'')}):rows.filter(r=>r.tingkatan===currentGeneralClass);}const q=(byId('smartSearchInput').value||'').toLowerCase();if(q)data=data.filter(r=>[r.nama,r.kategori,r.juzu,r.ms,r.surah,Math.round(Number(r.peratus)||0),normalisasiUlasan(r.ulasan),r.guru].join(' ').toLowerCase().includes(q));data=sortPrestasiByUlasan(data);
     byId('generalBody').innerHTML=data.length?data.map((r,i)=>'<tr><td>'+(i+1)+'</td><td>'+escapeText(r.tingkatan)+'</td><td>'+escapeText(r.nama)+'</td><td>'+escapeText(r.kategori === "15" ? "15 Juzu'" : "30 Juzu'")+'</td><td>'+escapeText(getJuzu(r.ms, r.kategori) || r.juzu)+'</td><td>'+escapeText(r.ms)+'</td><td>'+escapeText(r.surah)+'</td><td>'+escapeText(Math.round(Number(r.peratus)||0))+'</td><td>'+escapeText(normalisasiUlasan(r.ulasan))+'</td><td>'+escapeText(r.guru)+'</td><td><div class="action-nowrap"><button class="icon-btn" title="Kemas kini" onclick="editRecord(\''+r.id+'\')">✏️</button><button class="icon-btn preview-btn" title="Pratonton" onclick="previewRecord(\''+r.id+'\')">👁️</button><button class="icon-btn danger" title="Hapus" onclick="deleteRecordNow(\''+r.id+'\')">🗑️</button></div></td></tr>').join(''):'<tr><td colspan="11" style="text-align:center">Tiada rekod.</td></tr>'};
