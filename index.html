@@ -110,7 +110,6 @@
     .teacher-setting-grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:10px 16px}
     .teacher-setting-grid label{margin-top:6px;font-size:0.92rem;font-weight:800}
     
-    /* KEDUA: BOLD PADA INPUT/TEXTAREA DI TETAPAN TETAPI KEKALKAN PLACEHOLDER NIPIS */
     #tetapan input, #tetapan select, #tetapan textarea {
       font-family: Consolas, 'Courier New', Monaco, monospace !important;
       font-size: 15px !important;
@@ -142,17 +141,17 @@
   <style>.email-eye-btn{width:42px!important;height:42px!important;border-radius:0!important;background:transparent!important;color:#666!important;box-shadow:none!important}.email-eye-btn:hover{background:transparent!important;color:#444!important;transform:translateY(-50%)!important}.email-eye-btn svg{width:30px;height:30px;display:block;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}</style>
   <style>:root{--sispaq-maroon:#550000;--sispaq-maroon-light:#7a123d}.brand{background:linear-gradient(135deg,#550000,#7a123d)!important;color:#fff!important;border-color:#550000!important}.brand .brand-red,.brand h2,.brand div{color:#fff!important}.auth-screen{background:linear-gradient(180deg,#550000 0,#550000 210px,#eef3f8 210px,#eef3f8 100%)!important;padding:54px 16px 42px!important}.auth-brand{color:#fff!important;margin-bottom:86px!important}.auth-school-name{font-size:1.05rem!important;font-weight:800!important;line-height:1.25!important;margin-bottom:12px!important}.auth-brand h1{color:#fff!important;font-size:2rem!important;font-weight:900!important}.auth-brand .brand-red{color:#fff!important}.auth-card{max-width:398px;margin:0 auto;background:#fff!important;border-radius:20px!important;padding:26px!important;box-shadow:0 18px 42px rgba(85,0,0,.22)!important}.auth-input-wrap input{border-color:#550000!important;background:#fff!important}.auth-input-wrap input:focus{border-color:#550000!important;box-shadow:0 0 0 3px rgba(85,0,0,.13)!important}.btn-main{background:#550000!important;color:#fff!important}.btn-main:hover{background:#7a123d!important}.auth-link{color:#550000!important}.email-eye-btn{color:#550000!important}.topbar-school-name{font-size:1.18rem;font-weight:900;line-height:1.2}.topbar-school-address{font-size:.94rem;font-weight:600;line-height:1.3}.topbar-system-name{font-size:.79rem;line-height:1.3}@media(max-width:900px){.brand{text-align:center!important}.auth-screen{background:linear-gradient(180deg,#550000 0,#550000 210px,#eef3f8 210px,#eef3f8 100%)!important;padding:48px 16px 36px!important}.auth-card{width:100%;max-width:398px!important}.auth-brand{margin-bottom:88px!important}.auth-school-name{font-size:1rem!important}.topbar-school-name{font-size:1.08rem}.topbar-school-address{font-size:.88rem}.topbar-system-name{font-size:0.76rem}}</style>
   
-  <!-- KETIGA: GAYA BUTANG BUJUR (PILL-SHAPED) DAN SUSUNAN MOD TELEFON -->
+  <!-- KETIGA: GAYA BUTANG BUJUR (PILL-SHAPED) DAN SUSUNAN MOD TELEFON TANPA IKON -->
   <style>
     .btn-pill {
       border-radius: 999px !important;
-      padding: 10px 20px !important;
+      padding: 12px 20px !important;
       font-weight: 800 !important;
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
-      gap: 6px !important;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+      white-space: nowrap !important;
     }
     .action-btns-container {
       display: flex;
@@ -264,11 +263,11 @@
             <label>Carian Pintar</label>
             <input id="smartSearchInput" placeholder="Cari nama, juzu, muka surat, surah, peratus, ulasan atau guru" oninput="renderGeneral()">
             
-            <!-- KETIGA: REKA BENTUK BUTANG BUJUR DENGAN IKON & SUSUNAN TELEFON -->
+            <!-- KETIGA: REKA BENTUK BUTANG BUJUR DALAM SATU BARIS TANPA IKON -->
             <div class="action-btns-container">
-              <button class="print btn-pill btn-print-action" onclick="cetakPrestasiBaru()">🖨️ Cetak Prestasi</button>
-              <button class="btn-pill btn-excel-action" onclick="downloadCsv()">📊 Muat Turun Excel</button>
-              <button class="btn-pill btn-add-action" onclick="bukaBorangTambahRekod()">➕ Tambah Rekod</button>
+              <button class="print btn-pill btn-print-action" onclick="cetakPrestasiBaru()">Cetak Prestasi</button>
+              <button class="btn-pill btn-excel-action" onclick="downloadCsv()">Muat Turun Excel</button>
+              <button class="btn-pill btn-add-action" onclick="bukaBorangTambahRekod()">Tambah Rekod</button>
             </div>
             
             <div class="table-wrap" style="margin-top:14px">
@@ -336,8 +335,9 @@
               <label style="margin-bottom:6px">Guru Al-Quran Tingkatan</label>
               <div id="teacherSettingGrid" class="teacher-setting-grid"></div>
               
-              <label style="margin-top:14px">PK Pentadbiran</label>
-              <input id="settingNamaPegawaiPenyemak" placeholder="Nama PK Pentadbiran">
+              <!-- PERTAMA: TUKAR KEPADA "Nama Penyemak" -->
+              <label style="margin-top:14px">Nama Penyemak</label>
+              <input id="settingNamaPegawaiPenyemak" placeholder="Nama Penyemak">
               
               <label style="margin-top:10px">Pengetua</label>
               <input id="settingNamaPengetuaPengesah" placeholder="Nama Pengetua">
@@ -349,7 +349,8 @@
             <!-- 4. Pengurusan Pengesahan -->
             <div id="partitionPengesahan" class="setting-partition">
               <h3><span class="partition-no">4</span>Pengurusan Pengesahan</h3>
-              <label>Jawatan Pegawai Penyemak</label>
+              <!-- PERTAMA: TUKAR KEPADA "Jawatan Penyemak" -->
+              <label>Jawatan Penyemak</label>
               <input id="settingJawatanPegawaiPenyemak" value="PK Pentadbiran">
               <div class="setting-action">
                 <button type="button" onclick="savePengesahanOnly()">Simpan Pengesahan</button>
@@ -372,14 +373,7 @@
               <div class="btn-row"><button onclick="renderApprovalPanel()">Muat Semula Senarai Akaun</button></div>
               <div id="approvalList" class="teacher-setting-grid" style="margin-top:14px"></div>
             </div>
-            <!-- 7. Hapus Semua Rekod -->
-            <div id="partitionHapusSemuaPrestasi" class="setting-partition admin-only">
-              <h3><span class="partition-no">7</span>Hapus Semua Rekod Prestasi Pelajar</h3>
-              <p>Tindakan ini hanya akan menghapus semua rekod prestasi pelajar. Maklumat tingkatan, borang, tetapan dan akaun pengguna tidak akan diubah.</p>
-              <div class="setting-action">
-                <button type="button" class="danger" onclick="hapusSemuaPrestasiPelajar()">Hapus Semua</button>
-              </div>
-            </div>
+            <!-- KETIGA: BAHAGIAN 7 DIHAPUSKAN TERUS -->
             <div class="sispaq-info-final">
               <div class="sispaq-copyright">SisPAQ © asri/smuak 2026</div>
             </div>
@@ -470,7 +464,6 @@
       getDoc, getDocs
     } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
     
-    // KONFIGURASI FIREBASE SISPAQ
     const firebaseConfig = {
       apiKey: "AIzaSyA_55uhkaTm7vN9UojOeluRD8XW-oNyNHY",
       authDomain: "sispaq-c966b.firebaseapp.com",
@@ -479,29 +472,24 @@
       messagingSenderId: "164392987052",
       appId: "1:164392987052:web:dd64d84e4721e4cc323209"
     };
-
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     const auth = getAuth(app);
     const SUPER_ADMIN_EMAILS = ['solwt60@gmail.com','asrimohdzain@gmail.com','smuakhairiahbs@yik.edu.my','harithcy@gmail.com'].map(e=>String(e).trim().toLowerCase()).filter(Boolean);
-
     function cleanAuth(v){ 
       return String(v==null?'':v).replace(/[\u200B-\u200D\uFEFF]/g, '').trim(); 
     }
-
     function setAuthButtonLoading(btn,text){ 
       if(!btn)return; 
       btn.dataset.oldHtml = btn.dataset.oldHtml || btn.innerHTML; 
       btn.innerHTML = text || 'Memproses...'; 
       btn.disabled = true; 
     }
-
     function clearAuthButtonLoading(btn){ 
       if(!btn)return; 
       btn.innerHTML = btn.dataset.oldHtml || 'LOG MASUK'; 
       btn.disabled = false; 
     }
-
     window.toggleInputVisibility=function(inputId,btn,visibleType,event){
       if(event){event.preventDefault();event.stopPropagation();}
       const input=byId(inputId);if(!input)return false;
@@ -528,10 +516,8 @@
       });
       return false;
     };
-
     window.showSignupBox=function(){ byId('loginBox').style.display='none'; byId('signupBox').style.display='block'; };
     window.showLoginBox=function(){ byId('signupBox').style.display='none'; byId('loginBox').style.display='block'; };
-
     async function getCurrentUserProfile(user){
       user = user || auth.currentUser;
       if(!user) return null;
@@ -544,7 +530,6 @@
         return null;
       }
     }
-
     function applyAdminAccessUi(profile){
       const role = String(profile && profile.role || '').toLowerCase();
       const isAdmin = role === 'admin' || role === 'super_admin';
@@ -553,14 +538,12 @@
       if(btn) btn.style.display = isAdmin ? 'flex' : 'none';
       return isAdmin;
     }
-
     function enterSystem(profile){
       byId('authScreen').style.display = 'none';
       byId('appShell').style.display = 'block';
       applyAdminAccessUi(profile);
       initSispaqOnce();
     }
-
     let isSigningUp = false;
     window.signupUser = async function(btn){
       const nama = cleanAuth(byId('signupName').value);
@@ -589,7 +572,6 @@
             throw regErr;
           }
         }
-
         if(userId) {
           await setDoc(doc(db, 'users_approval', userId), {
             uid: userId,
@@ -621,7 +603,6 @@
         clearAuthButtonLoading(btn);
       }
     };
-
     let manualLoginInProgress = false;
     window.loginUser = async function(btn){
       const email = cleanAuth(byId('loginEmail').value).toLowerCase();
@@ -665,7 +646,6 @@
         clearAuthButtonLoading(btn);
       }
     };
-
     window.resetPassword = async function(){
       const email = cleanAuth(byId('loginEmail').value).toLowerCase();
       if(!email) return await systemAlert('Sila masukkan e-mel dahulu.');
@@ -676,12 +656,10 @@
         await systemAlert(e.message || 'Permintaan gagal.');
       }
     };
-
     window.logoutUser = async function(){
       await signOut(auth);
       location.reload();
     };
-
     window.renderApprovalPanel = async function(){
       const box = byId('approvalList');
       if(!box) return;
@@ -699,13 +677,11 @@
         console.error("Ralat memuatkan panel kelulusan:", e);
       }
     };
-
     window.approveUser = async function(id){
       await updateDoc(doc(db, 'users_approval', id), {status: 'aktif', approvedAt: serverTimestamp()});
       await systemAlert('Akaun berjaya diluluskan.');
       renderApprovalPanel();
     };
-
     window.deleteApprovalUser = async function(id){
       if(await systemConfirm('Adakah anda pasti mahu hapus akaun ini daripada pangkalan data?')){
         try {
@@ -718,7 +694,6 @@
         }
       }
     };
-
     onAuthStateChanged(auth, async user => {
       if(isSigningUp) return;
       if(!user) {
@@ -743,7 +718,6 @@
         applyAdminAccessUi(null);
       }
     });
-
     const months = [
       "Januari","Februari","Mac","April","Mei","Jun",
       "Julai","Ogos","September","Oktober","November","Disember"
@@ -799,7 +773,6 @@
       byId("bulan").value = months[d.getMonth()];
     }
     
-    // PERTAMA: AUTO-SCROLL KE TAJUK/PAPARAN APABILA MENUKAR HALAMAN
     window.showPageLegacy = function(id) {
       document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
       document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
@@ -1137,7 +1110,6 @@
       await systemAlert('Maklumat institusi berjaya dikemaskini.');
     };
     
-    // PERTAMA: AUTO-SCROLL KE HALAMAN TETAPAN
     window.openSetting = async function() {
       const profile = await getCurrentUserProfile();
       if (!applyAdminAccessUi(profile)) return await systemAlert('Akses ditolak. Halaman Tetapan hanya untuk pentadbir sistem.');
@@ -1165,7 +1137,6 @@
       a.click();
     };
     
-    // PERTAMA: KEMAS KINI FUNGSI showPage DENGAN AUTO-SCROLL KETIKA KLIK NAVIGASI
     let activePage = "utama";
     let allowExitAfterHome = false;
     history.replaceState({sispaq:true,page:"utama"}, "", location.href);
@@ -1181,7 +1152,6 @@
       allowExitAfterHome = id === "utama";
       if (id === "umum") renderGeneral();
       
-      // Auto-scroll kebawah mengikut paparan tajuk
       setTimeout(() => {
         const targetCard = document.querySelector("#" + id + " .card") || page;
         if (targetCard) {
@@ -1253,7 +1223,6 @@
     function individualSignHtml(k){const c=window.appConfig||{},g=pengesahan.guruMap||pengesahan.guru||{},n=escapeText(institution().nama||''),guru=(guruAlQuranMap[k]||g[k]||(k==='SEMUA'?(guruAlQuranMap.SEMUA||g.SEMUA):'')||'-'),a=[['Disediakan oleh,',guru,'Guru Al-Quran'],['Disemak oleh,',c.namaPegawaiPenyemak||pengesahan.pkPentadbiran||'-',c.jawatanPegawaiPenyemak||'PK Pentadbiran'],['Disahkan oleh,',c.namaPengetuaPengesah||pengesahan.pengetua||'-','Pengetua']];return '<table class="individual-sign-table"><colgroup><col style="width:33.33%"><col style="width:33.33%"><col style="width:33.33%"></colgroup><tr>'+a.map(x=>'<td>'+x[0]+'<div class="individual-sign-space"><span class="individual-sign-line"></span></div><b>('+escapeText(x[1])+')</b><br>'+escapeText(x[2])+'<br>'+n+'</td>').join('')+'</table>'}
     function printDoc(html,extraCss=''){const w=open('','_blank');w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>SisPAQ</title><style>'+reportCss()+extraCss+'</style></head><body>'+html+'</body></html>');w.document.close();w.focus();setTimeout(()=>w.print(),250)}
     
-    // KEEMPAT: KEMAS KINI SUSUNAN JADUAL ANALISA PRESTASI
     window.cetakPrestasiBaru=async function(){
       const k=currentGeneralClass||'SEMUA',d=k==='SEMUA'?((window.borangInfoCache||{}).SEMUA||{}):await infoKelas(k),inst=institution();
       let data=[];if(k==='SEMUA'){for(const ck of classes){const period=await tempohAktif(ck);data=data.concat(tapisTempoh(rows,ck,period));}}else{const period=await tempohAktif(k);data=tapisTempoh(rows,k,period);}
@@ -1261,7 +1230,6 @@
       data=data.slice(0,25);
       const total=data.length;
       
-      // SUSUNAN ANALISA PRESTASI YANG DIBETULKAN (GAMBAR 4):
       const analysisOrder=[
         {no:1,label:'KHATAM 30 JUZU\''},
         {no:2,label:'TAMAT 15 JUZU\''},
@@ -1370,7 +1338,6 @@
     window.eksportSandaranJson=async function(){try{const collect=async name=>(await getDocs(query(collection(db,name)))).docs.map(d=>({id:d.id,data:d.data()}));const payload={format:'SisPAQ-JSON',version:1,exportedAt:new Date().toISOString(),data:{prestasiHafazan:await collect('prestasiHafazan'),borangInfo:await collect('borangInfo'),settings:await collect('settings')}};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='SisPAQ-Sandaran-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}catch(e){console.error('eksport JSON',e);await systemAlert('Eksport JSON gagal: '+(e.message||e))}};
     
     window.importSandaranJson=async function(input){const file=input&&input.files&&input.files[0];if(!file)return;try{const parsed=JSON.parse(await file.text());if(!parsed||parsed.format!=='SisPAQ-JSON'||!parsed.data)throw new Error('Fail sandaran SisPAQ tidak sah.');if(!(await systemConfirm('Import akan mengemas kini data SisPAQ menggunakan fail JSON ini. Teruskan?')))return;for(const name of ['settings','borangInfo','prestasiHafazan']){const items=Array.isArray(parsed.data[name])?parsed.data[name]:[];for(const item of items){if(item&&item.id&&item.data)await setDoc(doc(db,name,String(item.id)),item.data,{merge:true})}}await systemAlert('Import JSON berjaya. Data akan dimuat semula.');location.reload()}catch(e){console.error('import JSON',e);await systemAlert('Import JSON gagal: '+(e.message||e))}finally{input.value=''}};
-    window.hapusSemuaPrestasiPelajar=async function(){const pengesahan=await systemPrompt('AMARAN: Semua rekod prestasi pelajar akan dihapus secara kekal. Taip HAPUS SEMUA untuk meneruskan.','Hapus Semua Rekod Prestasi Pelajar');if(pengesahan===null)return;if(pengesahan!=='HAPUS SEMUA')return await systemAlert('Teks pengesahan tidak tepat. Tiada rekod dihapus.','Tindakan Dibatalkan');try{const snap=await getDocs(query(collection(db,'prestasiHafazan')));if(snap.empty)return await systemAlert('Tiada rekod prestasi pelajar untuk dihapus.');for(const item of snap.docs)await deleteDoc(doc(db,'prestasiHafazan',item.id));rows=[];renderGeneral();updateStats();await systemAlert('Semua rekod prestasi pelajar berjaya dihapus.','Berjaya')}catch(e){console.error('hapus semua prestasi pelajar',e);await systemAlert('Gagal menghapus semua rekod prestasi pelajar: '+(e.message||e),'Ralat')}};
     
     document.addEventListener('DOMContentLoaded',()=>{
       const importBtn=byId('importJsonBtn'),importInput=byId('importJsonFile');
