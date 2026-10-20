@@ -390,7 +390,7 @@
             <ol><li>Log masuk menggunakan alamat e-mel dan kata laluan yang telah didaftarkan. Akaun guru baharu perlu mendapat kelulusan pentadbir sebelum boleh digunakan.</li><li>Semak ringkasan prestasi pada halaman Utama.</li><li>Buka Borang Prestasi, pilih tingkatan, lengkapkan maklumat laporan dan tekan Simpan.</li><li>Buka Prestasi Hafazan dan pilih tingkatan untuk melihat rekod pelajar.</li><li>Tekan Tambah Rekod (Pelajar Baharu), kemudian masukkan nama pelajar, kategori sukatan, muka surat semasa, peratus bulanan dan nama guru. Guru mengisi peratus bulanan sendiri dan sistem akan menentukan ulasan secara automatik. Nilai 100% memerlukan pilihan status.</li><li>Gunakan Carian Pintar untuk mencari rekod berdasarkan nama, juzu’, muka surat, surah, peratus, ulasan atau guru.</li><li>Gunakan ikon Kemas Kini (Pelajar Lama), Pratonton atau Hapus untuk mengurus rekod.</li><li>Tekan Cetak Prestasi untuk mencetak laporan atau Muat Turun Excel untuk menyimpan data.</li></ol></div>
             <div id="manualSoalan" class="manual-box"><h3>Soalan Lazim</h3>
             <ul><li><b>Bagaimanakah cara mengemas kini rekod pelajar lama?</b><br>Tekan ikon Kemas Kini (ikon pen) pada baris nama pelajar. Ubah maklumat yang diperlukan, kemudian tekan Simpan.</li><li><b>Bagaimanakah peratus dan ulasan ditentukan?</b><br>Guru mengisi peratus bulanan sendiri dan sistem menentukan ulasan secara automatik: 0% ialah Tahsin; 1% hingga 49% ialah Lemah; 50% hingga 74% ialah Sederhana; 75% hingga 94% ialah Baik; 95% hingga 99% ialah Cemerlang. Pada 100%, guru mesti memilih Tamat Sukatan, Tamat 15 Juzu’ atau Khatam 30 Juzu’.</li><li><b>Mengapakah rekod pelajar tidak dipaparkan?</b><br>Pastikan tingkatan yang betul telah dipilih. Kosongkan ruangan Carian Pintar jika carian terdahulu masih digunakan.</li><li><b>Bagaimanakah cara melihat atau mencetak laporan individu?</b><br>Tekan ikon Pratonton (ikon mata) pada baris pelajar. Semak maklumat yang dipaparkan, kemudian tekan Cetak.</li><li><b>Bagaimanakah cara menyimpan data prestasi?</b><br>Tekan Muat Turun Excel untuk menyimpan data.</li><li><b>Siapakah yang boleh membuka halaman Tetapan?</b><br>Halaman Tetapan hanya boleh diakses oleh pentadbir sistem.</li><li><b>Bagaimanakah cara menetapkan semula kata laluan?</b><br>Masukkan alamat e-mel pada halaman log masuk, kemudian pilih Lupa Kata Laluan? Pautan tetapan semula akan dihantar melalui e-mel.</li></ul></div>
-            <div id="manualSistem" class="manual-box"><h3>Sistem SisPAQ</h3><p>SisPAQ (Sistem Prestasi Al-Quran) dibangunkan sebagai platform digital untuk membantu pihak sekolah merekod, menyimpan, memantau dan mengurus prestasi hafazan Al-Quran pelajar secara lebih sistematik, teratur dan efisien. Sistem ini memudahkan guru mengemas kini pencapaian pelajar, membuat carian rekod, menyediakan analisis prestasi serta menghasilkan laporan bagi tujuan pemantauan, dokumentasi dan tindakan susulan pihak sekolah.</p><p>Semoga SisPAQ dimanfaatkan dengan penuh tanggungjawab demi meningkatkan kecemerlangan al - Quran pelajar tahfiz.</p><p>Pengetua<br>Oktober 2026M / Rabiul Akhir 1448H</p><div class="sispaq-copyright">SisPAQ © asri/smuak 2026</div></div>
+            <div id="manualSistem" class="manual-box"><h3>Sistem SisPAQ</h3><p>SisPAQ (Sistem Prestasi Al-Quran) dibangunkan sebagai platform digital untuk membantu pihak sekolah merekod, menyimpan, memantau dan mengurus prestasi hafazan Al-Quran pelajar secara lebih sistemik, teratur dan efisien. Sistem ini memudahkan guru mengemas kini pencapaian pelajar, membuat carian rekod, menyediakan analisis prestasi serta menghasilkan laporan bagi tujuan pemantauan, dokumentasi dan tindakan susulan pihak sekolah.</p><p>Semoga SisPAQ dimanfaatkan dengan penuh tanggungjawab demi meningkatkan kecemerlangan al - Quran pelajar tahfiz.</p><p>Pengetua<br>Oktober 2026M / Rabiul Akhir 1448H</p><div class="sispaq-copyright">SisPAQ © asri/smuak 2026</div></div>
           </div>
         </section>
       </div>
@@ -700,19 +700,16 @@
         }
       }
     };
-
     // FUNGI NAIK TARAF PELAJAR PUKAL BERANTAI (T1 HINGGA T5) DENGAN PENGESAHAN TEXT INTERAKTIF "SAYA SETUJU"
     window.naikTarafPelajarPukal = async function() {
       const kataKunci = await systemPrompt(
         'AMARAN: Proses ini akan memadam data Tingkatan 5 dan menaikkan Tingkatan 1 ke 2, Tingkatan 2 ke 3, Tingkatan 3 ke 4, serta Tingkatan 4 ke 5 secara berantai.\n\nSila taip "SAYA SETUJU" (huruf besar) untuk teruskan:',
         'Pengesahan Naik Taraf Pelajar Akhir Tahun'
       );
-
       if (kataKunci !== "SAYA SETUJU") {
         await systemAlert('Proses dibatalkan. Pengesahan tidak tepat.', 'Dibatalkan');
         return;
       }
-
       try {
         const batch = writeBatch(db);
         const snapshot = await getDocs(collection(db, 'prestasiHafazan'));
@@ -722,11 +719,9 @@
         let countT3keT4 = 0;
         let countT2keT3 = 0;
         let countT1keT2 = 0;
-
         snapshot.docs.forEach((d) => {
           const data = d.data();
           const tingkatanNama = String(data.tingkatan || '').trim();
-
           if (tingkatanNama.includes('Tingkatan 5')) {
             batch.delete(d.ref);
             countT5Padam++;
@@ -752,7 +747,6 @@
             countT1keT2++;
           }
         });
-
         await batch.commit();
         await systemAlert(
           `Proses Naik Taraf Akhir Tahun Selesai!\n\n` +
@@ -769,7 +763,6 @@
         await systemAlert('Gagal melakukan proses naik taraf: ' + (e.message || e));
       }
     };
-
     onAuthStateChanged(auth, async user => {
       if(isSigningUp) return;
       if(!user) {
@@ -1069,14 +1062,18 @@
       if(!info) info=await infoKelas(k);
       return {bulan:String(info&&info.bulan||months[now.getMonth()]),tahun:String(info&&info.tahun||now.getFullYear())};
     }
+
+    // MEMBAIKI FUNGSI TAPIS TEMPOH UNTUK MEMANTIKAN SEMUA REKOD KELAS DIPAPARKAN DAN DICETAK DENGAN SEMPURNA
     function tapisTempoh(data,k,period){
       const kelas=(data||[]).filter(r=>r.tingkatan===k);
+      if(!kelas.length) return [];
       const bulan=String(period&&period.bulan||'');
       const tahun=String(period&&period.tahun||'');
       const tepat=kelas.filter(r=>String(r.bulan||'')===bulan&&String(r.tahun||'')===tahun);
-      if(tepat.length)return tepat;
-      return kelas.filter(r=>!String(r.bulan||'').trim()&&!String(r.tahun||'').trim());
+      if(tepat.length) return tepat;
+      return kelas; // JIKA TIADA REKOD DENGAN BULAN/TAHUN BERKAITAN, AMBIL SEMUA REKOD PELAJAR KELAS ITU SUPAYA PAPARAN CETAK TIDAK KOSONG
     }
+
     window.simpanBorangTambahRekod = async function() {
       try {
         const id = byId("editId").value;
@@ -1180,7 +1177,7 @@
       }
     };
     window.saveSettings = async function() {
-      const config={namaInstitusi:(byId('settingNamaInstitusi').value||'').trim(),alamat:(byId('settingAlamatSekolah').value||'').trim(),telefon:(byId('settingTelefon').value||'').trim(),email:(byId('settingEmail').value||'').trim(),namaPegawaiPenyemak:(byId('settingNamaPegawaiPenyemak').value||'').trim(),jawatanPegawaiPenyemak:(byId('settingJawatanPegawaiPenyemak').value||'').trim(),namaPengetuaPengesah:(byId('settingNamaPengetuaPengesah').value||'').trim()};
+      const config={namaInstitusi:(byId('settingNamaInstitusi').value||'').trim(),alamat:(byId('settingAlamatSekolah').value||'').trim(),telefon:(byId('settingTelefon').value||'').trim(),email:(byId('settingEmail').value||'').trim(),namaPegawaiPenyemak:(byId('settingNamaPegawaiPenyemak').value||'').trim(),jawatanPegawaiPenyemak:(byId('settingJawatanPegawaiPenyemak').value||'PK Pentadbiran').trim(),namaPengetuaPengesah:(byId('settingNamaPengetuaPengesah').value||'').trim()};
       await setDoc(doc(db,'settings','config'),config,{merge:true});window.appConfig=config;
       byId('schoolName').innerHTML='<div class="topbar-school-name">'+escapeText(config.namaInstitusi)+'</div><div class="topbar-school-address">'+escapeText(config.alamat)+'</div>';
       await systemAlert('Maklumat institusi berjaya dikemaskini.');
@@ -1293,15 +1290,29 @@
     function institution(){const c=window.appConfig||{};return{nama:(byId('settingNamaInstitusi')&&byId('settingNamaInstitusi').value)||c.namaInstitusi||'SMU(A) Khairiah Banggol Setol',alamat:(byId('settingAlamatSekolah')&&byId('settingAlamatSekolah').value)||c.alamat||'17070 Pasir Mas, Kelantan.',telefon:(byId('settingTelefon')&&byId('settingTelefon').value)||c.telefon||'09 -7909195',email:(byId('settingEmail')&&byId('settingEmail').value)||c.email||'smuakhairiahbs@yik.edu.my'}}
     async function infoKelas(k){const cache=(window.borangInfoCache||{})[k]||{};try{const s=await getDoc(doc(db,'borangInfo',k));if(s.exists()){window.borangInfoCache=window.borangInfoCache||{};window.borangInfoCache[k]=s.data();return s.data()}}catch(e){console.error('infoKelas getDoc',e)}return cache}
     function reportCss(){return '@page{size:A4 portrait;margin:8mm 10mm}*{box-sizing:border-box}body{margin:0;font-family:Arial;color:#111;print-color-adjust:exact;-webkit-print-color-adjust:exact}.sheet-report,.sheet{width:96%;margin:0 auto;page-break-inside:avoid;break-inside:avoid;page-break-after:avoid;break-after:avoid}.sheet-print-title{text-align:center;font-weight:900;font-size:11pt;text-transform:uppercase}.sheet-print-address{text-align:center;font-size:9pt;font-weight:700;margin:1px 0 2px}.report-address{text-align:center;font-size:10px;font-weight:700;margin:1px 0 2px}.sheet-print-contact{text-align:center;font-size:8pt;margin:2px 0 7px}table{table-layout:fixed;width:100%;border-collapse:collapse}.sheet-top-grid{margin-bottom:8px}.sheet-top-grid td,.sheet-print-table th,.sheet-print-table td,.sheet-summary-table th,.sheet-summary-table td{border:1px solid #111}.sheet-top-grid td{padding:3px;font-size:8pt}.sheet-top-grid .label,.sheet-print-table th,.sheet-summary-table th{background:#e0e0e0;font-weight:bold}.sheet-top-grid .label{text-align:left;padding-left:4px}.sheet-print-table th,.sheet-summary-table th{text-align:center}.sheet-top-grid .value{text-align:center;background:#fff}.arabic{font-family:Amiri,Traditional Arabic,Scheherazade,serif;direction:rtl}.sheet-print-table th,.sheet-print-table td{height:24px;padding:3px;font-size:7pt;text-align:center}.sheet-print-table td:nth-child(2),.sheet-print-table td:nth-child(9){text-align:left;padding-left:4px}.sheet-summary-title{text-align:center;font-weight:bold;margin:10px 0 4px}.sheet-summary-table{width:50%;margin:10px auto}.sheet-summary-table th,.sheet-summary-table td{padding:3px;font-size:8pt;text-align:center}.sheet-summary-table td:nth-child(2){text-align:left;padding-left:8px}.sheet-sign-table{margin-top:14px}.sheet-sign-table td{width:33.33%;border:0;text-align:left;vertical-align:top;font-size:8pt}.sheet-sign-space{height:34px;border:0!important}.sheet-sign-line{display:block;width:58%;height:34px;border-bottom:1px dotted #111}.sheet-sign-name{font-weight:bold;padding-top:3px}@media print{.sheet-report{zoom:.88}}';}
-    const surahArabMap={'Ali Imran':'آل عمران','Al-Fatihah':'الفاتحة','Al-Baqarah':'البقرة','An-Nisa':'النساء','Al-Maidah':'المائدة','Al-Anam':'الأنعام','Al-Araf':'الأعراف','Al-Anfal':'الأنفال','At-Taubah':'التوبة','Yunus':'يونس','Hud':'هود','Yusuf':'يوسف','Ar-Rad':'الرعد','Ibrahim':'إبراهيم','Al-Hijr':'الحجر','An-Nahl':'النحل','Al-Isra':'الإسراء','Al-Kahf':'الكهف','Maryam':'مريم','Taha':'طه','Al-Anbiya':'الأنبيآء','Al-Hajj':'الحج','Al-Muminun':'المؤمنون','An-Nur':'النور','Al-Furqan':'الفرقان','Ash-Shuara':'الشعراء','An-Naml':'النمل','Al-Qasas':'القصص','Al-Ankabut':'العنكبوت','Ar-Rum':'الروم','Luqman':'لقمان','As-Sajdah':'السجدة','Al-Ahzab':'الأحزاب','Saba':'سبأ','Fatir':'فاطر','Yasin':'يس','As-Saffat':'الصافات','Sad':'ص','Az-Zumar':'الزمر','Ghafir':'غافر','Fussilat':'فصلت','Ash-Shura':'الشورى','Az-Zukhruf':'الزخرف','Ad-Dukhan':'الدخان','Al-Jathiyah':'الجاثية','Al-Ahqaf':'الأحقاف','Muhammad':'محمد','Al-Fath':'الفتح','Al-Hujurat':'الحجرات','Qaf':'ق','Adh-Dhariyat':'الذاريات','At-Tur':'الطور','An-Najm':'النجم','Al-Qamar':'القمر','Ar-Rahman':'الرحمن','Al-Waqiah':'الواقعة','Al-Hadid':'الحديد','Al-Mujadilah':'المجادلة','Al-Hashr':'الحشر','Al-Mumtahanah':'الممتحنة','As-Saff':'الصف','Al-Jumuah':'الجمعة','Al-Munafiqun':'المنافقون','At-Taghabun':'التغابن','At-Talaq':'الطلاق','At-Tahrim':'التحريم','Al-Mulk':'الملك','Al-Qalam':'القلم','Al-Haqqah':'الحاقة','Al-Maarij':'المعارج','Nuh':'نوح','Al-Jinn':'الجن','Al-Muzzammil':'المزمل','Al-Muddaththir':'المدثر','Al-Qiyamah':'القيامة','Al-Insan':'الإنسان','Al-Mursalat':'المرسلات','An-Naba':'النبأ','An-Naziat':'النازعات','Abasa':'عبس','At-Takwir':'التكوير','Al-Infitar':'الانفطار','Al-Mutaffifin':'المطففين','Al-Inshiqaq':'الانشقاق','Al-Buruj':'البروج','At-Tariq':'الطارق','Al-Ala':'الأعلى','Al-Ghashiyah':'الغاشية','Al-Fajr':'الفجر','Al-Balad':'البلد','Ash-Shams':'الشمس','Al-Lail':'الليل','Ad-Duha':'الضحى','Ash-Sharh':'الشرح','At-Tin':'التين','Al-Alaq':'العلق','Al-Qadr':'القدر','Al-Bayyinah':'البينة','Az-Zalzalah':'الزلزلة','Al-Adiyat':'العاديات','Al-Qariah':'القارعة','At-Takathur':'التكاثر','Al-Asr':'العصر','Al-Humazah':'الهمزة','Al-Fil':'الفيل','Quraysh':'قريش','Al-Maun':'الماعون','Al-Kawthar':'الكوثر','Al-Kafirun':'الكافرون','An-Nasr':'النصر','Al-Masad':'المسد','Al-Ikhlas':'الإخلاص','Al-Falaq':'الفلق','An-Nas':'الناس'};function surahArab(v){v=String(v||'-');Object.keys(surahArabMap).forEach(x=>{v=v.replace(new RegExp(x,'gi'),surahArabMap[x])});return v}function formatSukatanBulan(v){const raw=String(v==null?'':v).trim();if(!raw)return '-';if(/^\d+$/.test(raw)){const nama=getSurah(Number(raw));return (nama?surahArab(nama):'-')+' / '+raw}return surahArab(raw)}function metaHtml(k,d){d=d||{};const now=new Date();const bulanRaw=String(d.bulan==null?'':d.bulan).trim();const bulan=bulanRaw||months[now.getMonth()];const tahun=String(d.tahun||((byId('tahun')&&byId('tahun').value)||now.getFullYear()));const dt=String(now.getDate()).padStart(2,'0')+'/'+String(now.getMonth()+1).padStart(2,'0')+'/'+now.getFullYear();const cls=k==='SEMUA'?'SEMUA TINGKATAN':k;return '<table class="sheet-top-grid"><colgroup><col style="width:18%"><col style="width:22%"><col style="width:18%"><col style="width:22%"><col style="width:10%"><col style="width:10%"></colgroup><tr><td class="label">TINGKATAN</td><td class="value">'+escapeText(cls)+'</td><td class="label">SUKATAN BULAN INI</td><td class="value arabic">'+escapeText(formatSukatanBulan(d.sukatanBulan))+'</td><td class="label">BULAN</td><td class="value">'+escapeText(bulan)+'</td></tr><tr><td class="label">SUKATAN TAHUN INI</td><td class="value">'+escapeText(d.sukatanTahun||'-')+'</td><td class="label">TAHUN</td><td class="value">'+escapeText(tahun)+'</td><td class="label">TARIKH LAPORAN</td><td class="value">'+escapeText(dt)+'</td></tr></table>'}
+    const surahArabMap={'Ali Imran':'آل عمران','Al-Fatihah':'الفاتحة','Al-Baqarah':'البقرة','An-Nisa':'النساء','Al-Maidah':'المائدة','Al-Anam':'الأنعام','Al-Araf':'الأعراف','Al-Anfal':'الأنفال','At-Taubah':'التوبة','Yunus':'يونس','Hud':'هود','Yusuf':'يوسف','Ar-Rad':'الرعد','Ibrahim':'إبراهيم','Al-Hijr':'الحجر','An-Nahl':'النحل','Al-Isra':'الإسراء','Al-Kahf':'الكهف','Maryam':'مريم','Taha':'طه','Al-Anbiya':'الأنبيآء','Al-Hajj':'الحج','Al-Muminun':'المؤمنون','An-Nur':'النور','Al-Furqan':'الفرقان','Ash-Shuara':'الشعراء','An-Naml':'النمل','Al-Qasas':'القصص','Al-Ankabut':'العنكبوت','Ar-Rum':'الروم','Luqman':'لقمان','As-Sajdah':'السجدة','Al-Ahzab':'الأحزاب','Saba':'سبأ','Fatir':'فاطر','Yasin':'يس','As-Saffat':'الصافات','Sad':'ص','Az-Zumar':'الزمر','Ghafir':'غافر','Fussilat':'فصلت','Ash-Shura':'الشورى','Az-Zukhruf':'الزخرف','Ad-Dukhan':'الدخان','Al-Jathiyah':'الجاثية','Al-Ahqaf':'الأحقaf','Muhammad':'محمد','Al-Fath':'الفتح','Al-Hujurat':'الحجرات','Qaf':'ق','Adh-Dhariyat':'الذاريات','At-Tur':'الطور','An-Najm':'النجم','Al-Qamar':'القمر','Ar-Rahman':'الرحمن','Al-Waqiah':'الواقعة','Al-Hadid':'الحديد','Al-Mujadilah':'المجادلة','Al-Hashr':'الحشر','Al-Mumtahanah':'الممتحنة','As-Saff':'الصف','Al-Jumuah':'الجمعة','Al-Munafiqun':'المنافقون','At-Taghabun':'التغابن','At-Talaq':'الطلاق','At-Tahrim':'التحريم','Al-Mulk':'الملك','Al-Qalam':'القلم','Al-Haqqah':'الحاقة','Al-Maarij':'المعارج','Nuh':'نوح','Al-Jinn':'الجن','Al-Muzzammil':'المزمل','Al-Muddaththir':'المدثر','Al-Qiyamah':'القيامة','Al-Insan':'الإنسان','Al-Mursalat':'المرسلات','An-Naba':'النبأ','An-Naziat':'النازعات','Abasa':'عبس','At-Takwir':'التكوير','Al-Infitar':'الانفطار','Al-Mutaffifin':'المطففين','Al-Inshiqaq':'الانشقاق','Al-Buruj':'البروج','At-Tariq':'الطارق','Al-Ala':'الأعلى','Al-Ghashiyah':'الغاشية','Al-Fajr':'الفجر','Al-Balad':'البلد','Ash-Shams':'الشمس','Al-Lail':'الليل','Ad-Duha':'الضحى','Ash-Sharh':'الشرح','At-Tin':'التين','Al-Alaq':'العلق','Al-Qadr':'القدر','Al-Bayyinah':'البينة','Az-Zalzalah':'الزلزلة','Al-Adiyat':'العاديات','Al-Qariah':'القارعة','At-Takathur':'التكاثر','Al-Asr':'العصر','Al-Humazah':'الهمزة','Al-Fil':'الفيل','Quraysh':'قريش','Al-Maun':'الماعون','Al-Kawthar':'الكوثر','Al-Kafirun':'الكافرون','An-Nasr':'النصر','Al-Masad':'المسد','Al-Ikhlas':'الإخلاص','Al-Falaq':'الفلق','An-Nas':'الناس'};function surahArab(v){v=String(v||'-');Object.keys(surahArabMap).forEach(x=>{v=v.replace(new RegExp(x,'gi'),surahArabMap[x])});return v}function formatSukatanBulan(v){const raw=String(v==null?'':v).trim();if(!raw)return '-';if(/^\d+$/.test(raw)){const nama=getSurah(Number(raw));return (nama?surahArab(nama):'-')+' / '+raw}return surahArab(raw)}function metaHtml(k,d){d=d||{};const now=new Date();const bulanRaw=String(d.bulan==null?'':d.bulan).trim();const bulan=bulanRaw||months[now.getMonth()];const tahun=String(d.tahun||((byId('tahun')&&byId('tahun').value)||now.getFullYear()));const dt=String(now.getDate()).padStart(2,'0')+'/'+String(now.getMonth()+1).padStart(2,'0')+'/'+now.getFullYear();const cls=k==='SEMUA'?'SEMUA TINGKATAN':k;return '<table class="sheet-top-grid"><colgroup><col style="width:18%"><col style="width:22%"><col style="width:18%"><col style="width:22%"><col style="width:10%"><col style="width:10%"></colgroup><tr><td class="label">TINGKATAN</td><td class="value">'+escapeText(cls)+'</td><td class="label">SUKATAN BULAN INI</td><td class="value arabic">'+escapeText(formatSukatanBulan(d.sukatanBulan))+'</td><td class="label">BULAN</td><td class="value">'+escapeText(bulan)+'</td></tr><tr><td class="label">SUKATAN TAHUN INI</td><td class="value">'+escapeText(d.sukatanTahun||'-')+'</td><td class="label">TAHUN</td><td class="value">'+escapeText(tahun)+'</td><td class="label">TARIKH LAPORAN</td><td class="value">'+escapeText(dt)+'</td></tr></table>'}
     function individualMetaHtml(k,d){d=d||{};const n=new Date(),m=String(d.bulan||months[n.getMonth()]),y=String(d.tahun||((byId('tahun')&&byId('tahun').value)||n.getFullYear()));const dt=String(n.getDate()).padStart(2,'0')+'/'+String(n.getMonth()+1).padStart(2,'0')+'/'+n.getFullYear(),c=k==='SEMUA'?'SEMUA TINGKATAN':k;return '<table class="individual-meta-table"><colgroup><col style="width:18%"><col style="width:22%"><col style="width:18%"><col style="width:22%"><col style="width:10%"><col style="width:10%"></colgroup><tr><td class="label">TINGKATAN</td><td class="value">'+escapeText(c)+'</td><td class="label">SUKATAN BULAN INI</td><td class="value arabic">'+escapeText(formatSukatanBulan(d.sukatanBulan))+'</td><td class="label">BULAN</td><td class="value">'+escapeText(m)+'</td></tr><tr><td class="label">SUKATAN TAHUN INI</td><td class="value">'+escapeText(d.sukatanTahun||'-')+'</td><td class="label">TAHUN</td><td class="value meta-center">'+escapeText(y)+'</td><td class="label">TARIKH LAPORAN</td><td class="value meta-center">'+escapeText(dt)+'</td></tr></table>'}
     function signHtml(k){const c=window.appConfig||{},gm=pengesahan.guruMap||pengesahan.guru||{},n=escapeText(institution().nama||''),guru=(guruAlQuranMap[k]||gm[k]||(k==='SEMUA'?(guruAlQuranMap.SEMUA||gm.SEMUA):'')||'-');const a=[[guru,'Guru Al-Quran'],[c.namaPegawaiPenyemak||pengesahan.pkPentadbiran||'-',c.jawatanPegawaiPenyemak||'PK Pentadbiran'],[c.namaPengetuaPengesah||pengesahan.pengetua||'-','Pengetua']];return '<table class="sheet-sign-table"><tr><td>Disediakan oleh,</td><td>Disemak oleh,</td><td>Disahkan oleh,</td></tr><tr><td class="sheet-sign-space"><span class="sheet-sign-line"></span></td><td class="sheet-sign-space"><span class="sheet-sign-line"></span></td><td class="sheet-sign-space"><span class="sheet-sign-line"></span></td></tr><tr>'+a.map(x=>'<td><b>('+escapeText(x[0])+')</b><br>'+escapeText(x[1])+'<br>'+n+'</td>').join('')+'</table>'}
     function individualSignHtml(k){const c=window.appConfig||{},g=pengesahan.guruMap||pengesahan.guru||{},n=escapeText(institution().nama||''),guru=(guruAlQuranMap[k]||g[k]||(k==='SEMUA'?(guruAlQuranMap.SEMUA||g.SEMUA):'')||'-'),a=[['Disediakan oleh,',guru,'Guru Al-Quran'],['Disemak oleh,',c.namaPegawaiPenyemak||pengesahan.pkPentadbiran||'-',c.jawatanPegawaiPenyemak||'PK Pentadbiran'],['Disahkan oleh,',c.namaPengetuaPengesah||pengesahan.pengetua||'-','Pengetua']];return '<table class="individual-sign-table"><colgroup><col style="width:33.33%"><col style="width:33.33%"><col style="width:33.33%"></colgroup><tr>'+a.map(x=>'<td>'+x[0]+'<div class="individual-sign-space"><span class="individual-sign-line"></span></div><b>('+escapeText(x[1])+')</b><br>'+escapeText(x[2])+'<br>'+n+'</td>').join('')+'</table>'}
     function printDoc(html,extraCss=''){const w=open('','_blank');w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>SisPAQ</title><style>'+reportCss()+extraCss+'</style></head><body>'+html+'</body></html>');w.document.close();w.focus();setTimeout(()=>w.print(),250)}
     
+    // MEMBAIKI FUNGSI CETAK AGAR MEMASTIKAN REKOD PELAJAR KELAS TETAP AMBIL JIKA PADANAN TEMPOH GAGAL
     window.cetakPrestasiBaru=async function(){
       const k=currentGeneralClass||'SEMUA',d=k==='SEMUA'?((window.borangInfoCache||{}).SEMUA||{}):await infoKelas(k),inst=institution();
-      let data=[];if(k==='SEMUA'){for(const ck of classes){const period=await tempohAktif(ck);data=data.concat(tapisTempoh(rows,ck,period));}}else{const period=await tempohAktif(k);data=tapisTempoh(rows,k,period);}
+      let data=[];
+      if(k==='SEMUA'){
+        for(const ck of classes){
+          const period=await tempohAktif(ck);
+          let subData=tapisTempoh(rows,ck,period);
+          if(!subData.length) subData=rows.filter(r=>r.tingkatan===ck);
+          data=data.concat(subData);
+        }
+      }else{
+        const period=await tempohAktif(k);
+        data=tapisTempoh(rows,k,period);
+        if(!data.length) data=rows.filter(r=>r.tingkatan===k);
+      }
+      
       const q=(byId('smartSearchInput').value||'').toLowerCase();if(q)data=data.filter(r=>[r.nama,r.kategori,r.juzu,r.ms,r.surah,Math.round(Number(r.peratus)||0),normalisasiUlasan(r.ulasan),r.guru].join(' ').toLowerCase().includes(q));data=sortPrestasiByUlasan(data);
       data=data.slice(0,25);
       const total=data.length;
