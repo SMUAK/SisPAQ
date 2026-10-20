@@ -371,16 +371,14 @@
               <div class="btn-row"><button onclick="renderApprovalPanel()">Muat Semula Senarai Akaun</button></div>
               <div id="approvalList" class="teacher-setting-grid" style="margin-top:14px"></div>
             </div>
-
             <!-- 7. Pengurusan Akhir Tahun / Naik Taraf Pelajar -->
             <div class="setting-partition admin-only">
               <h3><span class="partition-no">7</span>Pengurusan Akhir Tahun / Naik Taraf Pelajar</h3>
-              <p>Fungsi ini digunakan pada akhir sesi persekolahan untuk memadamkan semua rekod pelajar Tingkatan 5 (tamat sekolah) dan menaikkan taraf pelajar Tingkatan 4 kepada Tingkatan 5 secara pukal.</p>
+              <p>Fungsi ini digunakan pada akhir sesi persekolahan untuk memadamkan data Tingkatan 5 (tamat persekolahan) serta menaikkan kelas berantai bagi pelajar Tingkatan 1 ke Tingkatan 2, Tingkatan 2 ke Tingkatan 3, Tingkatan 3 ke Tingkatan 4, dan Tingkatan 4 ke Tingkatan 5. Data Tingkatan 1 baharu secara automatik akan menjadi kosong untuk pendaftaran pelajar baharu.</p>
               <div class="setting-action">
-                <button type="button" class="danger" onclick="naikTarafPelajarPukal()">Proses Naik Taraf (T4 ke T5)</button>
+                <button type="button" class="danger" onclick="naikTarafPelajarPukal()">Proses Naik Taraf Akhir Tahun</button>
               </div>
             </div>
-
             <div class="sispaq-info-final">
               <div class="sispaq-copyright">SisPAQ © asri/smuak 2026</div>
             </div>
@@ -703,44 +701,67 @@
       }
     };
 
-    // FUNGSI NAIK TARAF PELAJAR PUKAL (T4 KE T5 & PADAM T5 LAMA)
+    // FUNGI NAIK TARAF PELAJAR PUKAL BERANTAI (T1 HINGGA T5) DENGAN PENGESAHAN TEXT INTERAKTIF "SAYA SETUJU"
     window.naikTarafPelajarPukal = async function() {
-      const pengesahan = await systemConfirm(
-        'Adakah anda pasti ingin memadam data Tingkatan 5 dan menaikkan Tingkatan 4 ke Tingkatan 5?',
-        'Pengesahan Naik Taraf Pelajar'
+      const kataKunci = await systemPrompt(
+        'AMARAN: Proses ini akan memadam data Tingkatan 5 dan menaikkan Tingkatan 1 ke 2, Tingkatan 2 ke 3, Tingkatan 3 ke 4, serta Tingkatan 4 ke 5 secara berantai.\n\nSila taip "SAYA SETUJU" (huruf besar) untuk teruskan:',
+        'Pengesahan Naik Taraf Pelajar Akhir Tahun'
       );
-      if (!pengesahan) return;
+
+      if (kataKunci !== "SAYA SETUJU") {
+        await systemAlert('Proses dibatalkan. Pengesahan tidak tepat.', 'Dibatalkan');
+        return;
+      }
 
       try {
         const batch = writeBatch(db);
         const snapshot = await getDocs(collection(db, 'prestasiHafazan'));
-        let dipadamCount = 0;
-        let dinaikkanCount = 0;
+        
+        let countT5Padam = 0;
+        let countT4keT5 = 0;
+        let countT3keT4 = 0;
+        let countT2keT3 = 0;
+        let countT1keT2 = 0;
 
         snapshot.docs.forEach((d) => {
           const data = d.data();
           const tingkatanNama = String(data.tingkatan || '').trim();
 
-          // Padam semua rekod Tingkatan 5
           if (tingkatanNama.includes('Tingkatan 5')) {
             batch.delete(d.ref);
-            dipadamCount++;
+            countT5Padam++;
           }
-          // Tukar Tingkatan 4 kepada Tingkatan 5
           else if (tingkatanNama.includes('Tingkatan 4')) {
             const tingkatanBaharu = tingkatanNama.replace('Tingkatan 4', 'Tingkatan 5');
-            batch.update(d.ref, {
-              tingkatan: tingkatanBaharu,
-              updatedAt: serverTimestamp()
-            });
-            dinaikkanCount++;
+            batch.update(d.ref, { tingkatan: tingkatanBaharu, updatedAt: serverTimestamp() });
+            countT4keT5++;
+          }
+          else if (tingkatanNama.includes('Tingkatan 3')) {
+            const tingkatanBaharu = tingkatanNama.replace('Tingkatan 3', 'Tingkatan 4');
+            batch.update(d.ref, { tingkatan: tingkatanBaharu, updatedAt: serverTimestamp() });
+            countT3keT4++;
+          }
+          else if (tingkatanNama.includes('Tingkatan 2')) {
+            const tingkatanBaharu = tingkatanNama.replace('Tingkatan 2', 'Tingkatan 3');
+            batch.update(d.ref, { tingkatan: tingkatanBaharu, updatedAt: serverTimestamp() });
+            countT2keT3++;
+          }
+          else if (tingkatanNama.includes('Tingkatan 1')) {
+            const tingkatanBaharu = tingkatanNama.replace('Tingkatan 1', 'Tingkatan 2');
+            batch.update(d.ref, { tingkatan: tingkatanBaharu, updatedAt: serverTimestamp() });
+            countT1keT2++;
           }
         });
 
         await batch.commit();
-
         await systemAlert(
-          `Proses naik taraf selesai!\n- Rekod Tingkatan 5 dipadam: ${dipadamCount}\n- Pelajar Tingkatan 4 dinaikkan ke Tingkatan 5: ${dinaikkanCount}`,
+          `Proses Naik Taraf Akhir Tahun Selesai!\n\n` +
+          `- Rekod Tingkatan 5 Dipadam: ${countT5Padam}\n` +
+          `- Tingkatan 4 -> Tingkatan 5: ${countT4keT5}\n` +
+          `- Tingkatan 3 -> Tingkatan 4: ${countT3keT4}\n` +
+          `- Tingkatan 2 -> Tingkatan 3: ${countT2keT3}\n` +
+          `- Tingkatan 1 -> Tingkatan 2: ${countT1keT2}\n\n` +
+          `Tingkatan 1 Baharu kini kosong bagi sesi pendaftaran seterusnya.`,
           'Berjaya'
         );
       } catch (e) {
