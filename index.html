@@ -28,6 +28,1357 @@
     label{font-weight:800;display:block;margin-top:10px}
     input,select,textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;margin-top:4px;font-size:16px}
     .btn-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+    table{width:100%;border-collapse:collapse;min-width:760px}
+    th,td{border:1px solid #cbd5e1;padding:8px;font-size:13px}
+    th{background:#dbeafe}
+    .table-wrap{overflow:auto;border:1px solid #cbd5e1;border-radius:14px;background:white}
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:9999;align-items:flex-start;justify-content:center;padding:18px;overflow:auto}
+    .modal-overlay.active{display:flex}
+    .modal-box{background:white;border-radius:16px;width:100%;max-width:760px;padding:18px;position:relative}
+    .modal-close{position:absolute;right:18px;top:12px;font-size:1.6rem;font-weight:bold;cursor:pointer}
+    .danger{background:#dc2626}
+    .secondary{background:#475569}
+    .print{background:#2563eb}
+    @media(max-width:900px){
+      .wrapper{flex-direction:column}
+      .sidebar{width:100%}
+      nav{display:grid;grid-template-columns:repeat(2,1fr)}
+      .topbar{flex-direction:column}
+      .summary-grid{grid-template-columns:1fr}
+    }
+    :root{--navy:#071a33;--navy2:#0b2a52;--navy3:#123d70;--blue:#38bdf8;--danger:#ef4444;--ink:#e8f1ff;--muted:#9fb3cc}
+    html{scroll-behavior:smooth} body{background:#f4f7fb;color:#172033}
+    .sidebar{background:linear-gradient(180deg,#f8fafc,#eef2f7);box-shadow:6px 0 18px rgba(15,23,42,.08);border-right:1px solid #dbe3ec}
+    .brand{background:linear-gradient(135deg,#ffffff,#f8fafc);color:#0b2a52;box-shadow:0 8px 20px rgba(15,23,42,.10);border:1px solid #dbe3ec}
+    .brand-red{color:#0b2a52}.topbar{background:linear-gradient(110deg,#071a33,#123d70);align-items:center;box-shadow:0 8px 24px rgba(7,26,51,.25)}
+    #schoolName{font-size:1.1rem;letter-spacing:.2px}#dateBadge{background:rgba(56,189,248,.14);border:1px solid rgba(125,211,252,.42);padding:9px 14px;border-radius:999px;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+    nav button{background:linear-gradient(135deg,#ffffff,#f8fafc);color:#172033;border:1px solid #e2e8f0;box-shadow:0 5px 14px rgba(15,23,42,.08);transition:.22s ease;display:flex;align-items:center}
+    nav button:hover{transform:translateX(4px);background:#ffffff;color:#0b2a52;border-color:#bfdbfe;box-shadow:0 9px 20px rgba(15,23,42,.12)}nav button.active{background:linear-gradient(135deg,#ffffff,#eef6ff);color:#0b2a52;border-color:#93c5fd;box-shadow:inset 4px 0 0 #0b2a52,0 8px 18px rgba(15,23,42,.12)}
+    .content{background:#f4f7fb;min-height:calc(100vh - 78px)}.card,.modal-box{background:#ffffff;color:#172033;border:1px solid #e2e8f0;box-shadow:0 10px 28px rgba(15,23,42,.09)}
+    .summary-card{background:linear-gradient(135deg,#f8fafc,#ffffff);border-color:#cbd5e1}.summary-label{color:#64748b}.summary-value{color:#0b2a52}
+    input,select,textarea{background:#ffffff;color:#172033;border-color:#cbd5e1;transition:.2s}input:focus,select:focus,textarea:focus{outline:0;border-color:#0b2a52;box-shadow:0 0 0 3px rgba(11,42,82,.12)}
+    button{background:linear-gradient(135deg,#0f766e,#0b5f59);color:white;box-shadow:inset 0 1px 1px rgba(255,255,255,.28),0 6px 14px rgba(15,118,110,.20);transition:transform .16s,filter .16s,box-shadow .16s}button:hover{filter:brightness(1.07);transform:translateY(-2px);box-shadow:inset 0 1px 1px rgba(255,255,255,.32),0 10px 20px rgba(15,118,110,.24)}button:active{transform:translateY(1px) scale(.98);box-shadow:inset 0 3px 7px rgba(0,0,0,.18),0 4px 10px rgba(15,23,42,.12)}
+    .secondary{background:linear-gradient(135deg,#64748b,#334155)}.danger{background:linear-gradient(135deg,#ef4444,#b91c1c)}.print,.preview-btn{background:linear-gradient(135deg,#3b82f6,#2563eb)}
+    .table-wrap{background:#ffffff;border-color:#cbd5e1}th,td{border-color:#cbd5e1;color:#172033}th{background:linear-gradient(135deg,#dbeafe,#bfdbfe);color:#172033}tbody tr:hover{background:#f0f7ff}
+    .icon-btn{width:38px;height:36px;padding:7px;display:inline-grid;place-items:center;border-radius:10px;font-size:17px;margin:2px}.icon-btn span{pointer-events:none}
+    #formCard{display:none!important;position:fixed;z-index:10000;top:50%;left:50%;transform:translate(-50%,-50%);width:min(760px,calc(100vw - 36px));max-height:calc(100vh - 36px);overflow:auto;margin:0!important;padding:22px!important;border-radius:16px!important;background:#ffffff!important;color:#172033!important;border:1px solid #e2e8f0!important;box-shadow:0 22px 55px rgba(15,23,42,.28)!important}#formCard.active{display:block!important}#formCard>*{max-width:none;margin-left:0;margin-right:0}#formTitle{padding-top:0;color:#172033}
+    .preview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}.preview-item{background:#f8fafc;border:1px solid #dbe3ec;border-radius:12px;padding:12px;color:#172033}.preview-item b{display:block;color:#0b2a52;font-size:.78rem;margin-bottom:4px}
+    @keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}.modal-overlay.active .modal-box,#formCard.active>*{animation:modalIn .22s ease}
+    @media(max-width:900px){.topbar{padding:15px;align-items:flex-start}.topbar>div:first-child{max-width:100%}#dateBadge{font-size:.85rem}.content{padding:12px}.preview-grid{grid-template-columns:1fr}.icon-btn{width:36px}.brand{text-align:center}}
+    @media print{body *{visibility:hidden}#previewModal,#previewModal *{visibility:visible}#previewModal{position:absolute;inset:0;display:block!important;background:white;color:black;padding:0}.modal-box{color:black;background:white;box-shadow:none;border:0}.modal-close,.preview-actions{display:none}.preview-item{color:black;background:white;border-color:#bbb}}
+    .topbar{position:relative;overflow:hidden;background:linear-gradient(135deg,#7a123d 0%,#b3125b 52%,#5b0a31 100%)!important}
+    .topbar:before,.topbar:after{content:"";position:absolute;border:3px solid rgba(255,215,90,.8);border-radius:50%;width:280px;height:110px;right:-75px;top:-65px;transform:rotate(-10deg)}
+    .topbar:after{border-color:rgba(255,255,255,.72);right:-120px;top:-35px;width:340px}
+    .topbar>*{position:relative;z-index:1}.brand-sis{color:#dc2626}.brand-paq{color:#d4af37}.brand-version{color:#fff}.brand-subtitle{color:#fff}
+    .action-nowrap{display:flex;flex-wrap:nowrap;gap:4px;align-items:center;justify-content:center;white-space:nowrap}
+    .print-only-report{display:none}
+    .preview-modal-box{max-width:1000px;padding:14px}.preview-toolbar{display:flex;align-items:center;gap:8px;margin-bottom:10px}.preview-toolbar h3{margin-right:auto}.preview-stage{background:#f1f5f9;border-radius:12px;padding:14px;overflow:auto;min-height:70vh}.preview-paper{width:210mm;min-height:297mm;padding:13mm;background:#fff;color:#111;margin:0 auto;box-shadow:0 8px 24px rgba(0,0,0,.18);box-sizing:border-box;transform-origin:top center}.report-head{text-align:center}.report-head h2{font-size:14px;margin:0}.report-contact{font-size:8px;margin:2px 0 6px}.report-meta{width:100%;min-width:0;border-collapse:collapse;table-layout:fixed;margin:0}.report-meta td{border:1px solid #111;padding:3px;font-size:8px}.report-meta .meta-label{background:#d9ead3;font-weight:700}.report-meta .meta-value{text-align:center}.report-title{font-size:9px;font-weight:700;margin:12px 0 5px}.individual-table{width:72%;min-width:0;border-collapse:collapse;margin:0}.individual-table th,.individual-table td{font-size:8px;padding:5px;border:0;border-bottom:1px solid #ddd;text-align:left}.report-spacer{height:62mm}.report-sign{display:grid;grid-template-columns:repeat(3,1fr);gap:15mm;font-size:8px}.report-sign-box{min-height:38mm}.report-sign-name{font-weight:700;margin-top:19mm}.report-table{width:100%;min-width:0;border-collapse:collapse;table-layout:fixed}.report-table th,.report-table td{border:1px solid #111;padding:2px;font-size:7.5px;height:5mm}.report-table th,.analysis-table th{background:#d9ead3}.analysis-title{text-align:center;font-size:9px;font-weight:700;margin:4mm 0}.analysis-table{width:68%;min-width:0;margin:0 auto;border-collapse:collapse}.analysis-table th,.analysis-table td{border:1px solid #111;padding:2px;font-size:7.5px}.print-only-report{display:none}@media(max-width:900px){.preview-modal-box{padding:8px}.preview-stage{padding:8px;min-height:72vh;height:calc(297mm * .45 + 16px)}.preview-paper{transform:scale(.45);transform-origin:top left;margin:0}}@media(min-width:901px){.preview-paper{transform:scale(.68);transform-origin:top center;margin-bottom:calc(-297mm * .32)}}
+    #previewPaper{width:210mm;max-width:none;min-height:297mm;padding:13mm!important;contain:layout paint;box-sizing:border-box!important;overflow:hidden;transform:scale(var(--preview-scale,1));transform-origin:top center}
+    #previewContent,#previewPaper .sheet{width:100%!important;max-width:100%!important;min-width:0!important;margin-left:0!important;margin-right:0!important;padding-left:0!important;padding-right:0!important;box-sizing:border-box!important;overflow:hidden!important}
+    #previewPaper #previewContent>.sheet>table.sheet-top-grid{display:table!important;width:58%!important;max-width:58%!important;min-width:0!important;margin-left:auto!important;margin-right:auto!important;table-layout:fixed!important;box-sizing:border-box!important}
+    #previewPaper table{width:100%!important;max-width:100%!important;min-width:0!important;table-layout:fixed!important;box-sizing:border-box!important}
+    #previewPaper td,#previewPaper th{box-sizing:border-box!important;max-width:0;overflow:hidden;overflow-wrap:anywhere;word-break:break-word}
+    #previewPaper .individual-table{width:72%!important;max-width:72%!important;min-width:0!important;margin-left:0!important;margin-right:auto!important}
+    #previewPaper .individual-table td,#previewPaper .individual-table th{max-width:none}
+    #previewPaper .sheet-sign-table{width:100%!important;max-width:100%!important}
+    #previewModal .preview-stage{width:100%;max-width:100%;min-width:0;overflow:hidden}
+    @media(max-width:900px){#previewModal .preview-stage{height:auto;min-height:0;padding:8px}#previewPaper{position:absolute!important;left:50%!important;top:0!important;margin:0!important;transform-origin:top center!important;min-width:210mm!important;width:210mm!important;max-width:none!important}
+    #umum .table-wrap{overflow-x:auto!important}#umum .table-wrap th:last-child,#umum .table-wrap td:last-child{min-width:150px!important;width:150px!important}#umum .action-nowrap .icon-btn{flex:0 0 38px!important;width:38px!important;height:38px!important}}
+    #classButtons{position:relative;z-index:10001}
+    #tingkatan>.card:first-child{position:relative;z-index:10001}
+    #formCard{top:calc(50% + 55px)!important;max-height:calc(100vh - 150px)!important}
+    #generalClassButtons button.general-class-active{background:linear-gradient(135deg,#b8860b,#8b6508)!important;color:#fff!important;border:1px solid #7a5907!important;box-shadow:inset 0 1px 1px rgba(255,255,255,.35),0 6px 16px rgba(139,101,8,.32)!important}#generalClassButtons button.general-class-active:hover{background:linear-gradient(135deg,#c99712,#8b6508)!important;color:#fff!important;border-color:#7a5907!important}
+    #classButtons button.form-class-active{background:linear-gradient(135deg,#bbf7d0,#86efac);color:#14532d;border:1px solid #4ade80;box-shadow:inset 0 1px 1px rgba(255,255,255,.65),0 6px 16px rgba(34,197,94,.28)}
+    #classButtons button.form-class-active:hover{background:linear-gradient(135deg,#dcfce7,#86efac);color:#14532d;border-color:#4ade80;box-shadow:inset 0 1px 1px rgba(255,255,255,.7),0 9px 20px rgba(34,197,94,.32)}
+    @media(max-width:900px){#formCard{top:auto!important;bottom:8px!important;left:8px!important;transform:none!important;width:calc(100vw - 16px)!important;max-height:72vh!important}}
+    #tingkatan>.card:first-child{position:relative!important;z-index:2!important;margin-bottom:12px!important;padding:16px 18px!important}
+    #tingkatan .class-form-toolbar{display:flex!important;align-items:center!important;gap:18px!important;width:100%!important;min-width:0!important}
+    #tingkatan #formTitle{flex:0 0 auto!important;margin:0!important;padding:0!important;line-height:1.2!important;white-space:nowrap!important;visibility:visible!important}
+    #tingkatan #classButtons{display:flex!important;flex:1 1 auto!important;align-items:center!important;gap:9px!important;flex-wrap:wrap!important;margin:0!important;position:relative!important;z-index:2!important}
+    #tingkatan #formCard{position:relative!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;transform:none!important;width:100%!important;max-width:none!important;max-height:none!important;overflow:visible!important;margin:0!important;padding:16px 18px!important;clear:both!important;z-index:1!important;display:none!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px 16px!important;align-items:end!important}
+    #tingkatan #formCard.active{display:grid!important}
+    #tingkatan #formCard label{margin-top:0!important;font-size:14px!important}
+    #tingkatan #formCard input,#tingkatan #formCard select{margin-top:3px!important;padding:8px 10px!important;height:40px!important}
+    #tingkatan #formCard .btn-row{grid-column:1/-1!important;margin-top:6px!important}
+    @media(max-width:900px){#tingkatan .class-form-toolbar{display:block!important}#tingkatan #formTitle{white-space:normal!important;margin-bottom:10px!important}#tingkatan #classButtons{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}#tingkatan #formCard{width:100%!important;max-width:100%!important;margin:12px 0 0!important;padding:16px!important;display:none!important;grid-template-columns:1fr!important;gap:8px!important}#tingkatan #formCard.active{display:grid!important}#tingkatan #formCard .btn-row{grid-column:1!important}}
+    
+    .setting-partition{margin-top:16px;background:#f8fafc;border:1px solid #a7f3d0;border-radius:16px;padding:18px;box-shadow:0 6px 18px rgba(15,23,42,.06)}
+    .setting-partition h3{display:flex;align-items:center;gap:8px;margin:0 0 8px;color:#172033;font-size:1.1rem;font-weight:800}
+    .setting-partition p{color:#64748b;font-size:.88rem;margin-bottom:12px;line-height:1.4}
+    .partition-no{display:inline-grid;place-items:center;min-width:24px;height:24px;border-radius:8px;background:#10b981;color:#fff;font-size:14px;font-weight:900}
+    .setting-action{margin-top:14px;display:flex;justify-content:flex-start}
+    .teacher-setting-grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:10px 16px}
+    .teacher-setting-grid label{margin-top:6px;font-size:0.92rem;font-weight:800}
+    
+    #tetapan input, #tetapan select, #tetapan textarea {
+      font-family: Consolas, 'Courier New', Monaco, monospace !important;
+      font-size: 15px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.2px;
+    }
+    #tetapan input::placeholder, #tetapan select::placeholder, #tetapan textarea::placeholder {
+      font-weight: 400 !important;
+      font-style: italic;
+      color: #94a3b8;
+    }
+    
+    .selected-teacher-box{margin:12px 0 2px;padding:12px 14px;border:1px solid #a7f3d0;border-radius:12px;background:#ecfdf5;color:#14532d}
+    .selected-teacher-box b{display:block;margin-bottom:4px}
+    .sispaq-info-final{margin-top:16px;display:inline-block;background:transparent;border:0;padding:0;box-shadow:none}
+    .sispaq-copyright{display:inline-block;background:#fff7ed;border:1px solid #fdba74;border-radius:10px;padding:8px 12px;color:#9a3412;font-weight:400;white-space:nowrap}
+    #umum .table-wrap th{text-align:center!important}
+    #umum .table-wrap td:nth-child(1),#umum .table-wrap td:nth-child(4),#umum .table-wrap td:nth-child(5),#umum .table-wrap td:nth-child(6),#umum .table-wrap td:nth-child(7),#umum .table-wrap td:nth-child(8){text-align:center!important;vertical-align:middle!important}
+    @media(max-width:900px){.setting-partition{padding:14px;margin-top:12px}.teacher-setting-grid{grid-template-columns:1fr}.setting-action,.setting-action button{width:100%}.selected-teacher-box{width:100%;overflow-wrap:anywhere}} 
+    #systemMessageModal .modal-box{max-width:460px} #systemMessageText{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:10px} #systemMessageInput{margin-top:12px} #systemMessageActions{display:flex;justify-content:flex-end;gap:9px;flex-wrap:wrap;margin-top:16px} @media(max-width:900px){#systemMessageModal{padding:12px}#systemMessageModal .modal-box{width:calc(100vw - 24px);max-width:460px}}
+    #previewPaper .individual-sign-table{width:100%!important;max-width:100%!important;min-width:0!important;margin-top:38mm!important;border-collapse:collapse!important;table-layout:fixed!important}#previewPaper .individual-sign-table td{width:33.33%!important;border:0!important;vertical-align:top!important;text-align:left!important;font-size:12px!important;max-width:none!important;overflow:visible!important;padding:0!important}#previewPaper .individual-sign-space{height:18mm!important;position:relative!important}#previewPaper .individual-sign-line{display:block!important;position:absolute!important;left:0!important;bottom:2mm!important;width:58%!important;border-bottom:1px dotted #111!important}#previewPaper .individual-breport-spacer{display:none!important}
+    #previewPaper .individual-report-title{display:block!important;width:100%!important;text-align:center!important;font-size:12px!important;font-weight:700!important;line-height:1.2!important;text-transform:uppercase!important;margin:14px 0 8px!important;padding:0!important}#previewPaper .individual-meta-table{margin-bottom:0!important}#previewPaper .individual-achievement-table{margin-top:0!important}
+    #previewPaper .individual-meta-table col:nth-child(1){width:17%!important}#previewPaper .individual-meta-table col:nth-child(2){width:21%!important}#previewPaper .individual-meta-table col:nth-child(3){width:17%!important}#previewPaper .individual-meta-table col:nth-child(4){width:21%!important}#previewPaper .individual-meta-table col:nth-child(5){width:11%!important}#previewPaper .individual-meta-table col:nth-child(6){width:13%!important}#previewPaper .individual-meta-table td:nth-child(6){white-space:nowrap!important;overflow:visible!important;word-break:normal!important;overflow-wrap:normal!important;font-size:11px!important}
+    @media(max-width:900px){#umum .card{width:100%!important;max-width:100%!important;min-width:0!important;overflow:hidden!important}#umum .table-wrap{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-x:contain!important}#umum .table-wrap table{width:max-content!important;min-width:760px!important;max-width:none!important;margin:0!important}#umum .table-wrap th,#umum .table-wrap td{white-space:normal!important;overflow-wrap:break-word!important;word-break:normal!important}#umum .table-wrap th:last-child,#umum .table-wrap td:last-child{position:static!important}}
+    #previewModal{padding-top:90px!important}#previewModal .preview-modal-box{margin-top:20px!important}#previewModal .preview-toolbar{position:relative!important;z-index:2!important;margin-bottom:14px!important;flex-wrap:wrap!important}#previewModal #previewPaperWrap{position:relative!important;margin:0 auto!important}#previewModal .preview-stage{position:relative!important;clear:both!important}@media(max-width:900px){#previewModal{padding-top:110px!important}#previewModal .preview-modal-box{margin-top:20px!important}#previewModal .preview-toolbar{margin-bottom:16px!important}#previewModal .preview-toolbar h3{flex:1 0 100%!important;margin:0 0 8px!important}#previewPaper .individual-achievement-table td.arabic{text-align:left!important;direction:rtl!important}}
+    #manual{font-family:'Segoe UI',sans-serif;font-size:11pt}#manual .manual-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}#manual .manual-tab{font-family:'Segoe UI',sans-serif;font-size:11pt}#manual .manual-box{display:none;background:#ecfdf5;border:1px solid #86efac;border-left:4px solid #16a34a;border-radius:14px;padding:16px;color:#172033}#manual .manual-box.active{display:block}#manual .manual-box h3{margin:0 0 12px;color:#14532d}#manual .manual-box ol,#manual .manual-box ul{margin-left:22px;line-height:1.6}#manual .manual-box li{margin-bottom:9px}#manual .manual-box p{line-height:1.6;margin:0 0 14px}@media(max-width:900px){#manual .manual-tabs{display:grid;grid-template-columns:1fr;gap:8px}#manual .manual-tab{width:100%;padding:10px 8px}#manual .manual-box{width:100%;padding:14px;overflow-wrap:anywhere}}
+    @media(min-width:901px){#tingkatan #formCard{width:min(980px,100%)!important;max-width:980px!important;margin-left:0!important;margin-right:auto!important;grid-template-columns:180px minmax(0,1fr)!important;column-gap:18px!important}#tingkatan #formCard .btn-row{grid-column:1/-1!important}}button:active{background:linear-gradient(135deg,#b8860b,#8b6508)!important;color:#fff!important;border-color:#7a5907!important;box-shadow:inset 0 3px 7px rgba(0,0,0,.2),0 4px 10px rgba(139,101,8,.28)!important}  </style>
+  <style>.auth-screen{min-height:100vh;background:linear-gradient(180deg,#0f766e 0,#0f766e 150px,#eef3f8 150px,#eef3f8 100%);display:flex;align-items:flex-start;justify-content:center;padding:78px 16px 42px}.auth-wrap{width:100%;max-width:430px}.auth-brand{text-align:center;color:white;margin-bottom:36px}.auth-brand h1{font-size:2rem;font-weight:900}.auth-card{background:rgba(255,255,255,.95);border-radius:20px;box-shadow:0 18px 42px rgba(15,23,42,.18);padding:26px}.auth-title{text-align:center;font-size:1.35rem;font-weight:800;margin-bottom:22px}.auth-input-wrap{position:relative;margin-bottom:16px}.auth-input-wrap input{min-height:52px;border-radius:14px;border:1px solid #0f766e;padding-right:52px;margin-bottom:0}.email-mask{-webkit-text-security:disc;text-security:disc}.email-visible{-webkit-text-security:none;text-security:none}.email-eye-btn{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:0;background:#ecfdf5;color:#0f766e;display:flex;align-items:center;justify-content:center;font-size:1.15rem;cursor:pointer;box-shadow:none;padding:0}.email-eye-btn:hover{background:#d1fae5!important;color:#065f46!important;transform:translateY(-50%) scale(1.05)}.btn-main{width:100%;min-height:54px;border-radius:999px;background:#0f766e!important;color:white!important;font-weight:900;border:0}.auth-link{color:#0f766e;text-decoration:underline;cursor:pointer;font-weight:700}.auth-center{text-align:center;line-height:1.8}.app-shell{display:none}.admin-only{display:none}.logged-in-admin .admin-only{display:block}@media(max-width:900px){.auth-screen{padding:76px 16px 36px}.auth-brand{margin-bottom:42px}.auth-brand h1{font-size:1.9rem}.email-eye-btn{width:40px!important;height:40px!important;font-size:1.2rem!important}}</style>
+  <style>.email-eye-btn{width:42px!important;height:42px!important;border-radius:0!important;background:transparent!important;color:#666!important;box-shadow:none!important}.email-eye-btn:hover{background:transparent!important;color:#444!important;transform:translateY(-50%)!important}.email-eye-btn svg{width:30px;height:30px;display:block;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}</style>
+  <style>:root{--sispaq-maroon:#550000;--sispaq-maroon-light:#7a123d}.brand{background:linear-gradient(135deg,#550000,#7a123d)!important;color:#fff!important;border-color:#550000!important}.brand .brand-red,.brand h2,.brand div{color:#fff!important}.auth-screen{background:linear-gradient(180deg,#550000 0,#550000 210px,#eef3f8 210px,#eef3f8 100%)!important;padding:54px 16px 42px!important}.auth-brand{color:#fff!important;margin-bottom:86px!important}.auth-school-name{font-size:1.05rem!important;font-weight:800!important;line-height:1.25!important;margin-bottom:12px!important}.auth-brand h1{color:#fff!important;font-size:2rem!important;font-weight:900!important}.auth-brand .brand-red{color:#fff!important}.auth-card{max-width:398px;margin:0 auto;background:#fff!important;border-radius:20px!important;padding:26px!important;box-shadow:0 18px 42px rgba(85,0,0,.22)!important}.auth-input-wrap input{border-color:#550000!important;background:#fff!important}.auth-input-wrap input:focus{border-color:#550000!important;box-shadow:0 0 0 3px rgba(85,0,0,.13)!important}.btn-main{background:#550000!important;color:#fff!important}.btn-main:hover{background:#7a123d!important}.auth-link{color:#550000!important}.email-eye-btn{color:#550000!important}.topbar-school-name{font-size:1.18rem;font-weight:900;line-height:1.2}.topbar-school-address{font-size:.94rem;font-weight:600;line-height:1.3}.topbar-system-name{font-size:.79rem;line-height:1.3}@media(max-width:900px){.brand{text-align:center!important}.auth-screen{background:linear-gradient(180deg,#550000 0,#550000 210px,#eef3f8 210px,#eef3f8 100%)!important;padding:48px 16px 36px!important}.auth-card{width:100%;max-width:398px!important}.auth-brand{margin-bottom:88px!important}.auth-school-name{font-size:1rem!important}.topbar-school-name{font-size:1.08rem}.topbar-school-address{font-size:.88rem}.topbar-system-name{font-size:0.76rem}}</style>
+  
+  <!-- KETIGA: GAYA BUTANG BUJUR (PILL-SHAPED) DAN SUSUNAN MOD TELEFON TANPA IKON -->
+  <style>
+    .btn-pill {
+      border-radius: 999px !important;
+      padding: 12px 20px !important;
+      font-weight: 800 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+      white-space: nowrap !important;
+    }
+    .action-btns-container {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    @media(max-width:900px) {
+      .action-btns-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        gap: 10px;
+      }
+      .action-btns-container .btn-print-action {
+        grid-column: 1;
+        justify-self: center;
+        width: 100%;
+      }
+      .action-btns-container .btn-excel-action {
+        grid-column: 2;
+        justify-self: center;
+        width: 100%;
+      }
+      .action-btns-container .btn-add-action {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 70%;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section id="authScreen" class="auth-screen"><div class="auth-wrap"><div class="auth-brand"><div class="auth-school-name">SMU(A) Khairiah Banggol Setol</div><h1><span class="brand-red">Sis</span>PAQ</h1><div>Sistem Prestasi Al-Quran</div></div><div class="auth-card"><div id="loginBox"><div class="auth-title">Selamat Datang!<br>Sila Log Masuk Untuk Meneruskan.</div><div class="auth-input-wrap"><input id="loginEmail" type="email" inputmode="email" autocomplete="username" class="email-mask" placeholder="Alamat E-mel Pentadbir / Guru"><button type="button" class="email-eye-btn" onclick="return toggleInputVisibility('loginEmail',this,'email',event)" title="Lihat / sembunyi e-mel" aria-label="Lihat / sembunyi e-mel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg></button></div><div class="auth-input-wrap"><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Kata Laluan"><button type="button" class="email-eye-btn" onclick="return toggleInputVisibility('loginPassword',this,'password',event)" title="Lihat / sembunyi kata laluan" aria-label="Lihat / sembunyi kata laluan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg></button></div><button class="btn-main" onclick="loginUser(this)">LOG MASUK</button><div class="auth-center"><span class="auth-link" onclick="resetPassword()">Lupa Kata Laluan?</span><br><span class="auth-link" onclick="showSignupBox()">Daftar Akaun Guru Baharu</span></div></div><div id="signupBox" style="display:none"><div class="auth-title">Pendaftaran Akaun Guru</div><input id="signupName" placeholder="Nama Guru" autocomplete="off"><div class="auth-input-wrap"><input id="signupEmail" type="email" inputmode="email" autocomplete="off" class="email-mask" placeholder="Alamat E-mel"><button type="button" class="email-eye-btn" onclick="return toggleInputVisibility('signupEmail',this,'email',event)" title="Lihat / sembunyi e-mel" aria-label="Lihat / sembunyi e-mel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg></button></div><div class="auth-input-wrap"><input id="signupPassword" type="password" autocomplete="new-password" placeholder="Kata Laluan baharu"><button type="button" class="email-eye-btn" onclick="return toggleInputVisibility('signupPassword',this,'password',event)" title="Lihat / sembunyi kata laluan" aria-label="Lihat / sembunyi kata laluan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg></button></div><button class="btn-main" onclick="signupUser(this)">DAFTAR AKAUN</button><div class="auth-center"><span class="auth-link" onclick="showLoginBox()">Kembali ke Log Masuk</span></div></div></div></div></section>
+  <div id="appShell" class="app-shell"><div class="wrapper">
+    <aside class="sidebar">
+      <div class="brand">
+        <h2><span class="brand-red">SisPAQ</span></h2>
+        <div>(Sistem Prestasi Al-Quran)</div>
+      </div>
+      <nav>
+        <button id="btn-utama" class="active" onclick="showPage('utama')"><span style="display:inline-grid;place-items:center;width:30px;height:30px;border-radius:10px;margin-right:9px;background:linear-gradient(145deg,#34d399,#059669);color:white;box-shadow:inset 0 2px 3px rgba(255,255,255,.45),0 5px 10px rgba(15,23,42,.18)">⌂</span>Utama</button>
+        <button id="btn-tingkatan" onclick="showPage('tingkatan')"><span style="display:inline-grid;place-items:center;width:30px;height:30px;border-radius:10px;margin-right:9px;background:linear-gradient(145deg,#fbbf24,#d97706);color:white;box-shadow:inset 0 2px 3px rgba(255,255,255,.45),0 5px 10px rgba(15,23,42,.18)">▤</span>Borang Prestasi</button>
+        <button id="btn-umum" onclick="showPage('umum')"><span style="display:inline-grid;place-items:center;width:30px;height:30px;border-radius:10px;margin-right:9px;background:linear-gradient(145deg,#60a5fa,#2563eb);color:white;box-shadow:inset 0 2px 3px rgba(255,255,255,.45),0 5px 10px rgba(15,23,42,.18)">☷</span>Prestasi Hafazan</button>
+        <button id="btn-tetapan" onclick="openSetting()"><span style="display:inline-grid;place-items:center;width:30px;height:30px;border-radius:10px;margin-right:9px;background:linear-gradient(145deg,#94a3b8,#475569);color:white;box-shadow:inset 0 2px 3px rgba(255,255,255,.45),0 5px 10px rgba(15,23,42,.18)">⚙</span>Tetapan</button>
+        <button id="btn-manual" onclick="showPage('manual')"><span style="display:inline-grid;place-items:center;width:30px;height:30px;border-radius:10px;margin-right:9px;background:linear-gradient(145deg,#38bdf8,#0284c7);color:white;box-shadow:inset 0 2px 3px rgba(255,255,255,.45),0 5px 10px rgba(15,23,42,.18)">▣</span>Manual Pengguna</button>
+        <button id="btn-logout" onclick="logoutUser()"><span style="display:inline-grid;place-items:center;width:30px;height:30px;border-radius:10px;margin-right:9px;background:linear-gradient(145deg,#ef4444,#b91c1c);color:white">↪</span>Log Keluar</button>
+      </nav>
+    </aside>
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <div id="schoolName"><div class="topbar-school-name">SMU(A) Khairiah Banggol Setol</div><div class="topbar-school-address">17070 Pasir Mas, Kelantan.</div></div>
+          <div class="topbar-system-name">SisPAQ (Sistem Prestasi Al-Quran)</div>
+        </div>
+        <div id="dateBadge">Memuatkan tarikh...</div>
+      </div>
+      <div class="content">
+        <section id="utama" class="page active">
+          <div class="card">
+            <h3>Pengenalan Sistem</h3>
+            <p>SisPAQ digunakan untuk merekod, memantau dan mencetak prestasi hafazan Al-Quran pelajar mengikut tingkatan.</p>
+            <div class="summary-grid">
+              <div class="summary-card">
+                <div class="summary-label">Jumlah Pelajar Tahfiz</div>
+                <div class="summary-value" id="statJumlah">0</div>
+              </div>
+              <div class="summary-card">
+                <div class="summary-label">Khatam 30 Juzu'</div>
+                <div class="summary-value"><span id="statKhatam30">0</span> <small id="statPeratusKhatam30" style="font-size:.9rem;color:#64748b">0%</small></div>
+              </div>
+              <div class="summary-card">
+                <div class="summary-label">Tamat 15 Juzu'</div>
+                <div class="summary-value"><span id="statTamat15">0</span> <small id="statPeratusTamat15" style="font-size:.9rem;color:#64748b">0%</small></div>
+              </div>
+              <div class="summary-card"><div class="summary-label">Tamat Sukatan</div><div class="summary-value"><span id="statTamatSukatan">0</span> <small id="statPeratusTamatSukatan" style="font-size:.9rem;color:#64748b">0%</small></div></div>
+            </div>
+          </div>
+        </section>
+        <section id="tingkatan" class="page">
+          <div class="card">
+            <div class="class-form-toolbar"><h3 id="formTitle">Borang Prestasi</h3><div id="classButtons" class="btn-row"></div></div>
+          </div>
+          <div class="card" id="formCard" style="display:none">
+            <label>Bulan</label>
+            <select id="bulan"></select>
+            <label>Tahun</label>
+            <input id="tahun" type="number" inputmode="numeric" min="2000" max="2100" autocomplete="off">
+            <label>Sukatan Bulan Ini</label>
+            <input id="sukatanBulan" type="number" min="1" max="604">
+            <label>Sukatan Tahun Ini</label>
+            <input id="sukatanTahun" type="number" min="1" max="604">
+            <label>Tarikh Laporan</label>
+            <input id="tarikh" type="date">
+            <label>Nama Guru</label>
+            <input id="namaGuru" placeholder="Taip nama guru ringkas">
+            <div class="btn-row">
+              <button class="secondary" onclick="resetForm()">Batal</button>
+              <button onclick="saveBorangInfo()">Simpan</button>
+            </div>
+          </div>
+        </section>
+        <section id="umum" class="page">
+          <div class="card">
+            <h3>Prestasi Hafazan</h3>
+            <div id="generalClassButtons" class="btn-row"></div>
+            <div id="selectedTeacherBox" class="selected-teacher-box"><b>Nama Guru Al-Quran</b><span id="selectedTeacherName">Semua Tingkatan</span></div>
+            <label>Carian Pintar</label>
+            <input id="smartSearchInput" placeholder="Cari nama, juzu, muka surat, surah, peratus, ulasan atau guru" oninput="renderGeneral()">
+            
+            <!-- KETIGA: REKA BENTUK BUTANG BUJUR DALAM SATU BARIS TANPA IKON -->
+            <div class="action-btns-container">
+              <button class="print btn-pill btn-print-action" onclick="cetakPrestasiBaru()">Cetak Prestasi</button>
+              <button class="btn-pill btn-excel-action" onclick="downloadCsv()">Muat Turun Excel</button>
+              <button class="btn-pill btn-add-action" onclick="bukaBorangTambahRekod()">Tambah Rekod</button>
+            </div>
+            
+            <div class="table-wrap" style="margin-top:14px">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Bil</th>
+                    <th>Tingkatan</th>
+                    <th>Nama Pelajar</th>
+                    <th>Kategori Sukatan</th>
+                    <th>Juzu’</th>
+                    <th>Muka Surat</th>
+                    <th>Surah</th>
+                    <th>Peratus (%)</th>
+                    <th>Ulasan</th>
+                    <th>Nama Guru</th>
+                    <th>Tindakan</th>
+                  </tr>
+                </thead>
+                <tbody id="generalBody">
+                  <tr><td colspan="11" style="text-align:center">Memuatkan data...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <section id="tetapan" class="page">
+          <div class="card">
+            <h3>Tetapan SisPAQ</h3>
+            
+            <!-- 1. Maklumat Rasmi Institusi -->
+            <div class="setting-partition">
+              <h3><span class="partition-no">1</span>Maklumat Rasmi Institusi</h3>
+              <label>Nama Institusi / Sekolah</label>
+              <input id="settingNamaInstitusi" value="SMU(A) Khairiah Banggol Setol">
+              <label>Alamat Tetap Sekolah</label>
+              <textarea id="settingAlamatSekolah" rows="2">17070 Pasir Mas, Kelantan.</textarea>
+              <label>No. Telefon Rasmi</label>
+              <input id="settingTelefon" value="09 -7909195">
+              <label>Email Rasmi Sekolah</label>
+              <input id="settingEmail" type="email" value="smuakhairiahbs@yik.edu.my">
+              <div class="setting-action">
+                <button onclick="saveSettings()">Simpan Maklumat Institusi</button>
+              </div>
+            </div>
+            <!-- 2. Kawalan Tingkatan -->
+            <div id="partitionPengurusanTingkatan" class="setting-partition">
+              <h3><span class="partition-no">2</span>Kawalan Tingkatan</h3>
+              <p>Tambah dan hapus tingkatan hanya boleh dibuat oleh admin melalui paparan ini.</p>
+              <label>Nama Tingkatan Baharu</label>
+              <input id="newClassName" placeholder="Contoh: Tingkatan 6 - IS">
+              <div class="setting-action">
+                <button type="button" onclick="addClassFromSetting()">Tambah Tingkatan</button>
+              </div>
+              <label>Pilih Tingkatan Untuk Dihapus</label>
+              <input id="deleteClassSelect" autocomplete="off" placeholder="Pilih / taip nama tingkatan">
+              <div class="setting-action">
+                <button type="button" class="danger" onclick="deleteClassFromSetting()">Hapus Tingkatan</button>
+              </div>
+            </div>
+            <!-- 3. Tetapan Tandatangan Cetakan -->
+            <div id="partitionGuruAlQuran" class="setting-partition">
+              <h3><span class="partition-no">3</span>Tetapan Tandatangan Cetakan</h3>
+              <p>Nama di sini akan digunakan secara automatik pada paparan cetak senarai mengikut tingkatan. Jika tambah tingkatan baharu di Kawalan Tingkatan, medan guru akan muncul di sini secara automatik.</p>
+              <label style="margin-bottom:6px">Guru Al-Quran Tingkatan</label>
+              <div id="teacherSettingGrid" class="teacher-setting-grid"></div>
+              
+              <!-- PERTAMA: TUKAR KEPADA "Nama Penyemak" -->
+              <label style="margin-top:14px">Nama Penyemak</label>
+              <input id="settingNamaPegawaiPenyemak" placeholder="Nama Penyemak">
+              
+              <label style="margin-top:10px">Pengetua</label>
+              <input id="settingNamaPengetuaPengesah" placeholder="Nama Pengetua">
+              
+              <div class="setting-action">
+                <button type="button" onclick="saveGuruAndPengesahanCombined()">Simpan Tetapan Tandatangan</button>
+              </div>
+            </div>
+            <!-- 4. Pengurusan Pengesahan -->
+            <div id="partitionPengesahan" class="setting-partition">
+              <h3><span class="partition-no">4</span>Pengurusan Pengesahan</h3>
+              <!-- PERTAMA: TUKAR KEPADA "Jawatan Penyemak" -->
+              <label>Jawatan Penyemak</label>
+              <input id="settingJawatanPegawaiPenyemak" value="PK Pentadbiran">
+              <div class="setting-action">
+                <button type="button" onclick="savePengesahanOnly()">Simpan Pengesahan</button>
+              </div>
+            </div>
+            <!-- 5. Sandaran JSON -->
+            <div id="partitionSandaranJson" class="setting-partition">
+              <h3><span class="partition-no">5</span>Sandaran JSON</h3>
+              <p>Eksport atau import fail sandaran pangkalan data dalam format JSON.</p>
+              <div class="btn-row">
+                <button type="button" onclick="eksportSandaranJson()">Eksport JSON</button>
+                <button id="importJsonBtn" type="button" class="secondary">Import JSON</button>
+                <input id="importJsonFile" type="file" accept=".json,application/json" style="display:none">
+              </div>
+            </div>
+            <!-- 6. Kelulusan Akaun Guru -->
+            <div class="setting-partition admin-only">
+              <h3><span class="partition-no">6</span>Kelulusan Akaun Guru</h3>
+              <p>Tekan Luluskan untuk mengaktifkan akaun guru. Gunakan Hapus Akaun jika guru tidak lagi menggunakan sistem.</p>
+              <div class="btn-row"><button onclick="renderApprovalPanel()">Muat Semula Senarai Akaun</button></div>
+              <div id="approvalList" class="teacher-setting-grid" style="margin-top:14px"></div>
+            </div>
+            <!-- KETIGA: BAHAGIAN 7 DIHAPUSKAN TERUS -->
+            <div class="sispaq-info-final">
+              <div class="sispaq-copyright">SisPAQ © asri/smuak 2026</div>
+            </div>
+          </div>
+        </section>
+        <section id="manual" class="page">
+          <div class="card"><div class="manual-tabs"><button type="button" class="manual-tab" onclick="showManualSection('manualKegunaan',this)">Kegunaan SisPAQ</button><button type="button" class="manual-tab secondary" onclick="showManualSection('manualSoalan',this)">Soalan Lazim</button><button type="button" class="manual-tab secondary" onclick="showManualSection('manualSistem',this)">Sistem SisPAQ</button></div>
+            <div id="manualKegunaan" class="manual-box active"><h3>Kegunaan SisPAQ</h3>
+            <ol><li>Log masuk menggunakan alamat e-mel dan kata laluan yang telah didaftarkan. Akaun guru baharu perlu mendapat kelulusan pentadbir sebelum boleh digunakan.</li><li>Semak ringkasan prestasi pada halaman Utama.</li><li>Buka Borang Prestasi, pilih tingkatan, lengkapkan maklumat laporan dan tekan Simpan.</li><li>Buka Prestasi Hafazan dan pilih tingkatan untuk melihat rekod pelajar.</li><li>Tekan Tambah Rekod (Pelajar Baharu), kemudian masukkan nama pelajar, kategori sukatan, muka surat semasa, peratus bulanan dan nama guru. Guru mengisi peratus bulanan sendiri dan sistem akan menentukan ulasan secara automatik. Nilai 100% memerlukan pilihan status.</li><li>Gunakan Carian Pintar untuk mencari rekod berdasarkan nama, juzu’, muka surat, surah, peratus, ulasan atau guru.</li><li>Gunakan ikon Kemas Kini (Pelajar Lama), Pratonton atau Hapus untuk mengurus rekod.</li><li>Tekan Cetak Prestasi untuk mencetak laporan atau Muat Turun Excel untuk menyimpan data.</li></ol></div>
+            <div id="manualSoalan" class="manual-box"><h3>Soalan Lazim</h3>
+            <ul><li><b>Bagaimanakah cara mengemas kini rekod pelajar lama?</b><br>Tekan ikon Kemas Kini (ikon pen) pada baris nama pelajar. Ubah maklumat yang diperlukan, kemudian tekan Simpan.</li><li><b>Bagaimanakah peratus dan ulasan ditentukan?</b><br>Guru mengisi peratus bulanan sendiri dan sistem menentukan ulasan secara automatik: 0% ialah Tahsin; 1% hingga 49% ialah Lemah; 50% hingga 74% ialah Sederhana; 75% hingga 94% ialah Baik; 95% hingga 99% ialah Cemerlang. Pada 100%, guru mesti memilih Tamat Sukatan, Tamat 15 Juzu’ atau Khatam 30 Juzu’.</li><li><b>Mengapakah rekod pelajar tidak dipaparkan?</b><br>Pastikan tingkatan yang betul telah dipilih. Kosongkan ruangan Carian Pintar jika carian terdahulu masih digunakan.</li><li><b>Bagaimanakah cara melihat atau mencetak laporan individu?</b><br>Tekan ikon Pratonton (ikon mata) pada baris pelajar. Semak maklumat yang dipaparkan, kemudian tekan Cetak.</li><li><b>Bagaimanakah cara menyimpan data prestasi?</b><br>Tekan Muat Turun Excel untuk menyimpan data.</li><li><b>Siapakah yang boleh membuka halaman Tetapan?</b><br>Halaman Tetapan hanya boleh diakses oleh pentadbir sistem.</li><li><b>Bagaimanakah cara menetapkan semula kata laluan?</b><br>Masukkan alamat e-mel pada halaman log masuk, kemudian pilih Lupa Kata Laluan? Pautan tetapan semula akan dihantar melalui e-mel.</li></ul></div>
+            <div id="manualSistem" class="manual-box"><h3>Sistem SisPAQ</h3><p>SisPAQ (Sistem Prestasi Al-Quran) dibangunkan sebagai platform digital untuk membantu pihak sekolah merekod, menyimpan, memantau dan mengurus prestasi hafazan Al-Quran pelajar secara lebih sistematik, teratur dan efisien. Sistem ini memudahkan guru mengemas kini pencapaian pelajar, membuat carian rekod, menyediakan analisis prestasi serta menghasilkan laporan bagi tujuan pemantauan, dokumentasi dan tindakan susulan pihak sekolah.</p><p>Semoga SisPAQ dimanfaatkan dengan penuh tanggungjawab demi meningkatkan kecemerlangan al - Quran pelajar tahfiz.</p><p>Pengetua<br>Oktober 2026M / Rabiul Akhir 1448H</p><div class="sispaq-copyright">SisPAQ © asri/smuak 2026</div></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div></div>
+  <div class="modal-overlay" id="tambahRekodModal">
+    <div class="modal-box">
+      <span class="modal-close" onclick="tutupBorangTambahRekod()">&times;</span>
+      <h3>Tambah / Kemaskini Rekod Pelajar</h3>
+      <input type="hidden" id="editId">
+      <label>Tingkatan</label>
+      <select id="modalTambahTingkatan"></select>
+      <label>Nama Pelajar</label>
+      <input id="modalTambahNamaPelajar" autocomplete="off">
+      
+      <label>Kategori Sukatan</label>
+      <select id="modalTambahKategori">
+        <option value="30">30 Juzu' (Sasaran: 581 MS)</option>
+        <option value="15">15 Juzu' (Sasaran: 302 MS)</option>
+      </select>
+      <label>Muka Surat Semasa</label>
+      <input id="modalTambahMukaSurat" type="number" min="1" max="604" oninput="kemasKiniKedudukanHafazan()">
+      
+      <label>Peratus (%)</label>
+      <input id="modalTambahPeratus" type="number" min="0" max="100" step="1" inputmode="numeric" oninput="kemasKiniUlasanManual()">
+      
+      <label>Surah (Automatik)</label>
+      <input id="modalTambahSurah" readonly style="background-color: #f1f5f9; cursor: not-allowed;">
+      <label>Ulasan (Automatik)</label><input id="modalTambahUlasan" readonly style="background-color: #f1f5f9; cursor: not-allowed;"><div id="modalTambahStatus100Wrap" style="display:none"><label>Status 100%</label><select id="modalTambahStatus100" onchange="kemasKiniUlasanManual()"><option value="">-- Pilih status 100% --</option><option value="Tamat Sukatan">Tamat Sukatan</option><option value="Tamat 15 Juzu'">Tamat 15 Juzu'</option><option value="Khatam 30 Juzu'">Khatam 30 Juzu'</option></select></div>
+      <label>Nama Guru</label>
+      <input id="modalTambahNamaGuru">
+      <div class="btn-row">
+        <button class="secondary" onclick="tutupBorangTambahRekod()">Batal</button>
+        <button onclick="simpanBorangTambahRekod()">Simpan</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-overlay" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
+    <div class="modal-box preview-modal-box">
+      <div class="preview-toolbar">
+        <h3 id="previewTitle">Pratonton Rekod Individu</h3>
+        <button class="print" onclick="cetakPratonton()">Cetak</button>
+        <button class="secondary" onclick="tutupPratonton()">Tutup</button>
+      </div>
+      <div class="preview-stage"><div id="previewPaperWrap"><div id="previewPaper" class="preview-paper"><div id="previewContent"></div></div></div></div>
+    </div>
+  </div>
+  <div id="printSenaraiArea" class="print-only-report"></div>
+  
+  <div class="modal-overlay" id="systemMessageModal" role="dialog" aria-modal="true" aria-labelledby="systemMessageTitle">
+    <div class="modal-box">
+      <h3 id="systemMessageTitle">Makluman Sistem</h3>
+      <p id="systemMessageText"></p>
+      <input id="systemMessageInput" type="text" style="display:none">
+      <div id="systemMessageActions">
+        <button id="systemMessageCancel" class="secondary" type="button">Batal</button>
+        <button id="systemMessageOk" type="button">OK</button>
+      </div>
+    </div>
+  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged, signInWithCredential, EmailAuthProvider } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+    import {
+      getFirestore,
+      collection,
+      doc,
+      setDoc,
+      addDoc,
+      updateDoc,
+      deleteDoc,
+      onSnapshot,
+      query,
+      orderBy,
+      serverTimestamp,
+      getDoc, getDocs
+    } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyA_55uhkaTm7vN9UojOeluRD8XW-oNyNHY",
+      authDomain: "sispaq-c966b.firebaseapp.com",
+      projectId: "sispaq-c966b",
+      storageBucket: "sispaq-c966b.firebasestorage.app",
+      messagingSenderId: "164392987052",
+      appId: "1:164392987052:web:dd64d84e4721e4cc323209"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    const SUPER_ADMIN_EMAILS = ['solwt60@gmail.com','asrimohdzain@gmail.com','smuakhairiahbs@yik.edu.my','harithcy@gmail.com'].map(e=>String(e).trim().toLowerCase()).filter(Boolean);
+    function cleanAuth(v){ 
+      return String(v==null?'':v).replace(/[\u200B-\u200D\uFEFF]/g, '').trim(); 
+    }
+    function setAuthButtonLoading(btn,text){ 
+      if(!btn)return; 
+      btn.dataset.oldHtml = btn.dataset.oldHtml || btn.innerHTML; 
+      btn.innerHTML = text || 'Memproses...'; 
+      btn.disabled = true; 
+    }
+    function clearAuthButtonLoading(btn){ 
+      if(!btn)return; 
+      btn.innerHTML = btn.dataset.oldHtml || 'LOG MASUK'; 
+      btn.disabled = false; 
+    }
+    window.toggleInputVisibility=function(inputId,btn,visibleType,event){
+      if(event){event.preventDefault();event.stopPropagation();}
+      const input=byId(inputId);if(!input)return false;
+      const isEmail=visibleType==='email';
+      let opened=false;
+      if(isEmail){
+        opened=!input.classList.contains('email-visible');
+        input.classList.remove(opened?'email-mask':'email-visible');
+        input.classList.add(opened?'email-visible':'email-mask');
+        input.type='email';
+        input.style.webkitTextSecurity=opened?'none':'disc';
+        input.style.textSecurity=opened?'none':'disc';
+      }else{
+        opened=input.type==='password';
+        input.type=opened?'text':'password';
+      }
+      if(btn){
+        btn.innerHTML = opened ? `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18"></path><path d="M10.6 6.2A10.7 10.7 0 0 1 12 6c6 0 9.5 6 9.5 6a17 17 0 0 1-3 3.6"></path><path d="M6.2 6.3C3.8 8 2.5 12 2.5 12s3.5 6 9.5 6c1.2 0 2.3-.2 3.3-.6"></path><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"></path></svg>` : `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"></path><circle cx="12" cy="12" r="2.8"></circle></svg>`;
+        btn.setAttribute('aria-label',opened?'Sembunyikan':'Lihat');
+        btn.title=opened?'Sembunyikan':'Lihat';
+      }
+      requestAnimationFrame(()=>{
+        try{ input.focus({preventScroll:true}); const n=input.value.length; if(input.setSelectionRange)input.setSelectionRange(n,n); }catch(e){}
+      });
+      return false;
+    };
+    window.showSignupBox=function(){ byId('loginBox').style.display='none'; byId('signupBox').style.display='block'; };
+    window.showLoginBox=function(){ byId('signupBox').style.display='none'; byId('loginBox').style.display='block'; };
+    async function getCurrentUserProfile(user){
+      user = user || auth.currentUser;
+      if(!user) return null;
+      try {
+        const snap = await getDoc(doc(db,'users_approval',user.uid));
+        if(!snap.exists()) return null;
+        return Object.assign({uid:user.uid, email:String(user.email||'').toLowerCase()}, snap.data());
+      } catch(e) {
+        console.error("Ralat mengambil profil pengguna:", e);
+        return null;
+      }
+    }
+    function applyAdminAccessUi(profile){
+      const role = String(profile && profile.role || '').toLowerCase();
+      const isAdmin = role === 'admin' || role === 'super_admin';
+      document.body.classList.toggle('logged-in-admin', isAdmin);
+      const btn = byId('btn-tetapan');
+      if(btn) btn.style.display = isAdmin ? 'flex' : 'none';
+      return isAdmin;
+    }
+    function enterSystem(profile){
+      byId('authScreen').style.display = 'none';
+      byId('appShell').style.display = 'block';
+      applyAdminAccessUi(profile);
+      initSispaqOnce();
+    }
+    let isSigningUp = false;
+    window.signupUser = async function(btn){
+      const nama = cleanAuth(byId('signupName').value);
+      const email = cleanAuth(byId('signupEmail').value).toLowerCase();
+      const password = cleanAuth(byId('signupPassword').value);
+      if(!nama || !email || !password) return await systemAlert('Sila lengkapkan nama, e-mel dan kata laluan.');
+      
+      setAuthButtonLoading(btn, 'Mendaftar...');
+      isSigningUp = true;
+      try {
+        let userId = '';
+        try {
+          const cred = await createUserWithEmailAndPassword(auth, email, password);
+          userId = cred.user.uid;
+        } catch(regErr) {
+          if(regErr.code === 'auth/email-already-in-use'){
+            const loginCheck = await signInWithEmailAndPassword(auth, email, password).catch(() => null);
+            if(loginCheck && loginCheck.user) {
+              userId = loginCheck.user.uid;
+            } else {
+              clearAuthButtonLoading(btn);
+              isSigningUp = false;
+              return await systemAlert('E-mel ini telah berdaftar dalam sistem sebelumnya. Sila log masuk terus atau gunakan fungsi "Lupa Kata Laluan" jika anda ingin menetapkan semula kata laluan.');
+            }
+          } else {
+            throw regErr;
+          }
+        }
+        if(userId) {
+          await setDoc(doc(db, 'users_approval', userId), {
+            uid: userId,
+            nama: nama,
+            email: email,
+            status: 'menunggu',
+            role: 'guru',
+            createdAt: serverTimestamp()
+          }, {merge: true});
+        }
+        
+        await signOut(auth);
+        byId('signupName').value = '';
+        byId('signupEmail').value = '';
+        byId('signupPassword').value = '';
+        showLoginBox();
+        clearAuthButtonLoading(btn);
+        
+        await systemAlert('Pendaftaran berjaya dihantar. Akaun anda sedang menunggu kelulusan pentadbir.');
+      } catch(e) {
+        console.error("Ralat Pendaftaran:", e);
+        let msg = e.message || 'Pendaftaran gagal.';
+        if(e.code === 'auth/weak-password'){
+          msg = 'Kata laluan mestilah sekurang-kurangnya 6 aksara.';
+        }
+        await systemAlert(msg);
+      } finally {
+        isSigningUp = false;
+        clearAuthButtonLoading(btn);
+      }
+    };
+    let manualLoginInProgress = false;
+    window.loginUser = async function(btn){
+      const email = cleanAuth(byId('loginEmail').value).toLowerCase();
+      const password = cleanAuth(byId('loginPassword').value);
+      if(!email || !password) return await systemAlert('Sila masukkan e-mel dan kata laluan.');
+      
+      setAuthButtonLoading(btn, 'Log masuk...');
+      manualLoginInProgress = true;
+      try {
+        const cred = await signInWithEmailAndPassword(auth, email, password);
+        
+        if(SUPER_ADMIN_EMAILS.includes(email)){
+          const superAdminData = {uid: cred.user.uid, nama: 'Super Admin', email: email, status: 'aktif', role: 'super_admin'};
+          await setDoc(doc(db, 'users_approval', cred.user.uid), Object.assign({}, superAdminData, {updatedAt: serverTimestamp()}), {merge: true});
+          enterSystem(superAdminData);
+          return;
+        }
+        
+        const profile = await getCurrentUserProfile(cred.user);
+        if(!profile){
+          await signOut(auth);
+          await systemAlert('Akaun anda belum didaftarkan sepenuhnya atau tidak wujud.');
+          return;
+        }
+        
+        if(profile.status !== 'aktif'){
+          await signOut(auth);
+          await systemAlert('Akaun anda sedang menunggu kelulusan pentadbir.');
+          return;
+        }
+        enterSystem(profile);
+      } catch(e) {
+        console.error("Ralat Log Masuk:", e);
+        let msg = 'Log masuk gagal. Sila semak semula e-mel dan kata laluan anda.';
+        if (e.code === 'auth/invalid-credential' || e.code === 'auth/wrong-password' || e.code === 'auth/user-not-found' || e.code === 'auth/invalid-email') {
+          msg = 'E-mel atau kata laluan tidak sah.';
+        }
+        await systemAlert(msg);
+      } finally {
+        manualLoginInProgress = false;
+        clearAuthButtonLoading(btn);
+      }
+    };
+    window.resetPassword = async function(){
+      const email = cleanAuth(byId('loginEmail').value).toLowerCase();
+      if(!email) return await systemAlert('Sila masukkan e-mel dahulu.');
+      try {
+        await sendPasswordResetEmail(auth, email);
+        await systemAlert('Pautan tetapan semula kata laluan telah dihantar ke e-mel.');
+      } catch(e) {
+        await systemAlert(e.message || 'Permintaan gagal.');
+      }
+    };
+    window.logoutUser = async function(){
+      await signOut(auth);
+      location.reload();
+    };
+    window.renderApprovalPanel = async function(){
+      const box = byId('approvalList');
+      if(!box) return;
+      try {
+        const s = await getDocs(query(collection(db, 'users_approval'), orderBy('createdAt', 'desc')));
+        const list = s.docs.map(d => Object.assign({id: d.id}, d.data()));
+        box.innerHTML = list.length ? list.map(u => 
+          '<div class="summary-card"><b>' + escapeText(u.nama || '-') + '</b><br>' + 
+          escapeText(u.email || '-') + '<br>Status: <b>' + escapeText(u.status || '-') + '</b>' +
+          '<div class="btn-row">' + 
+          (u.status === 'menunggu' ? '<button onclick="approveUser(\'' + u.id + '\')">Luluskan</button>' : '') + 
+          '<button class="danger" onclick="deleteApprovalUser(\'' + u.id + '\')">Hapus Akaun</button></div></div>'
+        ).join('') : 'Tiada permohonan akaun.';
+      } catch(e) {
+        console.error("Ralat memuatkan panel kelulusan:", e);
+      }
+    };
+    window.approveUser = async function(id){
+      await updateDoc(doc(db, 'users_approval', id), {status: 'aktif', approvedAt: serverTimestamp()});
+      await systemAlert('Akaun berjaya diluluskan.');
+      renderApprovalPanel();
+    };
+    window.deleteApprovalUser = async function(id){
+      if(await systemConfirm('Adakah anda pasti mahu hapus akaun ini daripada pangkalan data?')){
+        try {
+          await deleteDoc(doc(db, 'users_approval', id));
+          await systemAlert('Akaun profil berjaya dihapus daripada Firestore. (Jika akaun ini didaftarkan semula kelak, sistem akan membenarkan e-mel yang sama digunakan secara automatik).', 'Berjaya');
+          renderApprovalPanel();
+        } catch(e) {
+          console.error("Ralat memadam akaun:", e);
+          await systemAlert('Gagal memadam akaun: ' + (e.message || e));
+        }
+      }
+    };
+    onAuthStateChanged(auth, async user => {
+      if(isSigningUp) return;
+      if(!user) {
+        byId('authScreen').style.display = 'flex';
+        byId('appShell').style.display = 'none';
+        applyAdminAccessUi(null);
+        return;
+      }
+      if(manualLoginInProgress) return;
+      const email = String(user.email || '').toLowerCase();
+      if(SUPER_ADMIN_EMAILS.includes(email)){
+        enterSystem({uid: user.uid, nama: 'Super Admin', email: email, status: 'aktif', role: 'super_admin'});
+        return;
+      }
+      const profile = await getCurrentUserProfile(user);
+      if(profile && profile.status === 'aktif'){
+        enterSystem(profile);
+      } else {
+        await signOut(auth);
+        byId('authScreen').style.display = 'flex';
+        byId('appShell').style.display = 'none';
+        applyAdminAccessUi(null);
+      }
+    });
+    const months = [
+      "Januari","Februari","Mac","April","Mei","Jun",
+      "Julai","Ogos","September","Oktober","November","Disember"
+    ];
+    let classes = [
+      "Tingkatan 1 - IS",
+      "Tingkatan 2 - IS",
+      "Tingkatan 3 - IS",
+      "Tingkatan 4 - IS",
+      "Tingkatan 5 - IS"
+    ];
+    let rows = [];
+    let currentClass = "";
+    let currentGeneralClass = "SEMUA";
+    function byId(id) {
+      return document.getElementById(id);
+    }
+    function systemDialog(message, title, mode) {
+      return new Promise(resolve => {
+        const modal = byId("systemMessageModal"), heading = byId("systemMessageTitle"), text = byId("systemMessageText"), input = byId("systemMessageInput"), cancel = byId("systemMessageCancel"), ok = byId("systemMessageOk");
+        heading.textContent = title || "Makluman Sistem";
+        text.textContent = String(message == null ? "" : message);
+        input.value = "";
+        input.style.display = mode === "prompt" ? "block" : "none";
+        cancel.style.display = mode === "alert" ? "none" : "inline-block";
+        modal.classList.add("active");
+        const finish = value => { modal.classList.remove("active"); ok.removeEventListener("click", onOk); cancel.removeEventListener("click", onCancel); document.removeEventListener("keydown", onKey); resolve(value); };
+        const onOk = () => finish(mode === "prompt" ? input.value : mode === "confirm" ? true : undefined);
+        const onCancel = () => finish(mode === "prompt" ? null : false);
+        const onKey = event => { if (event.key === "Enter") { event.preventDefault(); onOk(); } else if (event.key === "Escape") { event.preventDefault(); mode === "alert" ? onOk() : onCancel(); } };
+        ok.addEventListener("click", onOk); cancel.addEventListener("click", onCancel); document.addEventListener("keydown", onKey);
+        if (mode === "prompt") input.focus(); else ok.focus();
+      });
+    }
+    function systemAlert(message, title) { return systemDialog(message, title, "alert"); }
+    function systemConfirm(message, title) { return systemDialog(message, title, "confirm"); }
+    function systemPrompt(message, title) { return systemDialog(message, title, "prompt"); }
+    function escapeText(v) {
+      return String(v || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+    }
+    function setDateBadge() {
+      const d = new Date();
+      byId("dateBadge").innerText =
+        d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear();
+      
+      byId("tarikh").value = d.toISOString().slice(0, 10);
+      byId("bulan").innerHTML = months
+        .map(m => "<option>" + m + "</option>")
+        .join("");
+      byId("bulan").value = months[d.getMonth()];
+    }
+    
+    window.showPageLegacy = function(id) {
+      document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+      document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+      byId(id).classList.add("active");
+      const btn = byId("btn-" + id);
+      if (btn) btn.classList.add("active");
+      if (id === "umum") renderGeneral();
+      
+      setTimeout(() => {
+        const targetCard = document.querySelector("#" + id + " .card") || byId(id);
+        if (targetCard) {
+          targetCard.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 50);
+    };
+    function renderButtons() {
+      byId("classButtons").innerHTML = classes.map(c =>
+        "<button type=\"button\" data-class-name=\"" + encodeURIComponent(c) + "\">" + escapeText(c) + "</button>"
+      ).join(" ");
+      document.querySelectorAll("#classButtons button").forEach(button => {
+        button.dataset.className = decodeURIComponent(button.dataset.className);
+      });
+      const all = ["SEMUA"].concat(classes);
+      byId("generalClassButtons").innerHTML = all.map(c =>
+        "<button class=\"" + (c === currentGeneralClass ? "general-class-active" : "") + "\" onclick=\"selectGeneralClass('" + c + "')\">" +
+        (c === "SEMUA" ? "Semua Tingkatan" : escapeText(c)) +
+        "</button>"
+      ).join(" ");
+      byId("deleteClassSelect").value = "";
+      byId("modalTambahTingkatan").innerHTML = classes.map(c =>
+        "<option>" + escapeText(c) + "</option>"
+      ).join("");
+    }
+    byId('classButtons').onclick=function(e){const b=e.target.closest('button[data-class-name]');if(!b)return;e.preventDefault();window.openClass(b.dataset.className);};
+    window.openClassLegacy = function(name) {
+      currentClass = name;
+      byId("formCard").style.display = "block";
+      byId("formTitle").innerText = "Borang Prestasi - " + name;
+    };
+    window.selectGeneralClass = function(name) {
+      currentGeneralClass = name;
+      renderGeneral();
+    };
+    function getJuzu(ms, kategori) {
+      ms = Number(ms);
+      if (!Number.isFinite(ms) || ms < 1 || ms > 604) return "";
+      if (ms >= 582) return "Juzu' 30";
+      if (ms <= 21) return "Juzu' 1";
+      return "Juzu' " + Math.min(29, Math.floor((ms - 22) / 20) + 2);
+    }
+    const surahPages = [
+      ["Al-Fatihah",1],["Al-Baqarah",2],["Ali Imran",50],["An-Nisa",77],["Al-Maidah",107],["Al-Anam",128],["Al-Araf",151],["Al-Anfal",177],["At-Taubah",187],["Yunus",208],["Hud",221],["Yusuf",235],["Ar-Rad",249],["Ibrahim",255],["Al-Hijr",262],["An-Nahl",267],["Al-Isra",282],["Al-Kahf",293],["Maryam",305],["Taha",312],["Al-Anbiya",322],["Al-Hajj",332],["Al-Muminun",342],["An-Nur",350],["Al-Furqan",359],["Ash-Shuara",367],["An-Naml",377],["Al-Qasas",385],["Al-Ankabut",396],["Ar-Rum",404],["Luqman",411],["As-Sajdah",415],["Al-Ahzab",418],["Saba",428],["Fatir",434],["Yasin",440],["As-Saffat",446],["Sad",453],["Az-Zumar",458],["Ghafir",467],["Fussilat",477],["Ash-Shura",483],["Az-Zukhruf",489],["Ad-Dukhan",496],["Al-Jathiyah",499],["Al-Ahqaf",502],["Muhammad",507],["Al-Fath",511],["Al-Hujurat",515],["Qaf",518],["Adh-Dhariyat",520],["At-Tur",523],["An-Najm",526],["Al-Qamar",528],["Ar-Rahman",531],["Al-Waqiah",534],["Al-Hadid",537],["Al-Mujadilah",542],["Al-Hashr",545],["Al-Mumtahanah",549],["As-Saff",551],["Al-Jumuah",553],["Al-Munafiqun",554],["At-Taghabun",556],["At-Talaq",558],["At-Tahrim",560],["Al-Mulk",562],["Al-Qalam",564],["Al-Haqqah",566],["Al-Maarij",568],["Nuh",570],["Al-Jinn",572],["Al-Muzzammil",574],["Al-Muddaththir",575],["Al-Qiyamah",577],["Al-Insan",578],["Al-Mursalat",580],["An-Naba",582],["An-Naziat",583],["Abasa",585],["At-Takwir",586],["Al-Infitar",587],["Al-Mutaffifin",587],["Al-Inshiqaq",589],["Al-Buruj",590],["At-Tariq",591],["Al-Ala",591],["Al-Ghashiyah",592],["Al-Fajr",593],["Al-Balad",594],["Ash-Shams",595],["Al-Lail",595],["Ad-Duha",596],["Ash-Sharh",596],["At-Tin",597],["Al-Alaq",597],["Al-Qadr",598],["Al-Bayyinah",598],["Az-Zalzalah",599],["Al-Adiyat",599],["Al-Qariah",600],["At-Takathur",600],["Al-Asr",601],["Al-Humazah",601],["Al-Fil",601],["Quraysh",602],["Al-Maun",602],["Al-Kawthar",602],["Al-Kafirun",603],["An-Nasr",603],["Al-Masad",603],["Al-Ikhlas",604],["Al-Falaq",604],["An-Nas",604]
+    ];
+    function getSurah(ms) {
+      ms = Number(ms || 0);
+      let s = "";
+      surahPages.forEach(x => {
+        if (ms >= x[1]) s = x[0];
+      });
+      return s;
+    }
+    function getUlasan(p, override, kategori, ms, tingkatan) {
+      p = Math.max(0, Math.min(100, Math.round(Number(p) || 0)));
+      if (p === 100) {
+        const sah = ["Tamat Sukatan", "Tamat 15 Juzu'", "Khatam 30 Juzu'"];
+        return sah.indexOf(override) >= 0 ? override : "Tamat Sukatan";
+      }
+      if (p >= 95) return "Cemerlang";
+      if (p >= 75) return "Baik";
+      if (p >= 50) return "Sederhana";
+      if (p >= 1) return "Lemah";
+      return "Tahsin";
+    }
+    function normalisasiUlasan(v){ const s=String(v||'').trim(); return /^LEMAH\s*\*$/i.test(s)?'Lemah':s; }
+    function sortPrestasiByUlasan(data){
+      const order={'KHATAM 30 JUZU\'':0,'TAMAT 15 JUZU\'':1,'TAMAT SUKATAN':2,CEMERLANG:3,BAIK:4,SEDERHANA:5,LEMAH:6,TAHSIN:7};
+      return data.map((r,i)=>({r,i})).sort((a,b)=>{
+        const ak=normalisasiUlasan(a.r.ulasan||getUlasan(a.r.peratus,null,a.r.kategori,a.r.ms)).toUpperCase(),
+              bk=normalisasiUlasan(b.r.ulasan||getUlasan(b.r.peratus,null,b.r.kategori,b.r.ms)).toUpperCase();
+        return (order[ak]??99)-(order[bk]??99)||a.i-b.i;
+      }).map(x=>x.r);
+    }
+    async function loadRows() {
+      try {
+        const q = query(collection(db, "prestasiHafazan"), orderBy("createdAt", "asc"));
+        onSnapshot(q, snap => {
+          rows = sortPrestasiByUlasan(snap.docs.map(d => {
+            const data = d.data();
+            const nilaiAsal = d.data().ulasan;
+            if (normalisasiUlasan(nilaiAsal) === 'Lemah' && String(nilaiAsal || '').trim() !== 'Lemah') {
+              Promise.resolve(updateDoc(doc(db,'prestasiHafazan',d.id),{ulasan:'Lemah',updatedAt:serverTimestamp()})).catch(e=>console.error('normalisasi ulasan lama',e));
+            }
+            return Object.assign({id:d.id}, data, {ulasan: normalisasiUlasan(data.ulasan)});
+          }));
+          renderGeneral();
+          updateStats();
+        }, err => {
+          console.error(err);
+          byId("generalBody").innerHTML =
+            "<tr><td colspan='11' style='text-align:center;color:#b91c1c'>Ralat Firestore: " +
+            escapeText(err.message) +
+            "</td></tr>";
+        });
+      } catch (e) {
+        console.error(e);
+        await systemAlert("Ralat sambungan Firebase: " + e.message);
+      }
+    }
+    window.renderGeneralLegacy = function() {
+      let data = rows.slice();
+      if (currentGeneralClass !== "SEMUA") {
+        data = data.filter(r => r.tingkatan === currentGeneralClass);
+      }
+      const q = (byId("smartSearchInput").value || "").toLowerCase();
+      if (q) {
+        data = data.filter(r =>
+          [r.nama, r.kategori, r.juzu, r.ms, r.surah, Math.round(Number(r.peratus)||0), normalisasiUlasan(r.ulasan), r.guru]
+            .join(" ")
+            .toLowerCase()
+            .includes(q)
+        );
+      }
+      byId("generalBody").innerHTML = data.length
+        ? data.map((r, i) =>
+          "<tr>" +
+          "<td>" + (i + 1) + "</td>" +
+          "<td>" + escapeText(r.tingkatan) + "</td>" +
+          "<td>" + escapeText(r.nama) + "</td>" +
+          "<td>" + escapeText(r.kategori === "15" ? "15 Juzu'" : "30 Juzu'") + "</td>" +
+          "<td>" + escapeText(getJuzu(r.ms, r.kategori) || r.juzu) + "</td>" +
+          "<td>" + escapeText(r.ms) + "</td>" +
+          "<td>" + escapeText(r.surah) + "</td>" +
+          "<td>" + escapeText(Math.round(Number(r.peratus)||0)) + "</td>" +
+          "<td>" + escapeText(normalisasiUlasan(r.ulasan)) + "</td>" +
+          "<td>" + escapeText(r.guru) + "</td>" +
+          "<td><button class='secondary' onclick=\"editRecord('" + r.id + "')\">Edit</button> " +
+          "<button class='danger' onclick=\"deleteRecordNow('" + r.id + "')\">Hapus</button></td>" +
+          "</tr>"
+        ).join("")
+        : "<tr><td colspan='11' style='text-align:center'>Tiada rekod.</td></tr>";
+    };
+    function updateStats() {
+      let statRows=[]; const keys=classes.slice(); rows.forEach(r=>{if(r.tingkatan&&keys.indexOf(r.tingkatan)<0)keys.push(r.tingkatan)}); keys.forEach(k=>{const info=(window.borangInfoCache||{})[k];statRows=statRows.concat(info?tapisTempoh(rows,k,{bulan:String(info.bulan||''),tahun:String(info.tahun||'')}):rows.filter(r=>r.tingkatan===k))});
+      const total = statRows.length;
+      const khatam30 = statRows.filter(r => normalisasiUlasan(r.ulasan).toUpperCase() === "KHATAM 30 JUZU'").length;
+      const tamat15 = statRows.filter(r => normalisasiUlasan(r.ulasan).toUpperCase() === "TAMAT 15 JUZU'").length;
+      const tamatSukatan = statRows.filter(r => normalisasiUlasan(r.ulasan).toUpperCase() === "TAMAT SUKATAN").length;
+      byId("statJumlah").innerText = total;
+      byId("statKhatam30").innerText = khatam30;
+      byId("statPeratusKhatam30").innerText = (total ? Math.round(khatam30 / total * 100) : 0) + "%";
+      byId("statTamat15").innerText = tamat15;
+      byId("statPeratusTamat15").innerText = (total ? Math.round(tamat15 / total * 100) : 0) + "%";
+      byId("statTamatSukatan").innerText = tamatSukatan;
+      byId("statPeratusTamatSukatan").innerText = (total ? Math.round(tamatSukatan / total * 100) : 0) + "%";
+    }
+    window.resetFormLegacy = function() {
+      byId("sukatanBulan").value = "";
+      byId("sukatanTahun").value = "";
+      byId("namaGuru").value = "";
+    };
+    window.saveBorangInfo = async function() {
+      if (!currentClass) return await systemAlert("Sila pilih Borang Prestasi.");
+      await setDoc(doc(db, "borangInfo", currentClass), {
+        tingkatan: currentClass,
+        bulan: byId("bulan").value,
+        tahun: byId("tahun").value,
+        sukatanBulan: byId("sukatanBulan").value,
+        sukatanTahun: byId("sukatanTahun").value,
+        tarikh: byId("tarikh").value,
+        namaGuru: byId("namaGuru").value,
+        updatedAt: serverTimestamp()
+      }, { merge: true });
+      await systemAlert("Borang Prestasi berjaya disimpan.");
+    };
+    
+    window.kemasKiniKedudukanHafazan = function() {
+      var ms = Number(document.getElementById("modalTambahMukaSurat").value);
+      document.getElementById("modalTambahSurah").value = getSurah(ms);
+    };
+    window.kemasKiniUlasanManual = function() {
+      var input = document.getElementById("modalTambahPeratus");
+      var ulasan = document.getElementById("modalTambahUlasan");
+      var status = document.getElementById("modalTambahStatus100");
+      var wrap = document.getElementById("modalTambahStatus100Wrap");
+      if (input.value === "") { ulasan.value = ""; status.value = ""; wrap.style.display = "none"; return; }
+      var p = Math.max(0, Math.min(100, Math.round(Number(input.value) || 0)));
+      input.value = p;
+      if (p === 100) {
+        wrap.style.display = '';
+        ulasan.value = ['Tamat Sukatan', "Tamat 15 Juzu'", "Khatam 30 Juzu'"].indexOf(status.value) !== -1 ? status.value : '';
+      } else {
+        wrap.style.display = 'none';
+        status.value = '';
+        ulasan.value = getUlasan(p);
+      }
+    };
+    window.bukaBorangTambahRekod = async function() {
+      if (currentGeneralClass === "SEMUA") { await systemAlert("Sila pilih satu tingkatan dahulu.", "Makluman Sistem"); return; }
+      byId("editId").value = "";
+      byId("modalTambahNamaPelajar").value = "";
+      byId("modalTambahKategori").value = "30";
+      byId("modalTambahMukaSurat").value = "";
+      byId("modalTambahPeratus").value = "";
+      byId("modalTambahSurah").value = "";
+      byId("modalTambahUlasan").value = ""; byId("modalTambahStatus100").value = ""; byId("modalTambahStatus100Wrap").style.display = "none";
+      byId("modalTambahNamaGuru").value = byId("namaGuru").value || "";
+      byId("modalTambahTingkatan").value = currentGeneralClass;
+      byId("tambahRekodModal").classList.add("active"); kemasKiniKedudukanHafazan(); kemasKiniUlasanManual();
+    };
+    window.tutupBorangTambahRekod = function() {
+      byId("tambahRekodModal").classList.remove("active");
+    };
+    
+    async function tempohAktif(k){
+      const now=new Date();
+      window.borangInfoCache=window.borangInfoCache||{};
+      let info=window.borangInfoCache[k];
+      if(!info) info=await infoKelas(k);
+      return {bulan:String(info&&info.bulan||months[now.getMonth()]),tahun:String(info&&info.tahun||now.getFullYear())};
+    }
+    function tapisTempoh(data,k,period){
+      const kelas=(data||[]).filter(r=>r.tingkatan===k);
+      const bulan=String(period&&period.bulan||'');
+      const tahun=String(period&&period.tahun||'');
+      const tepat=kelas.filter(r=>String(r.bulan||'')===bulan&&String(r.tahun||'')===tahun);
+      if(tepat.length)return tepat;
+      return kelas.filter(r=>!String(r.bulan||'').trim()&&!String(r.tahun||'').trim());
+    }
+    window.simpanBorangTambahRekod = async function() {
+      try {
+        const id = byId("editId").value;
+        const ms = byId("modalTambahMukaSurat").value;
+        const p = byId("modalTambahPeratus").value; const status100 = byId('modalTambahStatus100').value; if (p === "" || !Number.isFinite(Number(p)) || Number(p) < 0 || Number(p) > 100) return await systemAlert("Sila isi peratus antara 0 hingga 100."); const peratusBulat = Math.round(Number(p));
+        const statusSah100 = ['Tamat Sukatan', "Tamat 15 Juzu'", "Khatam 30 Juzu'"];
+        if (peratusBulat === 100 && statusSah100.indexOf(status100) === -1) {
+          await systemAlert('Sila pilih status bagi 100%.');
+          return;
+        }
+        const kat = byId("modalTambahKategori").value;
+        const tingkatanText = String(byId("modalTambahTingkatan").value || "");
+        const period = await tempohAktif(tingkatanText);
+        const tingkatanMatch = tingkatanText.match(/[1-5]/);
+        const tingkatan = tingkatanMatch ? Number(tingkatanMatch[0]) : 0;
+        const data = {
+          tingkatan: byId("modalTambahTingkatan").value,
+          bulan: period.bulan,
+          tahun: period.tahun,
+          nama: byId("modalTambahNamaPelajar").value,
+          kategori: kat,
+          juzu: getJuzu(ms, kat),
+          ms: ms,
+          surah: getSurah(ms),
+          peratus: peratusBulat,
+          ulasan: peratusBulat === 100 ? status100 : getUlasan(peratusBulat),
+          guru: byId("modalTambahNamaGuru").value,
+          updatedAt: serverTimestamp()
+        };
+        if (!data.nama) return await systemAlert("Sila isi nama pelajar.");
+        if (id) {
+          await updateDoc(doc(db, "prestasiHafazan", id), data);
+        } else {
+          const namaKunci=String(data.nama||'').trim().toLowerCase();
+          const sudahAda=rows.some(r=>String(r.nama||'').trim().toLowerCase()===namaKunci&&r.tingkatan===data.tingkatan&&String(r.bulan||'')===data.bulan&&String(r.tahun||'')===data.tahun);
+          if(sudahAda){await systemAlert('Rekod pelajar bagi bulan dan tahun tersebut sudah wujud. Sila gunakan Kemas Kini.');return;}
+          await addDoc(collection(db, "prestasiHafazan"), Object.assign(data, {
+            createdAt: serverTimestamp()
+          }));
+        }
+        tutupBorangTambahRekod();
+      } catch (e) {
+        console.error(e);
+        await systemAlert("Ralat simpan rekod: " + e.message);
+      }
+    };
+    
+    window.editRecord = function(id) {
+      const r = rows.find(x => x.id === id);
+      if (!r) return;
+      byId("editId").value = id;
+      byId("modalTambahTingkatan").value = r.tingkatan;
+      byId("modalTambahNamaPelajar").value = r.nama;
+      byId("modalTambahKategori").value = r.kategori || "30";
+      byId("modalTambahMukaSurat").value = r.ms;
+      byId("modalTambahPeratus").value = Math.round(Number(r.peratus) || 0);
+      byId("modalTambahSurah").value = r.surah || getSurah(r.ms);
+      var statusLama = ["Tamat Sukatan", "Tamat 15 Juzu'", "Khatam 30 Juzu'"].indexOf(normalisasiUlasan(r.ulasan)) >= 0 ? normalisasiUlasan(r.ulasan) : ""; byId("modalTambahStatus100").value = statusLama; kemasKiniKedudukanHafazan(); kemasKiniUlasanManual();
+      byId("modalTambahNamaGuru").value = r.guru;
+      byId("tambahRekodModal").classList.add("active");
+    };
+    
+    window.deleteRecordNow = async function(id) {
+      if (await systemConfirm("Hapus rekod ini?")) {
+        await deleteDoc(doc(db, "prestasiHafazan", id));
+      }
+    };
+    window.addClassFromSetting = async function() {
+      const name = (byId("newClassName").value || "").trim();
+      if (!name) return await systemAlert("Sila masukkan nama tingkatan.");
+      if (classes.includes(name)) return await systemAlert("Tingkatan tersebut sudah wujud.");
+      classes.push(name);
+      try {
+        await setDoc(doc(db,'settings','tingkatan'),{classes:classes,updatedAt:serverTimestamp()},{merge:true});
+        renderButtons(); if (typeof renderTeacherSettings === "function") renderTeacherSettings(); if (typeof updateSelectedTeacher === "function") updateSelectedTeacher();
+        byId("newClassName").value = ""; byId("deleteClassSelect").value = "";
+        await systemAlert("Tambah tingkatan " + name + " berjaya.");
+      } catch (e) {
+        classes = classes.filter(c => c !== name); renderButtons(); if (typeof renderTeacherSettings === "function") renderTeacherSettings();
+        await systemAlert("Gagal menyimpan tingkatan: " + (e.message || e));
+      }
+    };
+    window.deleteClassFromSetting = async function() {
+      const name = (byId("deleteClassSelect").value || "").trim();
+      if (!name) return await systemAlert("Sila taip nama tingkatan untuk dihapus."); if (!classes.includes(name)) return await systemAlert("Nama tingkatan tidak ditemui. Sila taip nama yang tepat.");
+      if (classes.length <= 1) return await systemAlert("Sekurang-kurangnya satu tingkatan mesti dikekalkan.");
+      if (!(await systemConfirm("Adakah anda pasti mahu menghapus tingkatan \"" + name + "\" dan semua sejarah berkaitan?"))) return;
+      const previousClasses = classes.slice(); classes = classes.filter(c => c !== name);
+      try {
+        await setDoc(doc(db,'settings','tingkatan'),{classes:classes,updatedAt:serverTimestamp()},{merge:true});
+        await deleteDoc(doc(db,'borangInfo',name));
+        const prestasiSnap = await getDocs(query(collection(db,'prestasiHafazan')));
+        for (const item of prestasiSnap.docs) { if (String((item.data()||{}).tingkatan||"") === name) await deleteDoc(doc(db,'prestasiHafazan',item.id)); }
+        delete guruAlQuranMap[name]; await setDoc(doc(db,'settings','guruAlQuran'),{guruMap:guruAlQuranMap,updatedAt:serverTimestamp()},{merge:true});
+        rows = rows.filter(r => r.tingkatan !== name); if (currentGeneralClass === name) currentGeneralClass = "SEMUA"; if (currentClass === name) { currentClass = ""; byId("formCard").style.display = "none"; }
+        renderButtons(); renderGeneral(); if (typeof renderTeacherSettings === "function") renderTeacherSettings(); if (typeof updateSelectedTeacher === "function") updateSelectedTeacher(); byId("deleteClassSelect").value = "";
+        await systemAlert("Tingkatan dan semua sejarah berkaitan berjaya dihapus.");
+      } catch (e) {
+        classes = previousClasses; renderButtons(); renderGeneral(); if (typeof renderTeacherSettings === "function") renderTeacherSettings(); byId("deleteClassSelect").value = "";
+        await systemAlert("Gagal menghapus tingkatan: " + (e.message || e));
+      }
+    };
+    window.saveSettings = async function() {
+      const config={namaInstitusi:(byId('settingNamaInstitusi').value||'').trim(),alamat:(byId('settingAlamatSekolah').value||'').trim(),telefon:(byId('settingTelefon').value||'').trim(),email:(byId('settingEmail').value||'').trim(),namaPegawaiPenyemak:(byId('settingNamaPegawaiPenyemak').value||'').trim(),jawatanPegawaiPenyemak:(byId('settingJawatanPegawaiPenyemak').value||'').trim(),namaPengetuaPengesah:(byId('settingNamaPengetuaPengesah').value||'').trim()};
+      await setDoc(doc(db,'settings','config'),config,{merge:true});window.appConfig=config;
+      byId('schoolName').innerHTML='<div class="topbar-school-name">'+escapeText(config.namaInstitusi)+'</div><div class="topbar-school-address">'+escapeText(config.alamat)+'</div>';
+      await systemAlert('Maklumat institusi berjaya dikemaskini.');
+    };
+    
+    window.openSetting = async function() {
+      const profile = await getCurrentUserProfile();
+      if (!applyAdminAccessUi(profile)) return await systemAlert('Akses ditolak. Halaman Tetapan hanya untuk pentadbir sistem.');
+      showPage('tetapan');
+      renderApprovalPanel();
+      setTimeout(() => {
+        const targetCard = document.querySelector("#tetapan .card") || byId('tetapan');
+        if (targetCard) targetCard.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+    };
+    
+    window.downloadCsv = async function() {
+      let exportRows=[];
+      if(currentGeneralClass==='SEMUA'){for(const k of classes){const period=await tempohAktif(k);exportRows=exportRows.concat(tapisTempoh(rows,k,period));}}else{const period=await tempohAktif(currentGeneralClass);exportRows=tapisTempoh(rows,currentGeneralClass,period);}
+      const header = ["Tingkatan", 'Bulan', 'Tahun',"Nama Pelajar","Kategori Sukatan","Juzu","Muka Surat","Surah","Peratus","Ulasan","Nama Guru"];
+      const csv = [header].concat(exportRows.map(r => [
+        r.tingkatan, r.bulan, r.tahun, r.nama, r.kategori === "15" ? "15 Juzu'" : "30 Juzu'", getJuzu(r.ms, r.kategori) || r.juzu, r.ms, r.surah, Math.round(Number(r.peratus)||0), normalisasiUlasan(r.ulasan), r.guru
+      ])).map(a =>
+        a.map(v => '"' + String(v || "").replace(/"/g, '""') + '"').join(",")
+      ).join("\n");
+      const blob = new Blob([csv], { type: "text/csv" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "SisPAQ-Prestasi-Hafazan.csv";
+      a.click();
+    };
+    
+    let activePage = "utama";
+    let allowExitAfterHome = false;
+    history.replaceState({sispaq:true,page:"utama"}, "", location.href);
+    window.showPage = function(id, fromPop) {
+      document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+      document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+      const page = byId(id); if (!page) return;
+      page.classList.add("active");
+      const btn = byId("btn-" + id); if (btn) btn.classList.add("active");
+      activePage = id;
+      if (!fromPop && id !== "utama") history.pushState({sispaq:true,page:id}, "", "#" + id);
+      if (!fromPop && id === "utama") history.replaceState({sispaq:true,page:"utama"}, "", location.pathname + location.search);
+      allowExitAfterHome = id === "utama";
+      if (id === "umum") renderGeneral();
+      
+      setTimeout(() => {
+        const targetCard = document.querySelector("#" + id + " .card") || page;
+        if (targetCard) {
+          targetCard.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 60);
+    };
+    addEventListener("popstate", function() {
+      if (activePage !== "utama") { window.showPage("utama", true); history.replaceState({sispaq:true,page:"utama"}, "", location.pathname + location.search); allowExitAfterHome = true; }
+      else if (!allowExitAfterHome) { allowExitAfterHome = true; history.pushState({sispaq:true,page:"utama"}, "", location.href); }
+    });
+    window.openClassLegacy = function(name) {
+      currentClass = name; byId("formTitle").innerText = "Borang Prestasi - " + name;
+      byId("formCard").classList.add("active");
+      setTimeout(() => byId("formTitle").scrollIntoView({behavior:"smooth",block:"start"}), 30);
+    };
+    window.resetForm = function() {
+      byId("sukatanBulan").value=""; byId("sukatanTahun").value=""; byId("namaGuru").value="";
+      byId("formCard").classList.remove("active");
+    };
+    const simpanBorangAsal = window.saveBorangInfo;
+    window.saveBorangInfo = async function(){ await simpanBorangAsal(); byId("formCard").classList.remove("active"); };
+    window.selectGeneralClass = function(name) {
+      currentGeneralClass=name; renderGeneral();
+      requestAnimationFrame(() => setTimeout(() => byId("generalBody").closest(".table-wrap").scrollIntoView({behavior:"smooth",block:"start"}), 40));
+    };
+    const bukaAsal = window.bukaBorangTambahRekod;
+    window.bukaBorangTambahRekod = function(){ bukaAsal(); setTimeout(() => byId("tambahRekodModal").querySelector(".modal-box").scrollIntoView({behavior:"smooth",block:"center"}),30); };
+    const editAsal = window.editRecord;
+    window.editRecord = function(id){ editAsal(id); setTimeout(() => byId("tambahRekodModal").querySelector(".modal-box").scrollIntoView({behavior:"smooth",block:"center"}),30); };
+    window.previewRecordLegacy = function(id) {
+      const r=rows.find(x=>x.id===id); if(!r) return;
+      const fields=[["Tingkatan", 'Bulan', 'Tahun',r.tingkatan],["Nama Pelajar",r.nama],["Kategori Sukatan",r.kategori === "15" ? "15 Juzu'" : "30 Juzu'"],["Juzu’",getJuzu(r.ms, r.kategori) || r.juzu],["Muka Surat",r.ms],["Surah",r.surah],["Peratus",Math.round(Number(r.peratus)||0)+"%"],["Ulasan",normalisasiUlasan(r.ulasan)],["Nama Guru",r.guru]];
+      byId("previewContent").innerHTML=fields.map(x=>"<div class='preview-item'><b>"+escapeText(x[0])+"</b><span>"+escapeText(x[1])+"</span></div>").join("");
+      byId("previewModal").classList.add("active");
+      setTimeout(()=>byId("previewTitle").scrollIntoView({behavior:"smooth",block:"center"}),30);
+    };
+    window.tutupPratonton=function(){byId("previewModal").classList.remove("active")};
+    window.cetakPratonton=function(){window.print()};
+    window.renderGeneralLegacy = function() {
+      let data=rows.slice(); if(currentGeneralClass!=='SEMUA') data=data.filter(r=>r.tingkatan===currentGeneralClass);
+      const q=(byId('smartSearchInput').value||'').toLowerCase();
+      if(q) data=data.filter(r=>[r.nama,r.kategori,r.juzu,r.ms,r.surah,Math.round(Number(r.peratus)||0),normalisasiUlasan(r.ulasan),r.guru].join(' ').toLowerCase().includes(q));
+      data=sortPrestasiByUlasan(data);
+      byId('generalBody').innerHTML=data.length?data.map((r,i)=>'<tr><td>'+(i+1)+'</td><td>'+escapeText(r.tingkatan)+'</td><td>'+escapeText(r.nama)+'</td><td>'+escapeText(r.kategori === "15" ? "15 Juzu'" : "30 Juzu'")+'</td><td>'+escapeText(getJuzu(r.ms, r.kategori) || r.juzu)+'</td><td>'+escapeText(r.ms)+'</td><td>'+escapeText(r.surah)+'</td><td>'+escapeText(Math.round(Number(r.peratus)||0))+'</td><td>'+escapeText(normalisasiUlasan(r.ulasan))+'</td><td>'+escapeText(r.guru)+'</td><td><div class="action-nowrap"><button class="icon-btn" title="Kemas kini" onclick="editRecord(\''+r.id+'\')">✏️</button><button class="icon-btn preview-btn" title="Pratonton" onclick="previewRecord(\''+r.id+'\')">👁️</button><button class="icon-btn danger" title="Hapus" onclick="deleteRecordNow(\''+r.id+'\')">🗑️</button></div></td></tr>').join(''):'<tr><td colspan="11" style="text-align:center">Tiada rekod.</td></tr>';
+    };
+    byId("formCard").setAttribute("role","dialog"); byId("formCard").setAttribute("aria-modal","true");
+    async function loadClassesSettings(){
+      const ref=doc(db,'settings','tingkatan'),snap=await getDoc(ref);
+      const saved=snap.exists()&&Array.isArray(snap.data().classes)?snap.data().classes:[];
+      const normalized=[]; saved.forEach(v=>{const n=String(v==null?"":v).trim();if(n&&!normalized.includes(n))normalized.push(n)});
+      if(normalized.length){classes=normalized}else{await setDoc(ref,{classes:classes,updatedAt:serverTimestamp()},{merge:true})}
+      if(typeof renderButtons==="function")renderButtons();if(typeof renderTeacherSettings==="function")renderTeacherSettings();if(typeof updateSelectedTeacher==="function")updateSelectedTeacher();
+    }
+    let sispaqStarted=false;function initSispaqOnce(){if(sispaqStarted)return;sispaqStarted=true;setDateBadge();loadClassesSettings().then(()=>{renderButtons();loadRows();}).catch(e=>{console.error("load classes settings",e);renderButtons();loadRows();});}
+    const isMobile=()=>window.matchMedia('(max-width:900px)').matches;
+    let pengesahan={guru:{},guruMap:{},pkPentadbiran:'',pengetua:''}; let activePreviewId=''; window.appConfig=window.appConfig||{};
+    
+    async function loadPengesahanSettings(){try{let old={};const os=await getDoc(doc(db,'settings','pengesahan'));if(os.exists())old=os.data()||{};const cs=await getDoc(doc(db,'settings','config'));const c=cs.exists()?cs.data()||{}:{};window.appConfig=Object.assign({},c);pengesahan=Object.assign({guruMap:{},pkPentadbiran:'',pengetua:''},old);const gm=pengesahan.guruMap||pengesahan.guru||{};const vals={settingNamaInstitusi:c.namaInstitusi||'SMU(A) Khairiah Banggol Setol',settingAlamatSekolah:c.alamat||'17070 Pasir Mas, Kelantan.',settingTelefon:c.telefon||'09 -7909195',settingEmail:c.email||'smuakhairiahbs@yik.edu.my',settingNamaPegawaiPenyemak:c.namaPegawaiPenyemak||pengesahan.pkPentadbiran||'',settingJawatanPegawaiPenyemak:c.jawatanPegawaiPenyemak||'PK Pentadbiran',settingNamaPengetuaPengesah:c.namaPengetuaPengesah||pengesahan.pengetua||''};Object.keys(vals).forEach(id=>{if(byId(id))byId(id).value=vals[id]});window.appConfig=Object.assign({},c,{namaInstitusi:vals.settingNamaInstitusi,alamat:vals.settingAlamatSekolah,telefon:vals.settingTelefon,email:vals.settingEmail});const inst=institution();byId('schoolName').innerHTML='<div class="topbar-school-name">'+escapeText(inst.nama)+'</div><div class="topbar-school-address">'+escapeText(inst.alamat)+'</div>';}catch(e){console.error('load settings',e)}}
+    
+    window.openClass=async function(name){const requested=name;currentClass=name;const formCard=byId('formCard');formCard.classList.add('active');byId('formTitle').innerText='Borang Prestasi - '+name;document.querySelectorAll('#classButtons button').forEach(button=>button.classList.toggle('form-class-active',button.dataset.className===currentClass));const applyInfo=d=>{d=d||{};byId('bulan').value=d.bulan||byId('bulan').value;byId('tahun').value=d.tahun||byId('tahun').value||'';byId('sukatanBulan').value=d.sukatanBulan||'';byId('sukatanTahun').value=d.sukatanTahun||'';byId('tarikh').value=d.tarikh||byId('tarikh').value;byId('namaGuru').value=d.namaGuru||'';formCard.classList.add('active');setTimeout(()=>byId('formTitle').scrollIntoView({behavior:'smooth',block:'start'}),30)};const cache=(window.borangInfoCache||{})[name];applyInfo(cache||{});try{const snap=await getDoc(doc(db,'borangInfo',name));if(snap.exists()){window.borangInfoCache=window.borangInfoCache||{};window.borangInfoCache[name]=snap.data();if(currentClass===requested)applyInfo(snap.data())}}catch(e){console.error('openClass getDoc',e)}};
+    window.selectGeneralClass=function(name){currentGeneralClass=name;renderButtons();renderGeneral();setTimeout(()=>byId('generalBody').closest('.table-wrap').scrollIntoView({behavior:'smooth',block:'start'}),30)};
+    function institution(){const c=window.appConfig||{};return{nama:(byId('settingNamaInstitusi')&&byId('settingNamaInstitusi').value)||c.namaInstitusi||'SMU(A) Khairiah Banggol Setol',alamat:(byId('settingAlamatSekolah')&&byId('settingAlamatSekolah').value)||c.alamat||'17070 Pasir Mas, Kelantan.',telefon:(byId('settingTelefon')&&byId('settingTelefon').value)||c.telefon||'09 -7909195',email:(byId('settingEmail')&&byId('settingEmail').value)||c.email||'smuakhairiahbs@yik.edu.my'}}
+    async function infoKelas(k){const cache=(window.borangInfoCache||{})[k]||{};try{const s=await getDoc(doc(db,'borangInfo',k));if(s.exists()){window.borangInfoCache=window.borangInfoCache||{};window.borangInfoCache[k]=s.data();return s.data()}}catch(e){console.error('infoKelas getDoc',e)}return cache}
+    function reportCss(){return '@page{size:A4 portrait;margin:8mm 10mm}*{box-sizing:border-box}body{margin:0;font-family:Arial;color:#111;print-color-adjust:exact;-webkit-print-color-adjust:exact}.sheet-report,.sheet{width:96%;margin:0 auto;page-break-inside:avoid;break-inside:avoid;page-break-after:avoid;break-after:avoid}.sheet-print-title{text-align:center;font-weight:900;font-size:11pt;text-transform:uppercase}.sheet-print-address{text-align:center;font-size:9pt;font-weight:700;margin:1px 0 2px}.report-address{text-align:center;font-size:10px;font-weight:700;margin:1px 0 2px}.sheet-print-contact{text-align:center;font-size:8pt;margin:2px 0 7px}table{table-layout:fixed;width:100%;border-collapse:collapse}.sheet-top-grid{margin-bottom:8px}.sheet-top-grid td,.sheet-print-table th,.sheet-print-table td,.sheet-summary-table th,.sheet-summary-table td{border:1px solid #111}.sheet-top-grid td{padding:3px;font-size:8pt}.sheet-top-grid .label,.sheet-print-table th,.sheet-summary-table th{background:#e0e0e0;font-weight:bold}.sheet-top-grid .label{text-align:left;padding-left:4px}.sheet-print-table th,.sheet-summary-table th{text-align:center}.sheet-top-grid .value{text-align:center;background:#fff}.arabic{font-family:Amiri,Traditional Arabic,Scheherazade,serif;direction:rtl}.sheet-print-table th,.sheet-print-table td{height:24px;padding:3px;font-size:7pt;text-align:center}.sheet-print-table td:nth-child(2),.sheet-print-table td:nth-child(9){text-align:left;padding-left:4px}.sheet-summary-title{text-align:center;font-weight:bold;margin:10px 0 4px}.sheet-summary-table{width:50%;margin:10px auto}.sheet-summary-table th,.sheet-summary-table td{padding:3px;font-size:8pt;text-align:center}.sheet-summary-table td:nth-child(2){text-align:left;padding-left:8px}.sheet-sign-table{margin-top:14px}.sheet-sign-table td{width:33.33%;border:0;text-align:left;vertical-align:top;font-size:8pt}.sheet-sign-space{height:34px;border:0!important}.sheet-sign-line{display:block;width:58%;height:34px;border-bottom:1px dotted #111}.sheet-sign-name{font-weight:bold;padding-top:3px}@media print{.sheet-report{zoom:.88}}';}
+    const surahArabMap={'Ali Imran':'آل عمران','Al-Fatihah':'الفاتحة','Al-Baqarah':'البقرة','An-Nisa':'النساء','Al-Maidah':'المائدة','Al-Anam':'الأنعام','Al-Araf':'الأعراف','Al-Anfal':'الأنفال','At-Taubah':'التوبة','Yunus':'يونس','Hud':'هود','Yusuf':'يوسف','Ar-Rad':'الرعد','Ibrahim':'إبراهيم','Al-Hijr':'الحجر','An-Nahl':'النحل','Al-Isra':'الإسراء','Al-Kahf':'الكهف','Maryam':'مريم','Taha':'طه','Al-Anbiya':'الأنبيآء','Al-Hajj':'الحج','Al-Muminun':'المؤمنون','An-Nur':'النور','Al-Furqan':'الفرقان','Ash-Shuara':'الشعراء','An-Naml':'النمل','Al-Qasas':'القصص','Al-Ankabut':'العنكبوت','Ar-Rum':'الروم','Luqman':'لقمان','As-Sajdah':'السجدة','Al-Ahzab':'الأحزاب','Saba':'سبأ','Fatir':'فاطر','Yasin':'يس','As-Saffat':'الصافات','Sad':'ص','Az-Zumar':'الزمر','Ghafir':'غافر','Fussilat':'فصلت','Ash-Shura':'الشورى','Az-Zukhruf':'الزخرف','Ad-Dukhan':'الدخان','Al-Jathiyah':'الجاثية','Al-Ahqaf':'الأحقاف','Muhammad':'محمد','Al-Fath':'الفتح','Al-Hujurat':'الحجرات','Qaf':'ق','Adh-Dhariyat':'الذاريات','At-Tur':'الطور','An-Najm':'النجم','Al-Qamar':'القمر','Ar-Rahman':'الرحمن','Al-Waqiah':'الواقعة','Al-Hadid':'الحديد','Al-Mujadilah':'المجادلة','Al-Hashr':'الحشر','Al-Mumtahanah':'الممتحنة','As-Saff':'الصف','Al-Jumuah':'الجمعة','Al-Munafiqun':'المنافقون','At-Taghabun':'التغابن','At-Talaq':'الطلاق','At-Tahrim':'التحريم','Al-Mulk':'الملك','Al-Qalam':'القلم','Al-Haqqah':'الحاقة','Al-Maarij':'المعارج','Nuh':'نوح','Al-Jinn':'الجن','Al-Muzzammil':'المزمل','Al-Muddaththir':'المدثر','Al-Qiyamah':'القيامة','Al-Insan':'الإنسان','Al-Mursalat':'المرسلات','An-Naba':'النبأ','An-Naziat':'النازعات','Abasa':'عبس','At-Takwir':'التكوير','Al-Infitar':'الانفطار','Al-Mutaffifin':'المطففين','Al-Inshiqaq':'الانشقاق','Al-Buruj':'البروج','At-Tariq':'الطارق','Al-Ala':'الأعلى','Al-Ghashiyah':'الغاشية','Al-Fajr':'الفجر','Al-Balad':'البلد','Ash-Shams':'الشمس','Al-Lail':'الليل','Ad-Duha':'الضحى','Ash-Sharh':'الشرح','At-Tin':'التين','Al-Alaq':'العلق','Al-Qadr':'القدر','Al-Bayyinah':'البينة','Az-Zalzalah':'الزلزلة','Al-Adiyat':'العاديات','Al-Qariah':'القارعة','At-Takathur':'التكاثر','Al-Asr':'العصر','Al-Humazah':'الهمزة','Al-Fil':'الفيل','Quraysh':'قريش','Al-Maun':'الماعون','Al-Kawthar':'الكوثر','Al-Kafirun':'الكافرون','An-Nasr':'النصر','Al-Masad':'المسد','Al-Ikhlas':'الإخلاص','Al-Falaq':'الفلق','An-Nas':'الناس'};function surahArab(v){v=String(v||'-');Object.keys(surahArabMap).forEach(x=>{v=v.replace(new RegExp(x,'gi'),surahArabMap[x])});return v}function formatSukatanBulan(v){const raw=String(v==null?'':v).trim();if(!raw)return '-';if(/^\d+$/.test(raw)){const nama=getSurah(Number(raw));return (nama?surahArab(nama):'-')+' / '+raw}return surahArab(raw)}function metaHtml(k,d){d=d||{};const now=new Date();const bulanRaw=String(d.bulan==null?'':d.bulan).trim();const bulan=bulanRaw||months[now.getMonth()];const tahun=String(d.tahun||((byId('tahun')&&byId('tahun').value)||now.getFullYear()));const dt=String(now.getDate()).padStart(2,'0')+'/'+String(now.getMonth()+1).padStart(2,'0')+'/'+now.getFullYear();const cls=k==='SEMUA'?'SEMUA TINGKATAN':k;return '<table class="sheet-top-grid"><colgroup><col style="width:18%"><col style="width:22%"><col style="width:18%"><col style="width:22%"><col style="width:10%"><col style="width:10%"></colgroup><tr><td class="label">TINGKATAN</td><td class="value">'+escapeText(cls)+'</td><td class="label">SUKATAN BULAN INI</td><td class="value arabic">'+escapeText(formatSukatanBulan(d.sukatanBulan))+'</td><td class="label">BULAN</td><td class="value">'+escapeText(bulan)+'</td></tr><tr><td class="label">SUKATAN TAHUN INI</td><td class="value">'+escapeText(d.sukatanTahun||'-')+'</td><td class="label">TAHUN</td><td class="value">'+escapeText(tahun)+'</td><td class="label">TARIKH LAPORAN</td><td class="value">'+escapeText(dt)+'</td></tr></table>'}
+    function individualMetaHtml(k,d){d=d||{};const n=new Date(),m=String(d.bulan||months[n.getMonth()]),y=String(d.tahun||((byId('tahun')&&byId('tahun').value)||n.getFullYear()));const dt=String(n.getDate()).padStart(2,'0')+'/'+String(n.getMonth()+1).padStart(2,'0')+'/'+n.getFullYear(),c=k==='SEMUA'?'SEMUA TINGKATAN':k;return '<table class="individual-meta-table"><colgroup><col style="width:18%"><col style="width:22%"><col style="width:18%"><col style="width:22%"><col style="width:10%"><col style="width:10%"></colgroup><tr><td class="label">TINGKATAN</td><td class="value">'+escapeText(c)+'</td><td class="label">SUKATAN BULAN INI</td><td class="value arabic">'+escapeText(formatSukatanBulan(d.sukatanBulan))+'</td><td class="label">BULAN</td><td class="value">'+escapeText(m)+'</td></tr><tr><td class="label">SUKATAN TAHUN INI</td><td class="value">'+escapeText(d.sukatanTahun||'-')+'</td><td class="label">TAHUN</td><td class="value meta-center">'+escapeText(y)+'</td><td class="label">TARIKH LAPORAN</td><td class="value meta-center">'+escapeText(dt)+'</td></tr></table>'}
+    function signHtml(k){const c=window.appConfig||{},gm=pengesahan.guruMap||pengesahan.guru||{},n=escapeText(institution().nama||''),guru=(guruAlQuranMap[k]||gm[k]||(k==='SEMUA'?(guruAlQuranMap.SEMUA||gm.SEMUA):'')||'-');const a=[[guru,'Guru Al-Quran'],[c.namaPegawaiPenyemak||pengesahan.pkPentadbiran||'-',c.jawatanPegawaiPenyemak||'PK Pentadbiran'],[c.namaPengetuaPengesah||pengesahan.pengetua||'-','Pengetua']];return '<table class="sheet-sign-table"><tr><td>Disediakan oleh,</td><td>Disemak oleh,</td><td>Disahkan oleh,</td></tr><tr><td class="sheet-sign-space"><span class="sheet-sign-line"></span></td><td class="sheet-sign-space"><span class="sheet-sign-line"></span></td><td class="sheet-sign-space"><span class="sheet-sign-line"></span></td></tr><tr>'+a.map(x=>'<td><b>('+escapeText(x[0])+')</b><br>'+escapeText(x[1])+'<br>'+n+'</td>').join('')+'</table>'}
+    function individualSignHtml(k){const c=window.appConfig||{},g=pengesahan.guruMap||pengesahan.guru||{},n=escapeText(institution().nama||''),guru=(guruAlQuranMap[k]||g[k]||(k==='SEMUA'?(guruAlQuranMap.SEMUA||g.SEMUA):'')||'-'),a=[['Disediakan oleh,',guru,'Guru Al-Quran'],['Disemak oleh,',c.namaPegawaiPenyemak||pengesahan.pkPentadbiran||'-',c.jawatanPegawaiPenyemak||'PK Pentadbiran'],['Disahkan oleh,',c.namaPengetuaPengesah||pengesahan.pengetua||'-','Pengetua']];return '<table class="individual-sign-table"><colgroup><col style="width:33.33%"><col style="width:33.33%"><col style="width:33.33%"></colgroup><tr>'+a.map(x=>'<td>'+x[0]+'<div class="individual-sign-space"><span class="individual-sign-line"></span></div><b>('+escapeText(x[1])+')</b><br>'+escapeText(x[2])+'<br>'+n+'</td>').join('')+'</table>'}
+    function printDoc(html,extraCss=''){const w=open('','_blank');w.document.write('<!doctype html><html><head><meta charset="utf-8"><title>SisPAQ</title><style>'+reportCss()+extraCss+'</style></head><body>'+html+'</body></html>');w.document.close();w.focus();setTimeout(()=>w.print(),250)}
+    
+    window.cetakPrestasiBaru=async function(){
+      const k=currentGeneralClass||'SEMUA',d=k==='SEMUA'?((window.borangInfoCache||{}).SEMUA||{}):await infoKelas(k),inst=institution();
+      let data=[];if(k==='SEMUA'){for(const ck of classes){const period=await tempohAktif(ck);data=data.concat(tapisTempoh(rows,ck,period));}}else{const period=await tempohAktif(k);data=tapisTempoh(rows,k,period);}
+      const q=(byId('smartSearchInput').value||'').toLowerCase();if(q)data=data.filter(r=>[r.nama,r.kategori,r.juzu,r.ms,r.surah,Math.round(Number(r.peratus)||0),normalisasiUlasan(r.ulasan),r.guru].join(' ').toLowerCase().includes(q));data=sortPrestasiByUlasan(data);
+      data=data.slice(0,25);
+      const total=data.length;
+      
+      const analysisOrder=[
+        {no:1,label:'KHATAM 30 JUZU\''},
+        {no:2,label:'TAMAT 15 JUZU\''},
+        {no:3,label:'TAMAT SUKATAN'},
+        {no:4,label:'CEMERLANG'},
+        {no:5,label:'BAIK'},
+        {no:6,label:'SEDERHANA'},
+        {no:7,label:'LEMAH'},
+        {no:8,label:'TAHSIN'}
+      ];
+      
+      const rr=data.slice();while(rr.length<25)rr.push(null);
+      const tr=rr.map((r,i)=>r?'<tr><td>'+(i+1)+'</td><td>'+escapeText(r.nama||'')+'</td><td>'+escapeText(r.kategori === "15" ? "15 Juzu'" : "30 Juzu'")+'</td><td>'+escapeText(getJuzu(r.ms, r.kategori) || r.juzu || '')+'</td><td>'+escapeText(r.ms||'')+'</td><td class="arabic">'+escapeText(surahArab(r.surah||getSurah(r.ms)||''))+'</td><td>'+escapeText(Math.round(Number(r.peratus)||0))+'</td><td>'+escapeText(normalisasiUlasan(r.ulasan)||'')+'</td><td>'+escapeText(r.guru||'')+'</td></tr>':'<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>').join('');
+      
+      const an=analysisOrder.map(item=>{
+        const x=data.filter(r=>{
+          const status=normalisasiUlasan(r.ulasan||getUlasan(r.peratus,null,r.kategori,r.ms)).toUpperCase();
+          return status===item.label;
+        }).length;
+        return '<tr><td>'+item.no+'</td><td>'+item.label+'</td><td>'+x+'</td><td>'+(total?Math.round(x/total*100):0)+'</td></tr>';
+      }).join('');
+      
+      const area=byId('printSenaraiArea');if(!area)return await systemAlert('Ruang cetakan tidak tersedia.');
+      area.innerHTML='<div class="sheet-report"><div class="sheet-print-title">'+escapeText((inst.nama||'').toUpperCase())+'</div><div class="sheet-print-address">'+escapeText(inst.alamat||'')+'</div><div class="sheet-print-contact">No Telefon : '+escapeText(inst.telefon||'-')+' , Email : '+escapeText(inst.email||'-')+'</div>'+metaHtml(k,d)+'<table class="sheet-print-table"><colgroup><col style="width:5%"><col style="width:23%"><col style="width:11%"><col style="width:8%"><col style="width:9%"><col style="width:11%"><col style="width:7%"><col style="width:10%"><col style="width:16%"></colgroup><thead><tr><th>Bil</th><th>Nama Pelajar</th><th>Kategori</th><th>Juzu’</th><th>Muka Surat</th><th>Surah</th><th>Peratus</th><th>Ulasan</th><th>Nama Guru</th></tr></thead><tbody>'+tr+'</tbody></table><div class="sheet-summary-title">ANALISA PRESTASI</div><table class="sheet-summary-table"><colgroup><col style="width:10%"><col style="width:45%"><col style="width:20%"><col style="width:25%"></colgroup><thead><tr><th>Bil</th><th>Perkara</th><th>Bilangan</th><th>Peratus (%)</th></tr></thead><tbody>'+an+'</tbody></table>'+signHtml(k)+'</div>';
+      
+      document.body.classList.add('print-senarai-mode');
+      const clean=()=>document.body.classList.remove('print-senarai-mode');
+      addEventListener('afterprint',clean,{once:true});
+      requestAnimationFrame(()=>setTimeout(()=>window.print(),60));
+      setTimeout(clean,2000);
+    };
+    function resizePreviewPaper() {
+      const stage = document.querySelector('#previewModal .preview-stage');
+      const wrap = document.getElementById('previewPaperWrap');
+      const paper = document.getElementById('previewPaper');
+      if (!stage || !wrap || !paper) return;
+      paper.style.transform = 'none';
+      paper.style.position = 'absolute';
+      paper.style.left = '50%';
+      paper.style.top = '0';
+      paper.style.transformOrigin = 'top center';
+      paper.style.margin = '0';
+      const baseWidth = paper.offsetWidth || 793.7;
+      const baseHeight = paper.scrollHeight || paper.offsetHeight;
+      const available = Math.max(1, stage.clientWidth - 16);
+      const mobile = window.matchMedia('(max-width: 900px)').matches;
+      const scale = mobile ? Math.min(1, available / baseWidth) : Math.min(.72, available / baseWidth);
+      const visualWidth = Math.ceil(baseWidth * scale);
+      const visualHeight = Math.ceil(baseHeight * scale);
+      wrap.style.width = visualWidth + 'px';
+      wrap.style.height = visualHeight + 'px';
+      wrap.style.margin = '0 auto';
+      paper.style.transform = 'translateX(-50%) scale(' + scale + ')';
+      stage.style.height = (visualHeight + 16) + 'px';
+      stage.style.minHeight = (visualHeight + 16) + 'px';
+      stage.style.overflow = 'hidden';
+    } addEventListener('resize',resizePreviewPaper);
+    window.previewRecord=async function(id){activePreviewId=id;const x=rows.find(z=>z.id===id);if(!x)return;const d=await infoKelas(x.tingkatan),i=institution(),period=(x.bulan&&x.tahun)?{bulan:String(x.bulan),tahun:String(x.tahun)}:await tempohAktif(x.tingkatan),cr=tapisTempoh(rows,x.tingkatan,period),rank=cr.slice().sort((u,v)=>Number(v.peratus)-Number(u.peratus)).findIndex(z=>z.id===id)+1,f=[['Nama Pelajar',x.nama,''],['Kategori Sukatan',x.kategori === "15" ? "15 Juzu'" : "30 Juzu'"],['Kedudukan dalam Kelas',rank+'/'+cr.length,''],['Juzu’',getJuzu(x.ms, x.kategori) || x.juzu,''],['Muka Surat',x.ms,''],['Surah',surahArab(x.surah||getSurah(x.ms)),'arabic'],['Peratus (%)',Math.round(Number(x.peratus)||0),''],['Ulasan',normalisasiUlasan(x.ulasan),''],['Nama Guru',x.guru,'']];byId('previewContent').innerHTML='<div class="individual-sheet"><div class="individual-header"><div class="individual-school-name">'+escapeText((i.nama||'').toUpperCase())+'</div><div class="individual-school-address">'+escapeText(i.alamat||'')+'</div><div class="individual-school-contact">No Telefon: '+escapeText(i.telefon||'-')+' , Email: '+escapeText(i.email||'-')+'</div></div>'+individualMetaHtml(x.tingkatan,d)+'<div class="individual-report-title">REKOD PENCAPAIAN PELAJAR</div><table class="individual-achievement-table"><colgroup><col style="width:30%"><col style="width:70%"></colgroup><thead><tr><th>Perkara</th><th>Butiran Pelajar</th></tr></thead><tbody>'+f.map(v=>'<tr><td>'+escapeText(v[0])+'</td><td class="'+v[2]+'">'+escapeText(v[1]==null?'':v[1])+'</td></tr>').join('')+'</tbody></table><div class="individual-report-spacer"></div>'+individualSignHtml(x.tingkatan)+'</div>';byId('previewModal').classList.add('active');setTimeout(resizePreviewPaper,80);setTimeout(resizePreviewPaper,250);setTimeout(()=>byId('previewTitle').scrollIntoView({behavior:'smooth',block:'center'}),30);};
+    window.cetakPratonton=function(){const content=byId('previewContent');if(!content)return;const individualCss="@page{size:A4 portrait;margin:10mm 12mm}html,body{margin:0!important;padding:0!important;width:auto!important;overflow:visible!important;print-color-adjust:exact!important;-webkit-print-color-adjust:exact!important}.individual-print-page{width:186mm!important;max-width:186mm!important;margin:0 auto!important;box-sizing:border-box!important;overflow:hidden!important}.individual-sheet{width:100%!important;max-width:100%!important;min-width:0!important;overflow:hidden!important;transform:none!important;zoom:1!important}.individual-meta-table,.individual-achievement-table,.individual-sign-table{table-layout:fixed!important;width:100%!important;max-width:100%!important;min-width:0!important;border-collapse:collapse!important;box-sizing:border-box!important}.individual-meta-table td{border:1px solid #111;padding:6px 5px!important;font-size:12px!important;text-align:left;max-width:none!important;overflow:visible!important;padding-left:8px!important;}.individual-meta-table td.arabic{text-align:center!important}.individual-meta-table .label{background:#e0e0e0;font-weight:bold}.individual-meta-table .value{background:#fff}.individual-meta-table .meta-center{text-align:center!important}.arabic{font-family:'Traditional Arabic','Amiri',serif;direction:rtl;font-size:12px!important}.individual-report-title{text-align:center;font-weight:bold;text-transform:uppercase;font-size:12px!important;margin:14px 0 8px}.individual-achievement-table td,.individual-achievement-table th{border:1px solid #111;font-size:12px!important;padding:8px 10px!important;text-align:left;max-width:none!important;overflow:visible!important}.individual-achievement-table th,.individual-achievement-table td:first-child{background:#e0e0e0;font-weight:bold;padding-left:10px}.individual-achievement-table th:nth-child(2),.individual-achievement-table td:nth-child(2){background:#fff;padding-left:10px}.individual-achievement-table td.arabic{font-family:'Traditional Arabic','Amiri',serif;direction:rtl;font-size:18px!important;line-height:1.25}.individual-header{text-align:center;margin-bottom:8px}.individual-school-name{font-weight:bold;text-transform:uppercase;font-size:12px}.individual-school-address{font-weight:bold;font-size:14px}.individual-school-contact{font-size:12px!important}.individual-sign-table{margin-top:38mm!important}.individual-sign-table td{border:0!important;width:33.33%;vertical-align:top;text-align:left;font-size:12px!important;max-width:none!important;overflow:visible!important}.individual-sign-space{height:18mm;position:relative}.individual-sign-line{display:block;position:absolute;left:0;bottom:2mm;width:58%;border-bottom:1px dotted #111}.individual-report-spacer{display:none}.individual-meta-table col:nth-child(1){width:17%!important}.individual-meta-table col:nth-child(2){width:21%!important}.individual-meta-table col:nth-child(3){width:17%!important}.individual-meta-table col:nth-child(4){width:21%!important}.individual-meta-table col:nth-child(5){width:11%!important}.individual-meta-table col:nth-child(6){width:13%!important}.individual-meta-table td:nth-child(6){white-space:nowrap!important;overflow:visible!important;word-break:normal!important;overflow-wrap:normal!important;font-size:11px!important}";printDoc('<div class="individual-print-page">'+content.innerHTML+'</div>',individualCss)};
+    window.renderGeneral=function(){let data=[];if(currentGeneralClass==='SEMUA'){const keys=classes.slice();rows.forEach(r=>{if(r.tingkatan&&keys.indexOf(r.tingkatan)<0)keys.push(r.tingkatan)});keys.forEach(k=>{const info=(window.borangInfoCache||{})[k];data=data.concat(info?tapisTempoh(rows,k,{bulan:String(info.bulan||''),tahun:String(info.tahun||'')}):rows.filter(r=>r.tingkatan===k))});}else{const info=(window.borangInfoCache||{})[currentGeneralClass];data=info?tapisTempoh(rows,currentGeneralClass,{bulan:String(info.bulan||''),tahun:String(info.tahun||'')}):rows.filter(r=>r.tingkatan===currentGeneralClass);}const q=(byId('smartSearchInput').value||'').toLowerCase();if(q)data=data.filter(r=>[r.nama,r.kategori,r.juzu,r.ms,r.surah,Math.round(Number(r.peratus)||0),normalisasiUlasan(r.ulasan),r.guru].join(' ').toLowerCase().includes(q));data=sortPrestasiByUlasan(data);
+    byId('generalBody').innerHTML=data.length?data.map((r,i)=>'<tr><td>'+(i+1)+'</td><td>'+escapeText(r.tingkatan)+'</td><td>'+escapeText(r.nama)+'</td><td>'+escapeText(r.kategori === "15" ? "15 Juzu'" : "30 Juzu'")+'</td><td>'+escapeText(getJuzu(r.ms, r.kategori) || r.juzu)+'</td><td>'+escapeText(r.ms)+'</td><td>'+escapeText(r.surah)+'</td><td>'+escapeText(Math.round(Number(r.peratus)||0))+'</td><td>'+escapeText(normalisasiUlasan(r.ulasan))+'</td><td>'+escapeText(r.guru)+'</td><td><div class="action-nowrap"><button class="icon-btn" title="Kemas kini" onclick="editRecord(\''+r.id+'\')">✏️</button><button class="icon-btn preview-btn" title="Pratonton" onclick="previewRecord(\''+r.id+'\')">👁️</button><button class="icon-btn danger" title="Hapus" onclick="deleteRecordNow(\''+r.id+'\')">🗑️</button></div></td></tr>').join(''):'<tr><td colspan="11" style="text-align:center">Tiada rekod.</td></tr>'};
+    const printModeStyle=document.createElement('style');printModeStyle.textContent=reportCss()+'@media print{@page{size:A4 portrait;margin:8mm 10mm}body.print-senarai-mode>*:not(#printSenaraiArea){display:none!important}body.print-senarai-mode #printSenaraiArea,body.print-senarai-mode #printSenaraiArea *{visibility:visible!important;print-color-adjust:exact!important;-webkit-print-color-adjust:exact!important}body.print-senarai-mode{margin:0!important;padding:0!important;overflow:visible!important;width:auto!important;height:auto!important}body.print-senarai-mode #printSenaraiArea{display:block!important;position:static!important;width:100%!important;height:auto!important;max-height:none!important;overflow:visible!important;padding:0!important;margin:0!important;background:#fff!important;page-break-after:avoid!important;break-after:avoid!important}body.print-senarai-mode #printSenaraiArea .sheet-report{width:96%!important;margin:0 auto!important;zoom:.88!important;transform-origin:top center!important;page-break-inside:avoid!important;break-inside:avoid!important;page-break-after:avoid!important;break-after:avoid!important;display:flex!important;flex-direction:column!important;min-height:calc(297mm - 26mm)!important;}.sheet-print-table th,.sheet-print-table td{height:23px!important;padding:3px!important;font-size:7pt!important;}.sheet-top-grid td{padding:3px!important;font-size:8pt!important;}.sheet-summary-title{margin:8px 0 4px!important;}.sheet-summary-table{margin:8px auto!important;}.sheet-sign-table{margin-top:auto!important;padding-top:10px!important;}.sheet-sign-space,.sheet-sign-line{height:32px!important;}body.print-individu-mode *{visibility:hidden!important}body.print-individu-mode #previewPaper,body.print-individu-mode #previewPaper *{visibility:visible!important}body.print-individu-mode #previewPaper{display:block!important;position:absolute;left:0;top:0;width:100%;padding:0;transform:none!important;margin:0!important;box-shadow:none!important}}@media(max-width:900px){html,body{max-width:100%;overflow-x:hidden}.app{display:block}.sidebar{position:relative;width:100%;height:auto}.sidebar nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.topbar,.content,.card,.modal-box,.preview-modal-box{width:100%;max-width:100%;min-width:0}.btn-row,.preview-actions{display:flex;flex-wrap:wrap}.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}input,select,textarea{width:100%;max-width:100%}.preview-stage{width:100%;overflow:hidden}.modal{padding:8px}}';document.head.appendChild(printModeStyle);Promise.resolve().then(function(){return loadPengesahanSettings();}).catch(function(e){console.error('load settings',e);});
+    let guruAlQuranMap={};
+    
+    function renderTeacherSettings(){
+      const grid=byId('teacherSettingGrid');
+      if(!grid)return;
+      grid.innerHTML=classes.map((c,i)=>'<div style="margin-bottom:8px"><label for="guruAlQuran_'+i+'">'+escapeText(c)+'</label><input id="guruAlQuran_'+i+'" data-guru-class="'+encodeURIComponent(c)+'" value="'+escapeText(guruAlQuranMap[c]||'')+'" placeholder="Taip nama guru al-quran"></div>').join('');
+    }
+    
+    window.saveGuruAndPengesahanCombined=async function(){
+      document.querySelectorAll('[data-guru-class]').forEach(x=>guruAlQuranMap[decodeURIComponent(x.dataset.guruClass)]=(x.value||'').trim());
+      await setDoc(doc(db,'settings','guruAlQuran'),{guruMap:guruAlQuranMap,updatedAt:serverTimestamp()},{merge:true});
+      pengesahan.guruMap=Object.assign({},guruAlQuranMap);
+      
+      const data={
+        namaPegawaiPenyemak:(byId('settingNamaPegawaiPenyemak').value||'').trim(),
+        jawatanPegawaiPenyemak:(byId('settingJawatanPegawaiPenyemak').value||'PK Pentadbiran').trim(),
+        namaPengetuaPengesah:(byId('settingNamaPengetuaPengesah').value||'').trim()
+      };
+      await setDoc(doc(db,'settings','config'),data,{merge:true});
+      window.appConfig=Object.assign({},window.appConfig||{},data);
+      updateSelectedTeacher();
+      await systemAlert('Tetapan Tandatangan Cetakan berjaya disimpan.');
+    };
+    window.savePengesahanOnly=async function(){
+      const data={
+        namaPegawaiPenyemak:(byId('settingNamaPegawaiPenyemak').value||'').trim(),
+        jawatanPegawaiPenyemak:(byId('settingJawatanPegawaiPenyemak').value||'PK Pentadbiran').trim(),
+        namaPengetuaPengesah:(byId('settingNamaPengetuaPengesah').value||'').trim()
+      };
+      await setDoc(doc(db,'settings','config'),data,{merge:true});
+      window.appConfig=Object.assign({},window.appConfig||{},data);
+      await systemAlert('Maklumat pengesahan berjaya disimpan.');
+    };
+    function updateSelectedTeacher(){const el=byId('selectedTeacherName');if(!el)return;el.innerText=currentGeneralClass==='SEMUA'?'Semua Tingkatan':(guruAlQuranMap[currentGeneralClass]||'Belum ditetapkan')}
+    
+    async function loadGuruAlQuran(){try{const s=await getDoc(doc(db,'settings','guruAlQuran'));guruAlQuranMap=s.exists()?Object.assign({},s.data().guruMap||{}):{};pengesahan.guruMap=Object.assign({},pengesahan.guruMap||{},guruAlQuranMap);renderTeacherSettings();updateSelectedTeacher()}catch(e){console.error('load guru Al-Quran',e)}}
+    
+    const selectGeneralClassDenganGuru=window.selectGeneralClass;window.selectGeneralClass=function(name){selectGeneralClassDenganGuru(name);updateSelectedTeacher()};
+    const renderButtonsDenganGrade=renderButtons;renderButtons=function(){renderButtonsDenganGrade();renderTeacherSettings();updateSelectedTeacher()};
+    
+    Promise.resolve().then(loadGuruAlQuran); 
+    
+    window.showManualSection=function(id,btn){document.querySelectorAll('#manual .manual-box').forEach(x=>x.classList.remove('active'));document.querySelectorAll('#manual .manual-tab').forEach(x=>x.classList.add('secondary'));const box=byId(id);if(box)box.classList.add('active');if(btn)btn.classList.remove('secondary');};
+    window.eksportSandaranJson=async function(){try{const collect=async name=>(await getDocs(query(collection(db,name)))).docs.map(d=>({id:d.id,data:d.data()}));const payload={format:'SisPAQ-JSON',version:1,exportedAt:new Date().toISOString(),data:{prestasiHafazan:await collect('prestasiHafazan'),borangInfo:await collect('borangInfo'),settings:await collect('settings')}};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='SisPAQ-Sandaran-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}catch(e){console.error('eksport JSON',e);await systemAlert('Eksport JSON gagal: '+(e.message||e))}};
+    
+    window.importSandaranJson=async function(input){const file=input&&input.files&&input.files[0];if(!file)return;try{const parsed=JSON.parse(await file.text());if(!parsed||parsed.format!=='SisPAQ-JSON'||!parsed.data)throw new Error('Fail sandaran SisPAQ tidak sah.');if(!(await systemConfirm('Import akan mengemas kini data SisPAQ menggunakan fail JSON ini. Teruskan?')))return;for(const name of ['settings','borangInfo','prestasiHafazan']){const items=Array.isArray(parsed.data[name])?parsed.data[name]:[];for(const item of items){if(item&&item.id&&item.data)await setDoc(doc(db,name,String(item.id)),item.data,{merge:true})}}await systemAlert('Import JSON berjaya. Data akan dimuat semula.');location.reload()}catch(e){console.error('import JSON',e);await systemAlert('Import JSON gagal: '+(e.message||e))}finally{input.value=''}};
+    
+    document.addEventListener('DOMContentLoaded',()=>{
+      const importBtn=byId('importJsonBtn'),importInput=byId('importJsonFile');
+      if(importBtn&&importInput){
+        importBtn.addEventListener('click',()=>{importInput.value='';importInput.click()});
+        importInput.addEventListener('change',()=>importSandaranJson(importInput));
+      }
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SisPAQ</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Arial,sans-serif;background:#f4f7fb;color:#172033}
+    .wrapper{display:flex;min-height:100vh}
+    .sidebar{width:245px;background:#dbe5ef;padding:18px 10px}
+    .brand{background:#0f766e;color:white;border-radius:16px;padding:18px;text-align:center;margin-bottom:16px}
+    .brand-red{color:#b00000}
+    nav{display:flex;flex-direction:column;gap:8px}
+    button{border:0;border-radius:12px;padding:10px 14px;background:#0f766e;color:white;cursor:pointer;font-weight:700}
+    nav button{background:white;color:#172033;text-align:left}	
+    nav button.active{background:#0f766e;color:white}
+    .main{flex:1}
+    .topbar{background:#0f766e;color:white;padding:18px 24px;display:flex;justify-content:space-between;gap:16px}
+    .content{padding:18px}
+    .page{display:none}
+    .page.active{display:block}
+    .card{background:white;border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 6px 18px rgba(15,23,42,.08)}
+    .summary-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:12px}
+    .summary-card{border:1px solid #cbd5e1;border-radius:14px;padding:15px}
+    .summary-label{font-size:.82rem;color:#64748b;font-weight:800}
+    .summary-value{font-size:1.65rem;font-weight:900;color:#0f766e}
+    label{font-weight:800;display:block;margin-top:10px}
+    input,select,textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;margin-top:4px;font-size:16px}
+    .btn-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
     
     /* Tetapan Lebar Lajur Paparan Biasa */
     table{width:100%;border-collapse:collapse;min-width:760px;table-layout:fixed}
