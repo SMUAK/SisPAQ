@@ -141,7 +141,7 @@
   <style>.email-eye-btn{width:42px!important;height:42px!important;border-radius:0!important;background:transparent!important;color:#666!important;box-shadow:none!important}.email-eye-btn:hover{background:transparent!important;color:#444!important;transform:translateY(-50%)!important}.email-eye-btn svg{width:30px;height:30px;display:block;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}</style>
   <style>:root{--sispaq-maroon:#550000;--sispaq-maroon-light:#7a123d}.brand{background:linear-gradient(135deg,#550000,#7a123d)!important;color:#fff!important;border-color:#550000!important}.brand .brand-red,.brand h2,.brand div{color:#fff!important}.auth-screen{background:linear-gradient(180deg,#550000 0,#550000 210px,#eef3f8 210px,#eef3f8 100%)!important;padding:54px 16px 42px!important}.auth-brand{color:#fff!important;margin-bottom:86px!important}.auth-school-name{font-size:1.05rem!important;font-weight:800!important;line-height:1.25!important;margin-bottom:12px!important}.auth-brand h1{color:#fff!important;font-size:2rem!important;font-weight:900!important}.auth-brand .brand-red{color:#fff!important}.auth-card{max-width:398px;margin:0 auto;background:#fff!important;border-radius:20px!important;padding:26px!important;box-shadow:0 18px 42px rgba(85,0,0,.22)!important}.auth-input-wrap input{border-color:#550000!important;background:#fff!important}.auth-input-wrap input:focus{border-color:#550000!important;box-shadow:0 0 0 3px rgba(85,0,0,.13)!important}.btn-main{background:#550000!important;color:#fff!important}.btn-main:hover{background:#7a123d!important}.auth-link{color:#550000!important}.email-eye-btn{color:#550000!important}.topbar-school-name{font-size:1.18rem;font-weight:900;line-height:1.2}.topbar-school-address{font-size:.94rem;font-weight:600;line-height:1.3}.topbar-system-name{font-size:.79rem;line-height:1.3}@media(max-width:900px){.brand{text-align:center!important}.auth-screen{background:linear-gradient(180deg,#550000 0,#550000 210px,#eef3f8 210px,#eef3f8 100%)!important;padding:48px 16px 36px!important}.auth-card{width:100%;max-width:398px!important}.auth-brand{margin-bottom:88px!important}.auth-school-name{font-size:1rem!important}.topbar-school-name{font-size:1.08rem}.topbar-school-address{font-size:.88rem}.topbar-system-name{font-size:0.76rem}}</style>
   
-  <!-- KETIGA: GAYA BUTANG BUJUR (PILL-SHAPED) DAN SUSUNAN MOD TELEFON TANPA IKON -->
+  <!-- GAYA BUTANG BUJUR (PILL-SHAPED) DAN SUSUNAN MOD TELEFON TANPA IKON -->
   <style>
     .btn-pill {
       border-radius: 999px !important;
@@ -263,7 +263,7 @@
             <label>Carian Pintar</label>
             <input id="smartSearchInput" placeholder="Cari nama, juzu, muka surat, surah, peratus, ulasan atau guru" oninput="renderGeneral()">
             
-            <!-- KETIGA: REKA BENTUK BUTANG BUJUR DALAM SATU BARIS TANPA IKON -->
+            <!-- REKA BENTUK BUTANG BUJUR DALAM SATU BARIS TANPA IKON -->
             <div class="action-btns-container">
               <button class="print btn-pill btn-print-action" onclick="cetakPrestasiBaru()">Cetak Prestasi</button>
               <button class="btn-pill btn-excel-action" onclick="downloadCsv()">Muat Turun Excel</button>
@@ -335,7 +335,6 @@
               <label style="margin-bottom:6px">Guru Al-Quran Tingkatan</label>
               <div id="teacherSettingGrid" class="teacher-setting-grid"></div>
               
-              <!-- PERTAMA: TUKAR KEPADA "Nama Penyemak" -->
               <label style="margin-top:14px">Nama Penyemak</label>
               <input id="settingNamaPegawaiPenyemak" placeholder="Nama Penyemak">
               
@@ -349,7 +348,6 @@
             <!-- 4. Pengurusan Pengesahan -->
             <div id="partitionPengesahan" class="setting-partition">
               <h3><span class="partition-no">4</span>Pengurusan Pengesahan</h3>
-              <!-- PERTAMA: TUKAR KEPADA "Jawatan Penyemak" -->
               <label>Jawatan Penyemak</label>
               <input id="settingJawatanPegawaiPenyemak" value="PK Pentadbiran">
               <div class="setting-action">
@@ -373,7 +371,14 @@
               <div class="btn-row"><button onclick="renderApprovalPanel()">Muat Semula Senarai Akaun</button></div>
               <div id="approvalList" class="teacher-setting-grid" style="margin-top:14px"></div>
             </div>
-            <!-- KETIGA: BAHAGIAN 7 DIHAPUSKAN TERUS -->
+            <!-- 7. Pengurusan Akhir Tahun / Naik Taraf Pelajar -->
+            <div class="setting-partition admin-only">
+              <h3><span class="partition-no">7</span>Pengurusan Akhir Tahun / Naik Taraf Pelajar</h3>
+              <p>Fungsi ini digunakan pada akhir sesi persekolahan untuk memadamkan data Tingkatan 5 (tamat persekolahan) serta menaikkan kelas berantai bagi pelajar Tingkatan 1 ke Tingkatan 2, Tingkatan 2 ke Tingkatan 3, Tingkatan 3 ke Tingkatan 4, dan Tingkatan 4 ke Tingkatan 5. Data Tingkatan 1 baharu secara automatik akan menjadi kosong untuk pendaftaran pelajar baharu.</p>
+              <div class="setting-action">
+                <button type="button" class="danger" onclick="naikTarafPelajarPukal()">Proses Naik Taraf Akhir Tahun</button>
+              </div>
+            </div>
             <div class="sispaq-info-final">
               <div class="sispaq-copyright">SisPAQ © asri/smuak 2026</div>
             </div>
@@ -461,7 +466,8 @@
       query,
       orderBy,
       serverTimestamp,
-      getDoc, getDocs
+      getDoc, getDocs,
+      writeBatch
     } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
     
     const firebaseConfig = {
@@ -694,6 +700,76 @@
         }
       }
     };
+
+    // FUNGI NAIK TARAF PELAJAR PUKAL BERANTAI (T1 HINGGA T5) DENGAN PENGESAHAN TEXT INTERAKTIF "SAYA SETUJU"
+    window.naikTarafPelajarPukal = async function() {
+      const kataKunci = await systemPrompt(
+        'AMARAN: Proses ini akan memadam data Tingkatan 5 dan menaikkan Tingkatan 1 ke 2, Tingkatan 2 ke 3, Tingkatan 3 ke 4, serta Tingkatan 4 ke 5 secara berantai.\n\nSila taip "SAYA SETUJU" (huruf besar) untuk teruskan:',
+        'Pengesahan Naik Taraf Pelajar Akhir Tahun'
+      );
+
+      if (kataKunci !== "SAYA SETUJU") {
+        await systemAlert('Proses dibatalkan. Pengesahan tidak tepat.', 'Dibatalkan');
+        return;
+      }
+
+      try {
+        const batch = writeBatch(db);
+        const snapshot = await getDocs(collection(db, 'prestasiHafazan'));
+        
+        let countT5Padam = 0;
+        let countT4keT5 = 0;
+        let countT3keT4 = 0;
+        let countT2keT3 = 0;
+        let countT1keT2 = 0;
+
+        snapshot.docs.forEach((d) => {
+          const data = d.data();
+          const tingkatanNama = String(data.tingkatan || '').trim();
+
+          if (tingkatanNama.includes('Tingkatan 5')) {
+            batch.delete(d.ref);
+            countT5Padam++;
+          }
+          else if (tingkatanNama.includes('Tingkatan 4')) {
+            const tingkatanBaharu = tingkatanNama.replace('Tingkatan 4', 'Tingkatan 5');
+            batch.update(d.ref, { tingkatan: tingkatanBaharu, updatedAt: serverTimestamp() });
+            countT4keT5++;
+          }
+          else if (tingkatanNama.includes('Tingkatan 3')) {
+            const tingkatanBaharu = tingkatanNama.replace('Tingkatan 3', 'Tingkatan 4');
+            batch.update(d.ref, { tingkatan: tingkatanBaharu, updatedAt: serverTimestamp() });
+            countT3keT4++;
+          }
+          else if (tingkatanNama.includes('Tingkatan 2')) {
+            const tingkatanBaharu = tingkatanNama.replace('Tingkatan 2', 'Tingkatan 3');
+            batch.update(d.ref, { tingkatan: tingkatanBaharu, updatedAt: serverTimestamp() });
+            countT2keT3++;
+          }
+          else if (tingkatanNama.includes('Tingkatan 1')) {
+            const tingkatanBaharu = tingkatanNama.replace('Tingkatan 1', 'Tingkatan 2');
+            batch.update(d.ref, { tingkatan: tingkatanBaharu, updatedAt: serverTimestamp() });
+            countT1keT2++;
+          }
+        });
+
+        await batch.commit();
+        await systemAlert(
+          `Proses Naik Taraf Akhir Tahun Selesai!\n\n` +
+          `- Rekod Tingkatan 5 Dipadam: ${countT5Padam}\n` +
+          `- Tingkatan 4 -> Tingkatan 5: ${countT4keT5}\n` +
+          `- Tingkatan 3 -> Tingkatan 4: ${countT3keT4}\n` +
+          `- Tingkatan 2 -> Tingkatan 3: ${countT2keT3}\n` +
+          `- Tingkatan 1 -> Tingkatan 2: ${countT1keT2}\n\n` +
+          `Tingkatan 1 Baharu kini kosong bagi sesi pendaftaran seterusnya.`,
+          'Berjaya'
+        );
+      } catch (e) {
+        console.error("Ralat semasa naik taraf pelajar:", e);
+        await systemAlert('Gagal melakukan proses naik taraf: ' + (e.message || e));
+      }
+    };
+
     onAuthStateChanged(auth, async user => {
       if(isSigningUp) return;
       if(!user) {
