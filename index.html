@@ -245,8 +245,9 @@
             <input id="sukatanBulan" type="number" min="1" max="604">
             <label>Sukatan Tahun Ini</label>
             <input id="sukatanTahun" type="number" min="1" max="604">
-            <label>Tarikh Laporan</label>
-            <input id="tarikh" type="date">
+            <label>Tarikh Laporan (Automatik)</label>
+            <!-- DIKEMASKINI: Input dikunci (readonly) dan mengikut tarikh semasa komputer -->
+            <input id="tarikh" type="date" readonly style="background-color: #f1f5f9; cursor: not-allowed;">
             <label>Nama Guru</label>
             <input id="namaGuru" placeholder="Taip nama guru ringkas">
             <div class="btn-row">
@@ -1062,7 +1063,6 @@
       if(!info) info=await infoKelas(k);
       return {bulan:String(info&&info.bulan||months[now.getMonth()]),tahun:String(info&&info.tahun||now.getFullYear())};
     }
-
     // MEMBAIKI FUNGSI TAPIS TEMPOH UNTUK MEMANTIKAN SEMUA REKOD KELAS DIPAPARKAN DAN DICETAK DENGAN SEMPURNA
     function tapisTempoh(data,k,period){
       const kelas=(data||[]).filter(r=>r.tingkatan===k);
@@ -1073,7 +1073,6 @@
       if(tepat.length) return tepat;
       return kelas; // JIKA TIADA REKOD DENGAN BULAN/TAHUN BERKAITAN, AMBIL SEMUA REKOD PELAJAR KELAS ITU SUPAYA PAPARAN CETAK TIDAK KOSONG
     }
-
     window.simpanBorangTambahRekod = async function() {
       try {
         const id = byId("editId").value;
@@ -1285,7 +1284,40 @@
     
     async function loadPengesahanSettings(){try{let old={};const os=await getDoc(doc(db,'settings','pengesahan'));if(os.exists())old=os.data()||{};const cs=await getDoc(doc(db,'settings','config'));const c=cs.exists()?cs.data()||{}:{};window.appConfig=Object.assign({},c);pengesahan=Object.assign({guruMap:{},pkPentadbiran:'',pengetua:''},old);const gm=pengesahan.guruMap||pengesahan.guru||{};const vals={settingNamaInstitusi:c.namaInstitusi||'SMU(A) Khairiah Banggol Setol',settingAlamatSekolah:c.alamat||'17070 Pasir Mas, Kelantan.',settingTelefon:c.telefon||'09 -7909195',settingEmail:c.email||'smuakhairiahbs@yik.edu.my',settingNamaPegawaiPenyemak:c.namaPegawaiPenyemak||pengesahan.pkPentadbiran||'',settingJawatanPegawaiPenyemak:c.jawatanPegawaiPenyemak||'PK Pentadbiran',settingNamaPengetuaPengesah:c.namaPengetuaPengesah||pengesahan.pengetua||''};Object.keys(vals).forEach(id=>{if(byId(id))byId(id).value=vals[id]});window.appConfig=Object.assign({},c,{namaInstitusi:vals.settingNamaInstitusi,alamat:vals.settingAlamatSekolah,telefon:vals.settingTelefon,email:vals.settingEmail});const inst=institution();byId('schoolName').innerHTML='<div class="topbar-school-name">'+escapeText(inst.nama)+'</div><div class="topbar-school-address">'+escapeText(inst.alamat)+'</div>';}catch(e){console.error('load settings',e)}}
     
-    window.openClass=async function(name){const requested=name;currentClass=name;const formCard=byId('formCard');formCard.classList.add('active');byId('formTitle').innerText='Borang Prestasi - '+name;document.querySelectorAll('#classButtons button').forEach(button=>button.classList.toggle('form-class-active',button.dataset.className===currentClass));const applyInfo=d=>{d=d||{};byId('bulan').value=d.bulan||byId('bulan').value;byId('tahun').value=d.tahun||byId('tahun').value||'';byId('sukatanBulan').value=d.sukatanBulan||'';byId('sukatanTahun').value=d.sukatanTahun||'';byId('tarikh').value=d.tarikh||byId('tarikh').value;byId('namaGuru').value=d.namaGuru||'';formCard.classList.add('active');setTimeout(()=>byId('formTitle').scrollIntoView({behavior:'smooth',block:'start'}),30)};const cache=(window.borangInfoCache||{})[name];applyInfo(cache||{});try{const snap=await getDoc(doc(db,'borangInfo',name));if(snap.exists()){window.borangInfoCache=window.borangInfoCache||{};window.borangInfoCache[name]=snap.data();if(currentClass===requested)applyInfo(snap.data())}}catch(e){console.error('openClass getDoc',e)}};
+    // DIKEMASKINI: openClass memastikan 'tarikh' sentiasa diset kepada tarikh semasa komputer secara automatik
+    window.openClass=async function(name){
+      const requested=name;
+      currentClass=name;
+      const formCard=byId('formCard');
+      formCard.classList.add('active');
+      byId('formTitle').innerText='Borang Prestasi - '+name;
+      document.querySelectorAll('#classButtons button').forEach(button=>button.classList.toggle('form-class-active',button.dataset.className===currentClass));
+      
+      const applyInfo=d=>{
+        d=d||{};
+        byId('bulan').value=d.bulan||byId('bulan').value;
+        byId('tahun').value=d.tahun||byId('tahun').value||'';
+        byId('sukatanBulan').value=d.sukatanBulan||'';
+        byId('sukatanTahun').value=d.sukatanTahun||'';
+        // Sentiasa menetapkan tarikh semasa komputer untuk Tarikh Laporan
+        byId('tarikh').value=new Date().toISOString().slice(0, 10);
+        byId('namaGuru').value=d.namaGuru||'';
+        formCard.classList.add('active');
+        setTimeout(()=>byId('formTitle').scrollIntoView({behavior:'smooth',block:'start'}),30);
+      };
+      
+      const cache=(window.borangInfoCache||{})[name];
+      applyInfo(cache||{});
+      try{
+        const snap=await getDoc(doc(db,'borangInfo',name));
+        if(snap.exists()){
+          window.borangInfoCache=window.borangInfoCache||{};
+          window.borangInfoCache[name]=snap.data();
+          if(currentClass===requested)applyInfo(snap.data());
+        }
+      }catch(e){console.error('openClass getDoc',e)}
+    };
+    
     window.selectGeneralClass=function(name){currentGeneralClass=name;renderButtons();renderGeneral();setTimeout(()=>byId('generalBody').closest('.table-wrap').scrollIntoView({behavior:'smooth',block:'start'}),30)};
     function institution(){const c=window.appConfig||{};return{nama:(byId('settingNamaInstitusi')&&byId('settingNamaInstitusi').value)||c.namaInstitusi||'SMU(A) Khairiah Banggol Setol',alamat:(byId('settingAlamatSekolah')&&byId('settingAlamatSekolah').value)||c.alamat||'17070 Pasir Mas, Kelantan.',telefon:(byId('settingTelefon')&&byId('settingTelefon').value)||c.telefon||'09 -7909195',email:(byId('settingEmail')&&byId('settingEmail').value)||c.email||'smuakhairiahbs@yik.edu.my'}}
     async function infoKelas(k){const cache=(window.borangInfoCache||{})[k]||{};try{const s=await getDoc(doc(db,'borangInfo',k));if(s.exists()){window.borangInfoCache=window.borangInfoCache||{};window.borangInfoCache[k]=s.data();return s.data()}}catch(e){console.error('infoKelas getDoc',e)}return cache}
